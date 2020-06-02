@@ -1,0 +1,32 @@
+net stop SERVICE
+
+sc config SERVICE start= disabled 
+
+net stop SERVICE
+
+sc config SERVICE start= disabled 
+
+net stop SERVICE
+
+sc config SERVICE start= disabled 
+
+
+SQLSERVR.EXE
+MSSQLSERVER
+NET STOP CASHEW_NET STOp
+
+MSSQL$CASHEW_STD
+
+sc config MSSQLSERVER start=auto
+sc config 
+sc config MSSQLSERVER 
+
+NET STOP MSSQLLaunchpad
+NET STOP MSSQLLaunchpad$CASHEW_STD
+NET STOP MSSQLFDLauncher$Cashew_STD
+NET STOP SQLAgent
+NET STOP SQLAgent$CASHEW_STD
+SET STOP SQLTELEMETRY
+NET STOP SQLTELEMETRY$CASHEW_STD
+
+

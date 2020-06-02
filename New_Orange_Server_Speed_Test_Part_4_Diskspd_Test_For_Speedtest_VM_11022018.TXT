@@ -1,0 +1,811 @@
+Microsoft Windows [Version 10.0.14393]
+(c) 2016 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>e:
+
+E:\>cd\diskspd\x86
+
+E:\Diskspd\x86>dir
+ Volume in drive E is SQL_Data
+ Volume Serial Number is CA9C-A1A7
+
+ Directory of E:\Diskspd\x86
+
+11/02/2018  12:06 PM    <DIR>          .
+11/02/2018  12:06 PM    <DIR>          ..
+09/28/2018  03:57 PM           203,080 diskspd.exe
+               1 File(s)        203,080 bytes
+               2 Dir(s)  3,183,038,136,320 bytes free
+
+E:\Diskspd\x86>diskspd
+
+Usage: diskspd [options] target1 [ target2 [ target3 ...] ]
+version 2.0.21a (2018/9/21)
+
+Available targets:
+       file_path
+       #<physical drive number>
+       <partition_drive_letter>:
+
+Available options:
+  -?                    display usage information
+  -ag                   group affinity - affinitize threads round-robin to cores in Processor Groups 0 - n.
+                          Group 0 is filled before Group 1, and so forth.
+                          [default; use -n to disable default affinity]
+  -ag#,#[,#,...]>       advanced CPU affinity - affinitize threads round-robin to the CPUs provided. The g# notation
+                          specifies Processor Groups for the following CPU core #s. Multiple Processor Groups
+                          may be specified, and groups/cores may be repeated. If no group is specified, 0 is assumed.
+                          Additional groups/processors may be added, comma separated, or on separate parameters.
+                          Examples: -a0,1,2 and -ag0,0,1,2 are equivalent.
+                                    -ag0,0,1,2,g1,0,1,2 specifies the first three cores in groups 0 and 1.
+                                    -ag0,0,1,2 -ag1,0,1,2 is equivalent.
+  -b<size>[K|M|G]       block size in bytes or KiB/MiB/GiB [default=64K]
+  -B<offs>[K|M|G|b]     base target offset in bytes or KiB/MiB/GiB/blocks [default=0]
+                          (offset from the beginning of the file)
+  -c<size>[K|M|G|b]     create files of the given size.
+                          Size can be stated in bytes or KiB/MiB/GiB/blocks
+  -C<seconds>           cool down time - duration of the test after measurements finished [default=0s].
+  -D<milliseconds>      Capture IOPs statistics in intervals of <milliseconds>; these are per-thread
+                          per-target: text output provides IOPs standard deviation, XML provides the full
+                          IOPs time series in addition. [default=1000, 1 second].
+  -d<seconds>           duration (in seconds) to run test [default=10s]
+  -f<size>[K|M|G|b]     target size - use only the first <size> bytes or KiB/MiB/GiB/blocks of the file/disk/partition,
+                          for example to test only the first sectors of a disk
+  -f<rst>               open file with one or more additional access hints
+                          r : the FILE_FLAG_RANDOM_ACCESS hint
+                          s : the FILE_FLAG_SEQUENTIAL_SCAN hint
+                          t : the FILE_ATTRIBUTE_TEMPORARY hint
+                          [default: none]
+  -F<count>             total number of threads (conflicts with -t)
+  -g<bytes per ms>      throughput per-thread per-target throttled to given bytes per millisecond
+                          note that this can not be specified when using completion routines
+                          [default inactive]
+  -h                    deprecated, see -Sh
+  -i<count>             number of IOs per burst; see -j [default: inactive]
+  -j<milliseconds>      interval in <milliseconds> between issuing IO bursts; see -i [default: inactive]
+  -I<priority>          Set IO priority to <priority>. Available values are: 1-very low, 2-low, 3-normal (default)
+  -l                    Use large pages for IO buffers
+  -L                    measure latency statistics
+  -n                    disable default affinity (-a)
+  -N<vni>               specify the flush mode for memory mapped I/O
+                          v : uses the FlushViewOfFile API
+                          n : uses the RtlFlushNonVolatileMemory API
+                          i : uses RtlFlushNonVolatileMemory without waiting for the flush to drain
+                          [default: none]
+  -o<count>             number of outstanding I/O requests per target per thread
+                          (1=synchronous I/O, unless more than 1 thread is specified with -F)
+                          [default=2]
+  -O<count>             number of outstanding I/O requests per thread - for use with -F
+                          (1=synchronous I/O)
+  -p                    start parallel sequential I/O operations with the same offset
+                          (ignored if -r is specified, makes sense only with -o2 or greater)
+  -P<count>             enable printing a progress dot after each <count> [default=65536]
+                          completed I/O operations, counted separately by each thread
+  -r<align>[K|M|G|b]    random I/O aligned to <align> in bytes/KiB/MiB/GiB/blocks (overrides -s)
+  -R<text|xml>          output format. Default is text.
+  -s[i]<size>[K|M|G|b]  sequential stride size, offset between subsequent I/O operations
+                          [default access=non-interlocked sequential, default stride=block size]
+                          In non-interlocked mode, threads do not coordinate, so the pattern of offsets
+                          as seen by the target will not be truly sequential.  Under -si the threads
+                          manipulate a shared offset with InterlockedIncrement, which may reduce throughput,
+                          but promotes a more sequential pattern.
+                          (ignored if -r specified, -si conflicts with -T and -p)
+  -S[bhmruw]            control caching behavior [default: caching is enabled, no writethrough]
+                          non-conflicting flags may be combined in any order; ex: -Sbw, -Suw, -Swu
+  -S                    equivalent to -Su
+  -Sb                   enable caching (default, explicitly stated)
+  -Sh                   equivalent -Suw
+  -Sm                   enable memory mapped I/O
+  -Su                   disable software caching, equivalent to FILE_FLAG_NO_BUFFERING
+  -Sr                   disable local caching, with remote sw caching enabled; only valid for remote filesystems
+  -Sw                   enable writethrough (no hardware write caching), equivalent to FILE_FLAG_WRITE_THROUGH or
+                          non-temporal writes for memory mapped I/O (-Sm)
+  -t<count>             number of threads per target (conflicts with -F)
+  -T<offs>[K|M|G|b]     starting stride between I/O operations performed on the same target by different threads
+                          [default=0] (starting offset = base file offset + (thread number * <offs>)
+                          makes sense only with #threads > 1
+  -v                    verbose mode
+  -w<percentage>        percentage of write requests (-w and -w0 are equivalent and result in a read-only workload).
+                        absence of this switch indicates 100% reads
+                          IMPORTANT: a write test will destroy existing data without a warning
+  -W<seconds>           warm up time - duration of the test before measurements start [default=5s]
+  -x                    use completion routines instead of I/O Completion Ports
+  -X<filepath>          use an XML file for configuring the workload. Cannot be used with other parameters.
+  -z[seed]              set random seed [with no -z, seed=0; with plain -z, seed is based on system run time]
+
+Write buffers:
+  -Z                        zero buffers used for write tests
+  -Zr                       per IO random buffers used for write tests - this incurrs additional run-time
+                              overhead to create random content and shouln't be compared to results run
+                              without -Zr
+  -Z<size>[K|M|G|b]         use a <size> buffer filled with random data as a source for write operations.
+  -Z<size>[K|M|G|b],<file>  use a <size> buffer filled with data from <file> as a source for write operations.
+
+  By default, the write buffers are filled with a repeating pattern (0, 1, 2, ..., 255, 0, 1, ...)
+
+Synchronization:
+  -ys<eventname>     signals event <eventname> before starting the actual run (no warmup)
+                       (creates a notification event if <eventname> does not exist)
+  -yf<eventname>     signals event <eventname> after the actual run finishes (no cooldown)
+                       (creates a notification event if <eventname> does not exist)
+  -yr<eventname>     waits on event <eventname> before starting the run (including warmup)
+                       (creates a notification event if <eventname> does not exist)
+  -yp<eventname>     stops the run when event <eventname> is set; CTRL+C is bound to this event
+                       (creates a notification event if <eventname> does not exist)
+  -ye<eventname>     sets event <eventname> and quits
+
+Event Tracing:
+  -e<q|c|s>             Use query perf timer (qpc), cycle count, or system timer respectively.
+                          [default = q, query perf timer (qpc)]
+  -ep                   use paged memory for the NT Kernel Logger [default=non-paged memory]
+  -ePROCESS             process start & end
+  -eTHREAD              thread start & end
+  -eIMAGE_LOAD          image load
+  -eDISK_IO             physical disk IO
+  -eMEMORY_PAGE_FAULTS  all page faults
+  -eMEMORY_HARD_FAULTS  hard faults only
+  -eNETWORK             TCP/IP, UDP/IP send & receive
+  -eREGISTRY            registry calls
+
+
+Examples:
+
+Create 8192KB file and run read test on it for 1 second:
+
+  diskspd -c8192K -d1 testfile.dat
+
+Set block size to 4KB, create 2 threads per file, 32 overlapped (outstanding)
+I/O operations per thread, disable all caching mechanisms and run block-aligned random
+access read test lasting 10 seconds:
+
+  diskspd -b4K -t2 -r -o32 -d10 -Sh testfile.dat
+
+Create two 1GB files, set block size to 4KB, create 2 threads per file, affinitize threads
+to CPUs 0 and 1 (each file will have threads affinitized to both CPUs) and run read test
+lasting 10 seconds:
+
+  diskspd -c1G -b4K -t2 -d10 -a0,1 testfile1.dat testfile2.dat
+
+
+E:\Diskspd\x86>diskspd -c1G -b4K -t2 -d10 -a0,1 testfile1.dat testfile2.dat
+WARNING: target access pattern will not be sequential, consider -si
+
+Command Line: diskspd -c1G -b4K -t2 -d10 -a0,1 testfile1.dat testfile2.dat
+
+Input parameters:
+
+        timespan:   1
+        -------------
+        duration: 10s
+        warm up time: 5s
+        cool down time: 0s
+        random seed: 0
+        advanced affinity round robin (group/core): 0/0, 0/1
+        path: 'testfile1.dat'
+                think time: 0ms
+                burst size: 0
+                using software cache
+                using hardware write cache, writethrough off
+                performing read test
+                block size: 4096
+                using sequential I/O (stride: 4096)
+                number of outstanding I/O operations: 2
+                thread stride size: 0
+                threads per file: 2
+                using I/O Completion Ports
+                IO priority: normal
+        path: 'testfile2.dat'
+                think time: 0ms
+                burst size: 0
+                using software cache
+                using hardware write cache, writethrough off
+                performing read test
+                block size: 4096
+                using sequential I/O (stride: 4096)
+                number of outstanding I/O operations: 2
+                thread stride size: 0
+                threads per file: 2
+                using I/O Completion Ports
+                IO priority: normal
+
+System information:
+
+        computer name: SpeedTest_VM
+        start time: 2018/11/02 17:08:12 UTC
+
+Results for timespan 1:
+*******************************************************************************
+
+actual test time:       10.00s
+thread count:           4
+proc count:             32
+
+CPU |  Usage |  User  |  Kernel |  Idle
+-------------------------------------------
+   0|  34.69%|   2.66%|   32.03%|  65.31%
+   1|  40.78%|   3.13%|   37.66%|  59.22%
+   2|  30.16%|   0.00%|   30.16%|  69.84%
+   3|   2.50%|   0.00%|    2.50%|  97.50%
+   4|   0.16%|   0.16%|    0.00%|  99.84%
+   5|   2.03%|   0.00%|    2.03%|  97.97%
+   6|   2.97%|   0.00%|    2.97%|  97.03%
+   7|   0.00%|   0.00%|    0.00%| 100.00%
+   8|   0.00%|   0.00%|    0.00%| 100.00%
+   9|   0.00%|   0.00%|    0.00%| 100.00%
+  10|   0.00%|   0.00%|    0.00%| 100.00%
+  11|   1.25%|   0.00%|    1.25%|  98.75%
+  12|   0.16%|   0.16%|    0.00%|  99.84%
+  13|   0.62%|   0.00%|    0.62%|  99.38%
+  14|   0.31%|   0.00%|    0.31%|  99.69%
+  15|   0.63%|   0.00%|    0.63%|  99.38%
+  16|   0.00%|   0.00%|    0.00%| 100.00%
+  17|   0.00%|   0.00%|    0.00%| 100.00%
+  18|   0.00%|   0.00%|    0.00%| 100.00%
+  19|   0.00%|   0.00%|    0.00%| 100.00%
+  20|   0.00%|   0.00%|    0.00%| 100.00%
+  21|   0.00%|   0.00%|    0.00%| 100.00%
+  22|   0.00%|   0.00%|    0.00%| 100.00%
+  23|   0.00%|   0.00%|    0.00%| 100.00%
+  24|   0.00%|   0.00%|    0.00%| 100.00%
+  25|   0.31%|   0.00%|    0.31%|  99.69%
+  26|   0.00%|   0.00%|    0.00%| 100.00%
+  27|   0.00%|   0.00%|    0.00%| 100.00%
+  28|   0.00%|   0.00%|    0.00%| 100.00%
+  29|   0.00%|   0.00%|    0.00%| 100.00%
+  30|   0.00%|   0.00%|    0.00%| 100.00%
+  31|   0.00%|   0.00%|    0.00%| 100.00%
+-------------------------------------------
+avg.|   3.64%|   0.19%|    3.45%|  96.36%
+
+Total IO
+thread |       bytes     |     I/Os     |    MiB/s   |  I/O per s |  file
+------------------------------------------------------------------------------
+     0 |      2468675584 |       602704 |     235.34 |   60246.36 | testfile1.dat (1024MiB)
+     1 |      2450075648 |       598163 |     233.56 |   59792.44 | testfile1.dat (1024MiB)
+     2 |       632729600 |       154475 |      60.32 |   15441.34 | testfile2.dat (1024MiB)
+     3 |       632733696 |       154476 |      60.32 |   15441.44 | testfile2.dat (1024MiB)
+------------------------------------------------------------------------------
+total:        6184214528 |      1509818 |     589.54 |  150921.58
+
+Read IO
+thread |       bytes     |     I/Os     |    MiB/s   |  I/O per s |  file
+------------------------------------------------------------------------------
+     0 |      2468675584 |       602704 |     235.34 |   60246.36 | testfile1.dat (1024MiB)
+     1 |      2450075648 |       598163 |     233.56 |   59792.44 | testfile1.dat (1024MiB)
+     2 |       632729600 |       154475 |      60.32 |   15441.34 | testfile2.dat (1024MiB)
+     3 |       632733696 |       154476 |      60.32 |   15441.44 | testfile2.dat (1024MiB)
+------------------------------------------------------------------------------
+total:        6184214528 |      1509818 |     589.54 |  150921.58
+
+Write IO
+thread |       bytes     |     I/Os     |    MiB/s   |  I/O per s |  file
+------------------------------------------------------------------------------
+     0 |               0 |            0 |       0.00 |       0.00 | testfile1.dat (1024MiB)
+     1 |               0 |            0 |       0.00 |       0.00 | testfile1.dat (1024MiB)
+     2 |               0 |            0 |       0.00 |       0.00 | testfile2.dat (1024MiB)
+     3 |               0 |            0 |       0.00 |       0.00 | testfile2.dat (1024MiB)
+------------------------------------------------------------------------------
+total:                 0 |            0 |       0.00 |       0.00
+
+E:\Diskspd\x86>diskspd -c1G -b4K -t2 -d10 -a0,1000 testfile1.dat testfile3.dat
+ERROR: core 1000 is out of range
+ERROR: incomplete affinity specification
+ERROR: incorrectly provided option: 'a0,1000'
+
+E:\Diskspd\x86>diskspd -c1000G -b4K -t2 -d10 -a0,1 testfile1.dat testfile3.dat
+WARNING: target access pattern will not be sequential, consider -si
+
+Command Line: diskspd -c1000G -b4K -t2 -d10 -a0,1 testfile1.dat testfile3.dat
+
+Input parameters:
+
+        timespan:   1
+        -------------
+        duration: 10s
+        warm up time: 5s
+        cool down time: 0s
+        random seed: 0
+        advanced affinity round robin (group/core): 0/0, 0/1
+        path: 'testfile1.dat'
+                think time: 0ms
+                burst size: 0
+                using software cache
+                using hardware write cache, writethrough off
+                performing read test
+                block size: 4096
+                using sequential I/O (stride: 4096)
+                number of outstanding I/O operations: 2
+                thread stride size: 0
+                threads per file: 2
+                using I/O Completion Ports
+                IO priority: normal
+        path: 'testfile3.dat'
+                think time: 0ms
+                burst size: 0
+                using software cache
+                using hardware write cache, writethrough off
+                performing read test
+                block size: 4096
+                using sequential I/O (stride: 4096)
+                number of outstanding I/O operations: 2
+                thread stride size: 0
+                threads per file: 2
+                using I/O Completion Ports
+                IO priority: normal
+
+System information:
+
+        computer name: SpeedTest_VM
+        start time: 2018/11/02 17:09:50 UTC
+
+Results for timespan 1:
+*******************************************************************************
+
+actual test time:       10.00s
+thread count:           4
+proc count:             32
+
+CPU |  Usage |  User  |  Kernel |  Idle
+-------------------------------------------
+   0|  54.22%|   4.38%|   49.84%|  45.78%
+   1|  57.97%|   6.72%|   51.25%|  42.03%
+   2|  31.25%|   0.16%|   31.09%|  68.75%
+   3|  21.09%|   0.00%|   21.09%|  78.91%
+   4|   5.00%|   0.16%|    4.84%|  95.00%
+   5|   4.84%|   0.16%|    4.69%|  95.16%
+   6|   4.23%|   0.31%|    3.91%|  95.77%
+   7|   0.00%|   0.00%|    0.00%| 100.00%
+   8|   0.00%|   0.00%|    0.00%| 100.00%
+   9|   0.00%|   0.00%|    0.00%| 100.00%
+  10|   0.00%|   0.00%|    0.00%| 100.00%
+  11|   8.45%|   0.00%|    8.45%|  91.55%
+  12|   0.47%|   0.00%|    0.47%|  99.53%
+  13|   3.75%|   0.00%|    3.75%|  96.25%
+  14|   4.06%|   0.00%|    4.06%|  95.94%
+  15|   6.56%|   0.00%|    6.56%|  93.44%
+  16|   0.00%|   0.00%|    0.00%| 100.00%
+  17|   0.00%|   0.00%|    0.00%| 100.00%
+  18|   0.00%|   0.00%|    0.00%| 100.00%
+  19|   0.00%|   0.00%|    0.00%| 100.00%
+  20|   0.00%|   0.00%|    0.00%| 100.00%
+  21|   0.00%|   0.00%|    0.00%| 100.00%
+  22|   0.00%|   0.00%|    0.00%| 100.00%
+  23|   0.00%|   0.00%|    0.00%| 100.00%
+  24|   0.16%|   0.16%|    0.00%|  99.84%
+  25|   0.00%|   0.00%|    0.00%| 100.00%
+  26|   0.00%|   0.00%|    0.00%| 100.00%
+  27|   0.00%|   0.00%|    0.00%| 100.00%
+  28|   0.00%|   0.00%|    0.00%| 100.00%
+  29|   0.00%|   0.00%|    0.00%| 100.00%
+  30|   0.00%|   0.00%|    0.00%| 100.00%
+  31|   1.88%|   0.31%|    1.56%|  98.12%
+-------------------------------------------
+avg.|   6.37%|   0.39%|    5.99%|  93.63%
+
+Total IO
+thread |       bytes     |     I/Os     |    MiB/s   |  I/O per s |  file
+------------------------------------------------------------------------------
+     0 |       595881984 |       145479 |      56.83 |   14547.44 | testfile1.dat (1000GiB)
+     1 |       595873792 |       145477 |      56.83 |   14547.24 | testfile1.dat (1000GiB)
+     2 |      5781262336 |      1411441 |     551.33 |  141139.62 | testfile3.dat (1000GiB)
+     3 |      5781270528 |      1411443 |     551.33 |  141139.82 | testfile3.dat (1000GiB)
+------------------------------------------------------------------------------
+total:       12754288640 |      3113840 |    1216.31 |  311374.13
+
+Read IO
+thread |       bytes     |     I/Os     |    MiB/s   |  I/O per s |  file
+------------------------------------------------------------------------------
+     0 |       595881984 |       145479 |      56.83 |   14547.44 | testfile1.dat (1000GiB)
+     1 |       595873792 |       145477 |      56.83 |   14547.24 | testfile1.dat (1000GiB)
+     2 |      5781262336 |      1411441 |     551.33 |  141139.62 | testfile3.dat (1000GiB)
+     3 |      5781270528 |      1411443 |     551.33 |  141139.82 | testfile3.dat (1000GiB)
+------------------------------------------------------------------------------
+total:       12754288640 |      3113840 |    1216.31 |  311374.13
+
+Write IO
+thread |       bytes     |     I/Os     |    MiB/s   |  I/O per s |  file
+------------------------------------------------------------------------------
+     0 |               0 |            0 |       0.00 |       0.00 | testfile1.dat (1000GiB)
+     1 |               0 |            0 |       0.00 |       0.00 | testfile1.dat (1000GiB)
+     2 |               0 |            0 |       0.00 |       0.00 | testfile3.dat (1000GiB)
+     3 |               0 |            0 |       0.00 |       0.00 | testfile3.dat (1000GiB)
+------------------------------------------------------------------------------
+total:                 0 |            0 |       0.00 |       0.00
+
+E:\Diskspd\x86>diskspd -c40000G -b4K -t2 -d10 -a0,1 testfile1.dat testfile3.dat
+WARNING: target access pattern will not be sequential, consider -si
+Error setting end of file (error code: 87)
+
+Command Line: diskspd -c40000G -b4K -t2 -d10 -a0,1 testfile1.dat testfile3.dat
+
+Input parameters:
+
+        timespan:   1
+        -------------
+        duration: 10s
+        warm up time: 5s
+        cool down time: 0s
+        random seed: 0
+        advanced affinity round robin (group/core): 0/0, 0/1
+        path: 'testfile1.dat'
+                think time: 0ms
+                burst size: 0
+                using software cache
+                using hardware write cache, writethrough off
+                performing read test
+                block size: 4096
+                using sequential I/O (stride: 4096)
+                number of outstanding I/O operations: 2
+                thread stride size: 0
+                threads per file: 2
+                using I/O Completion Ports
+                IO priority: normal
+        path: 'testfile3.dat'
+                think time: 0ms
+                burst size: 0
+                using software cache
+                using hardware write cache, writethrough off
+                performing read test
+                block size: 4096
+                using sequential I/O (stride: 4096)
+                number of outstanding I/O operations: 2
+                thread stride size: 0
+                threads per file: 2
+                using I/O Completion Ports
+                IO priority: normal
+
+System information:
+
+        computer name: SpeedTest_VM
+        start time: 2018/11/02 17:14:06 UTC
+
+Results for timespan 1:
+*******************************************************************************
+The test was interrupted before the measurements began. No results are displayed.
+Error generating I/O requests
+
+E:\Diskspd\x86>diskspd -c6000G -b4K -t2 -d10 -a0,1 testfile1.dat testfile4.dat
+WARNING: target access pattern will not be sequential, consider -si
+Error setting end of file (error code: 112)
+
+Command Line: diskspd -c6000G -b4K -t2 -d10 -a0,1 testfile1.dat testfile4.dat
+
+Input parameters:
+
+        timespan:   1
+        -------------
+        duration: 10s
+        warm up time: 5s
+        cool down time: 0s
+        random seed: 0
+        advanced affinity round robin (group/core): 0/0, 0/1
+        path: 'testfile1.dat'
+                think time: 0ms
+                burst size: 0
+                using software cache
+                using hardware write cache, writethrough off
+                performing read test
+                block size: 4096
+                using sequential I/O (stride: 4096)
+                number of outstanding I/O operations: 2
+                thread stride size: 0
+                threads per file: 2
+                using I/O Completion Ports
+                IO priority: normal
+        path: 'testfile4.dat'
+                think time: 0ms
+                burst size: 0
+                using software cache
+                using hardware write cache, writethrough off
+                performing read test
+                block size: 4096
+                using sequential I/O (stride: 4096)
+                number of outstanding I/O operations: 2
+                thread stride size: 0
+                threads per file: 2
+                using I/O Completion Ports
+                IO priority: normal
+
+System information:
+
+        computer name: SpeedTest_VM
+        start time: 2018/11/02 17:15:03 UTC
+
+Results for timespan 1:
+*******************************************************************************
+The test was interrupted before the measurements began. No results are displayed.
+Error generating I/O requests
+
+E:\Diskspd\x86>diskspd -c2000G -b4K -t2 -d10 -a0,1 testfile1.dat testfile4.dat
+WARNING: target access pattern will not be sequential, consider -si
+
+Command Line: diskspd -c2000G -b4K -t2 -d10 -a0,1 testfile1.dat testfile4.dat
+
+Input parameters:
+
+        timespan:   1
+        -------------
+        duration: 10s
+        warm up time: 5s
+        cool down time: 0s
+        random seed: 0
+        advanced affinity round robin (group/core): 0/0, 0/1
+        path: 'testfile1.dat'
+                think time: 0ms
+                burst size: 0
+                using software cache
+                using hardware write cache, writethrough off
+                performing read test
+                block size: 4096
+                using sequential I/O (stride: 4096)
+                number of outstanding I/O operations: 2
+                thread stride size: 0
+                threads per file: 2
+                using I/O Completion Ports
+                IO priority: normal
+        path: 'testfile4.dat'
+                think time: 0ms
+                burst size: 0
+                using software cache
+                using hardware write cache, writethrough off
+                performing read test
+                block size: 4096
+                using sequential I/O (stride: 4096)
+                number of outstanding I/O operations: 2
+                thread stride size: 0
+                threads per file: 2
+                using I/O Completion Ports
+                IO priority: normal
+
+System information:
+
+        computer name: SpeedTest_VM
+        start time: 2018/11/02 17:17:02 UTC
+
+Results for timespan 1:
+*******************************************************************************
+
+actual test time:       10.00s
+thread count:           4
+proc count:             32
+
+CPU |  Usage |  User  |  Kernel |  Idle
+-------------------------------------------
+   0|  10.63%|   1.72%|    8.91%|  89.38%
+   1|  12.81%|   1.56%|   11.25%|  87.19%
+   2|  17.34%|   0.00%|   17.34%|  82.66%
+   3|   0.94%|   0.00%|    0.94%|  99.06%
+   4|   0.00%|   0.00%|    0.00%| 100.00%
+   5|   1.72%|   0.00%|    1.72%|  98.28%
+   6|   0.00%|   0.00%|    0.00%| 100.00%
+   7|   0.47%|   0.16%|    0.31%|  99.53%
+   8|   0.00%|   0.00%|    0.00%| 100.00%
+   9|   0.00%|   0.00%|    0.00%| 100.00%
+  10|   0.00%|   0.00%|    0.00%| 100.00%
+  11|   0.62%|   0.00%|    0.62%|  99.38%
+  12|   0.16%|   0.00%|    0.16%|  99.84%
+  13|   0.63%|   0.00%|    0.63%|  99.37%
+  14|   1.09%|   0.16%|    0.94%|  98.91%
+  15|   1.09%|   0.00%|    1.09%|  98.91%
+  16|   0.00%|   0.00%|    0.00%| 100.00%
+  17|   0.00%|   0.00%|    0.00%| 100.00%
+  18|   0.31%|   0.31%|    0.00%|  99.69%
+  19|   0.00%|   0.00%|    0.00%| 100.00%
+  20|   0.00%|   0.00%|    0.00%| 100.00%
+  21|   0.00%|   0.00%|    0.00%| 100.00%
+  22|   0.00%|   0.00%|    0.00%| 100.00%
+  23|   0.16%|   0.00%|    0.16%|  99.84%
+  24|   0.31%|   0.16%|    0.16%|  99.69%
+  25|   0.16%|   0.16%|    0.00%|  99.84%
+  26|   0.00%|   0.00%|    0.00%| 100.00%
+  27|   0.16%|   0.00%|    0.16%|  99.84%
+  28|   0.00%|   0.00%|    0.00%| 100.00%
+  29|   0.00%|   0.00%|    0.00%| 100.00%
+  30|   0.00%|   0.00%|    0.00%| 100.00%
+  31|   0.00%|   0.00%|    0.00%| 100.00%
+-------------------------------------------
+avg.|   1.52%|   0.13%|    1.39%|  98.48%
+
+Total IO
+thread |       bytes     |     I/Os     |    MiB/s   |  I/O per s |  file
+------------------------------------------------------------------------------
+     0 |       363872256 |        88836 |      34.69 |    8880.04 | testfile1.dat (2000GiB)
+     1 |       363872256 |        88836 |      34.69 |    8880.04 | testfile1.dat (2000GiB)
+     2 |       363454464 |        88734 |      34.65 |    8869.84 | testfile4.dat (2000GiB)
+     3 |       363454464 |        88734 |      34.65 |    8869.84 | testfile4.dat (2000GiB)
+------------------------------------------------------------------------------
+total:        1454653440 |       355140 |     138.67 |   35499.76
+
+Read IO
+thread |       bytes     |     I/Os     |    MiB/s   |  I/O per s |  file
+------------------------------------------------------------------------------
+     0 |       363872256 |        88836 |      34.69 |    8880.04 | testfile1.dat (2000GiB)
+     1 |       363872256 |        88836 |      34.69 |    8880.04 | testfile1.dat (2000GiB)
+     2 |       363454464 |        88734 |      34.65 |    8869.84 | testfile4.dat (2000GiB)
+     3 |       363454464 |        88734 |      34.65 |    8869.84 | testfile4.dat (2000GiB)
+------------------------------------------------------------------------------
+total:        1454653440 |       355140 |     138.67 |   35499.76
+
+Write IO
+thread |       bytes     |     I/Os     |    MiB/s   |  I/O per s |  file
+------------------------------------------------------------------------------
+     0 |               0 |            0 |       0.00 |       0.00 | testfile1.dat (2000GiB)
+     1 |               0 |            0 |       0.00 |       0.00 | testfile1.dat (2000GiB)
+     2 |               0 |            0 |       0.00 |       0.00 | testfile4.dat (2000GiB)
+     3 |               0 |            0 |       0.00 |       0.00 | testfile4.dat (2000GiB)
+------------------------------------------------------------------------------
+total:                 0 |            0 |       0.00 |       0.00
+
+E:\Diskspd\x86>diskspd -c4000G -b4K -t2 -d10 -a0,1 testfile1.dat testfile4.dat
+WARNING: target access pattern will not be sequential, consider -si
+Error setting end of file (error code: 112)
+
+Command Line: diskspd -c4000G -b4K -t2 -d10 -a0,1 testfile1.dat testfile4.dat
+
+Input parameters:
+
+        timespan:   1
+        -------------
+        duration: 10s
+        warm up time: 5s
+        cool down time: 0s
+        random seed: 0
+        advanced affinity round robin (group/core): 0/0, 0/1
+        path: 'testfile1.dat'
+                think time: 0ms
+                burst size: 0
+                using software cache
+                using hardware write cache, writethrough off
+                performing read test
+                block size: 4096
+                using sequential I/O (stride: 4096)
+                number of outstanding I/O operations: 2
+                thread stride size: 0
+                threads per file: 2
+                using I/O Completion Ports
+                IO priority: normal
+        path: 'testfile4.dat'
+                think time: 0ms
+                burst size: 0
+                using software cache
+                using hardware write cache, writethrough off
+                performing read test
+                block size: 4096
+                using sequential I/O (stride: 4096)
+                number of outstanding I/O operations: 2
+                thread stride size: 0
+                threads per file: 2
+                using I/O Completion Ports
+                IO priority: normal
+
+System information:
+
+        computer name: SpeedTest_VM
+        start time: 2018/11/02 17:17:28 UTC
+
+Results for timespan 1:
+*******************************************************************************
+The test was interrupted before the measurements began. No results are displayed.
+Error generating I/O requests
+
+E:\Diskspd\x86>diskspd -c3000G -b4K -t2 -d10 -a0,1 testfile1.dat testfile4.dat
+WARNING: target access pattern will not be sequential, consider -si
+
+Command Line: diskspd -c3000G -b4K -t2 -d10 -a0,1 testfile1.dat testfile4.dat
+
+Input parameters:
+
+        timespan:   1
+        -------------
+        duration: 10s
+        warm up time: 5s
+        cool down time: 0s
+        random seed: 0
+        advanced affinity round robin (group/core): 0/0, 0/1
+        path: 'testfile1.dat'
+                think time: 0ms
+                burst size: 0
+                using software cache
+                using hardware write cache, writethrough off
+                performing read test
+                block size: 4096
+                using sequential I/O (stride: 4096)
+                number of outstanding I/O operations: 2
+                thread stride size: 0
+                threads per file: 2
+                using I/O Completion Ports
+                IO priority: normal
+        path: 'testfile4.dat'
+                think time: 0ms
+                burst size: 0
+                using software cache
+                using hardware write cache, writethrough off
+                performing read test
+                block size: 4096
+                using sequential I/O (stride: 4096)
+                number of outstanding I/O operations: 2
+                thread stride size: 0
+                threads per file: 2
+                using I/O Completion Ports
+                IO priority: normal
+
+System information:
+
+        computer name: SpeedTest_VM
+        start time: 2018/11/02 17:18:30 UTC
+
+Results for timespan 1:
+*******************************************************************************
+
+actual test time:       10.01s
+thread count:           4
+proc count:             32
+
+CPU |  Usage |  User  |  Kernel |  Idle
+-------------------------------------------
+   0|  11.25%|   1.56%|    9.69%|  88.75%
+   1|  12.34%|   0.78%|   11.56%|  87.66%
+   2|  18.75%|   0.00%|   18.75%|  81.25%
+   3|   0.63%|   0.00%|    0.63%|  99.38%
+   4|   0.00%|   0.00%|    0.00%| 100.00%
+   5|   0.16%|   0.16%|    0.00%|  99.84%
+   6|   1.09%|   0.00%|    1.09%|  98.91%
+   7|   0.00%|   0.00%|    0.00%| 100.00%
+   8|   0.00%|   0.00%|    0.00%| 100.00%
+   9|   0.00%|   0.00%|    0.00%| 100.00%
+  10|   0.00%|   0.00%|    0.00%| 100.00%
+  11|   0.63%|   0.00%|    0.63%|  99.37%
+  12|   0.16%|   0.16%|    0.00%|  99.84%
+  13|   2.03%|   0.16%|    1.88%|  97.97%
+  14|   0.62%|   0.00%|    0.62%|  99.38%
+  15|   0.94%|   0.00%|    0.94%|  99.06%
+  16|   0.16%|   0.16%|    0.00%|  99.84%
+  17|   0.00%|   0.00%|    0.00%| 100.00%
+  18|   0.00%|   0.00%|    0.00%| 100.00%
+  19|   0.00%|   0.00%|    0.00%| 100.00%
+  20|   0.00%|   0.00%|    0.00%| 100.00%
+  21|   0.00%|   0.00%|    0.00%| 100.00%
+  22|   0.00%|   0.00%|    0.00%| 100.00%
+  23|   0.00%|   0.00%|    0.00%| 100.00%
+  24|   0.00%|   0.00%|    0.00%| 100.00%
+  25|   0.00%|   0.00%|    0.00%| 100.00%
+  26|   0.16%|   0.16%|    0.00%|  99.84%
+  27|   0.00%|   0.00%|    0.00%| 100.00%
+  28|   0.00%|   0.00%|    0.00%| 100.00%
+  29|   0.00%|   0.00%|    0.00%| 100.00%
+  30|   0.00%|   0.00%|    0.00%| 100.00%
+  31|   0.16%|   0.00%|    0.16%|  99.84%
+-------------------------------------------
+avg.|   1.53%|   0.10%|    1.44%|  98.47%
+
+Total IO
+thread |       bytes     |     I/Os     |    MiB/s   |  I/O per s |  file
+------------------------------------------------------------------------------
+     0 |       367710208 |        89773 |      35.05 |    8971.97 | testfile1.dat (3000GiB)
+     1 |       367706112 |        89772 |      35.05 |    8971.87 | testfile1.dat (3000GiB)
+     2 |       369958912 |        90322 |      35.26 |    9026.84 | testfile4.dat (3000GiB)
+     3 |       369967104 |        90324 |      35.26 |    9027.04 | testfile4.dat (3000GiB)
+------------------------------------------------------------------------------
+total:        1475342336 |       360191 |     140.62 |   35997.71
+
+Read IO
+thread |       bytes     |     I/Os     |    MiB/s   |  I/O per s |  file
+------------------------------------------------------------------------------
+     0 |       367710208 |        89773 |      35.05 |    8971.97 | testfile1.dat (3000GiB)
+     1 |       367706112 |        89772 |      35.05 |    8971.87 | testfile1.dat (3000GiB)
+     2 |       369958912 |        90322 |      35.26 |    9026.84 | testfile4.dat (3000GiB)
+     3 |       369967104 |        90324 |      35.26 |    9027.04 | testfile4.dat (3000GiB)
+------------------------------------------------------------------------------
+total:        1475342336 |       360191 |     140.62 |   35997.71
+
+Write IO
+thread |       bytes     |     I/Os     |    MiB/s   |  I/O per s |  file
+------------------------------------------------------------------------------
+     0 |               0 |            0 |       0.00 |       0.00 | testfile1.dat (3000GiB)
+     1 |               0 |            0 |       0.00 |       0.00 | testfile1.dat (3000GiB)
+     2 |               0 |            0 |       0.00 |       0.00 | testfile4.dat (3000GiB)
+     3 |               0 |            0 |       0.00 |       0.00 | testfile4.dat (3000GiB)
+------------------------------------------------------------------------------
+total:                 0 |            0 |       0.00 |       0.00
+
+E:\Diskspd\x86>
