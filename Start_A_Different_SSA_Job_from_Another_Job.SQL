@@ -1,0 +1,1 @@
+exec msdb.dbo.sp_start_job @job_name = 'ADM_Shrink Data + Log - Bookworm   -  SET RECOVERY SIMPLE/FULL'

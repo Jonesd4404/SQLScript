@@ -1,0 +1,12 @@
+wmssqlcluster12
+
+09/10/2018
+
+Connections
+Changed Remote connections to this server from 600S to 0 no timeout;
+
+Advanced
+Network
+Remote Login Timeout
+from 10s to 35s
+

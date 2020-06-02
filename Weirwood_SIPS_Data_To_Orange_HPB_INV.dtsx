@@ -1,0 +1,2130 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/26/2017 2:19:51 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DJONES-L"
+  DTS:CreatorName="HPB\Dale_Jones"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{B0056F9F-3973-4535-A4D9-9A28E36E454A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.4001.0"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="Weirwood_SIPS_Data_To_Orange_HPB_INV"
+  DTS:ProtectionLevel="2"
+  DTS:VersionGUID="{4181E6FB-BAFA-46BB-9194-A5F19F8356E9}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A5BB27CF-1566-480E-8CA8-62DF57737842}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=orange;Initial Catalog=HPB_INV;Provider=SQLNCLI11;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3134C74C-BE96-4998-8EC5-DF17AE4B2790}"
+      DTS:ObjectName="SourceConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=Weirwood;Initial Catalog=SIPS;Provider=SQLNCLI11;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{ADB0CF51-F6E9-4A4A-B0DD-07EDB63D5E79}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - Shelf"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - Shelf"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Shelf]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - Shelf.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].Columns[ShelfID]"
+                      cachedDataType="i4"
+                      cachedName="ShelfID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[ShelfID]"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[ShelfID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].Columns[ShelfProxyID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="ShelfProxyID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[ShelfProxyID]"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[ShelfProxyID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].Columns[StatusCode]"
+                      cachedDataType="ui1"
+                      cachedName="StatusCode"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[StatusCode]"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[StatusCode]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].Columns[ShelfDescription]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="ShelfDescription"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[ShelfDescription]"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[ShelfDescription]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].Columns[LocationID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="LocationID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[LocationID]"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[LocationID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].Columns[SubjectKey]"
+                      cachedDataType="i2"
+                      cachedName="SubjectKey"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[SubjectKey]"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[SubjectKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].Columns[DisplayUnitID]"
+                      cachedDataType="i4"
+                      cachedName="DisplayUnitID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[DisplayUnitID]"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[DisplayUnitID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].Columns[ShelfLength]"
+                      cachedDataType="numeric"
+                      cachedName="ShelfLength"
+                      cachedPrecision="18"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[ShelfLength]"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[ShelfLength]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].Columns[ShelfHeight]"
+                      cachedDataType="numeric"
+                      cachedName="ShelfHeight"
+                      cachedPrecision="18"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[ShelfHeight]"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[ShelfHeight]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].Columns[ShelfDepth]"
+                      cachedDataType="numeric"
+                      cachedName="ShelfDepth"
+                      cachedPrecision="18"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[ShelfDepth]"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[ShelfDepth]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].Columns[ShelfColor]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ShelfColor"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[ShelfColor]"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[ShelfColor]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].Columns[LastUpdateBy]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="LastUpdateBy"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[LastUpdateBy]"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[LastUpdateBy]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].Columns[LastUpdateOn]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LastUpdateOn"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[LastUpdateOn]"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[LastUpdateOn]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].Columns[CreateTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CreateTime"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[CreateTime]"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[CreateTime]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].Columns[CreateUser]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CreateUser"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[CreateUser]"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[CreateUser]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].Columns[ListOnline]"
+                      cachedDataType="ui1"
+                      cachedName="ListOnline"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[ListOnline]"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[ListOnline]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[ShelfID]"
+                      dataType="i4"
+                      name="ShelfID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[ShelfProxyID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="ShelfProxyID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[StatusCode]"
+                      dataType="ui1"
+                      name="StatusCode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[ShelfDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="ShelfDescription" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[LocationID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="LocationID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[SubjectKey]"
+                      dataType="i2"
+                      name="SubjectKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[DisplayUnitID]"
+                      dataType="i4"
+                      name="DisplayUnitID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[ShelfLength]"
+                      dataType="numeric"
+                      name="ShelfLength"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[ShelfHeight]"
+                      dataType="numeric"
+                      name="ShelfHeight"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[ShelfDepth]"
+                      dataType="numeric"
+                      name="ShelfDepth"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[ShelfColor]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ShelfColor" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[LastUpdateBy]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="LastUpdateBy" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[LastUpdateOn]"
+                      dataType="dbTimeStamp"
+                      name="LastUpdateOn" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[CreateTime]"
+                      dataType="dbTimeStamp"
+                      name="CreateTime" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[CreateUser]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CreateUser" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input].ExternalColumns[ListOnline]"
+                      dataType="ui1"
+                      name="ListOnline" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - Shelf.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - Shelf.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - Shelf.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - Shelf.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Destination 1 - ShelfItemCount"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination 1 - ShelfItemCount"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ShelfItemCount]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination 1 - ShelfItemCount.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination 1 - ShelfItemCount.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - ShelfItemCount.Inputs[Destination Input].Columns[ShelfScanID]"
+                      cachedDataType="i4"
+                      cachedName="ShelfScanID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 1 - ShelfItemCount.Inputs[Destination Input].ExternalColumns[ShelfScanID]"
+                      lineageId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Output].Columns[ShelfScanID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - ShelfItemCount.Inputs[Destination Input].Columns[ItemCodeDips]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="ItemCodeDips"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 1 - ShelfItemCount.Inputs[Destination Input].ExternalColumns[ItemCodeDips]"
+                      lineageId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Output].Columns[ItemCodeDips]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - ShelfItemCount.Inputs[Destination Input].Columns[ItemCount]"
+                      cachedDataType="i4"
+                      cachedName="ItemCount"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 1 - ShelfItemCount.Inputs[Destination Input].ExternalColumns[ItemCount]"
+                      lineageId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Output].Columns[ItemCount]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - ShelfItemCount.Inputs[Destination Input].ExternalColumns[ShelfScanID]"
+                      dataType="i4"
+                      name="ShelfScanID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - ShelfItemCount.Inputs[Destination Input].ExternalColumns[ItemCodeDips]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="ItemCodeDips" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - ShelfItemCount.Inputs[Destination Input].ExternalColumns[ItemCount]"
+                      dataType="i4"
+                      name="ItemCount" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination 1 - ShelfItemCount.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination 1 - ShelfItemCount.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - ShelfItemCount.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination 1 - ShelfItemCount.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - ShelfItemCount.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination 1 - ShelfItemCount.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination 2 - ShelfItemScan"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ShelfItemScan]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].Columns[ShelfItemScanID]"
+                      cachedDataType="i8"
+                      cachedName="ShelfItemScanID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].ExternalColumns[ShelfItemScanID]"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[ShelfItemScanID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].Columns[ShelfScanID]"
+                      cachedDataType="i4"
+                      cachedName="ShelfScanID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].ExternalColumns[ShelfScanID]"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[ShelfScanID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].Columns[ItemCodeDips]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="ItemCodeDips"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].ExternalColumns[ItemCodeDips]"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[ItemCodeDips]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].Columns[ItemCodeSips]"
+                      cachedDataType="i4"
+                      cachedName="ItemCodeSips"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].ExternalColumns[ItemCodeSips]"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[ItemCodeSips]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].Columns[ScannedOn]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ScannedOn"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].ExternalColumns[ScannedOn]"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[ScannedOn]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].Columns[SkuExtension]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="SkuExtension"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].ExternalColumns[SkuExtension]"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[SkuExtension]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].Columns[ScannedDeviceName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ScannedDeviceName"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].ExternalColumns[ScannedDeviceName]"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[ScannedDeviceName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].Columns[ScannedBy]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ScannedBy"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].ExternalColumns[ScannedBy]"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[ScannedBy]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].Columns[ScanMode]"
+                      cachedDataType="ui1"
+                      cachedName="ScanMode"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].ExternalColumns[ScanMode]"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[ScanMode]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].ExternalColumns[ShelfItemScanID]"
+                      dataType="i8"
+                      name="ShelfItemScanID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].ExternalColumns[ShelfScanID]"
+                      dataType="i4"
+                      name="ShelfScanID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].ExternalColumns[ItemCodeDips]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="ItemCodeDips" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].ExternalColumns[ItemCodeSips]"
+                      dataType="i4"
+                      name="ItemCodeSips" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].ExternalColumns[ScannedOn]"
+                      dataType="dbTimeStamp"
+                      name="ScannedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].ExternalColumns[SkuExtension]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="SkuExtension" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].ExternalColumns[ScannedDeviceName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ScannedDeviceName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].ExternalColumns[ScannedBy]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ScannedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input].ExternalColumns[ScanMode]"
+                      dataType="ui1"
+                      name="ScanMode" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Destination 3 - ShelfScan"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination 3 - ShelfScan"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ShelfScan]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].Columns[ShelfScanID]"
+                      cachedDataType="i4"
+                      cachedName="ShelfScanID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].ExternalColumns[ShelfScanID]"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[ShelfScanID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].Columns[LocationID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="LocationID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].ExternalColumns[LocationID]"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[LocationID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].Columns[ShelfID]"
+                      cachedDataType="i4"
+                      cachedName="ShelfID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].ExternalColumns[ShelfID]"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[ShelfID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].Columns[ScannedDeviceID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ScannedDeviceID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].ExternalColumns[ScannedDeviceID]"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[ScannedDeviceID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].Columns[ScannedDeviceName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ScannedDeviceName"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].ExternalColumns[ScannedDeviceName]"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[ScannedDeviceName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].Columns[ScannedDeviceIP]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ScannedDeviceIP"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].ExternalColumns[ScannedDeviceIP]"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[ScannedDeviceIP]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].Columns[DeviceMacAddress]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DeviceMacAddress"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].ExternalColumns[DeviceMacAddress]"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[DeviceMacAddress]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].Columns[ScannedBy]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ScannedBy"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].ExternalColumns[ScannedBy]"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[ScannedBy]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].Columns[ScannedOn]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ScannedOn"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].ExternalColumns[ScannedOn]"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[ScannedOn]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].Columns[ScanMode]"
+                      cachedDataType="ui1"
+                      cachedName="ScanMode"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].ExternalColumns[ScanMode]"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[ScanMode]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].ExternalColumns[ShelfScanID]"
+                      dataType="i4"
+                      name="ShelfScanID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].ExternalColumns[LocationID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="LocationID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].ExternalColumns[ShelfID]"
+                      dataType="i4"
+                      name="ShelfID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].ExternalColumns[ScannedDeviceID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ScannedDeviceID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].ExternalColumns[ScannedDeviceName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ScannedDeviceName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].ExternalColumns[ScannedDeviceIP]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ScannedDeviceIP" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].ExternalColumns[DeviceMacAddress]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DeviceMacAddress" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].ExternalColumns[ScannedBy]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ScannedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].ExternalColumns[ScannedOn]"
+                      dataType="dbTimeStamp"
+                      name="ScannedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input].ExternalColumns[ScanMode]"
+                      dataType="ui1"
+                      name="ScanMode" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - Shelf"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source - Shelf"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Shelf]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - Shelf.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[ShelfID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[ShelfID]"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[ShelfID]"
+                      name="ShelfID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[ShelfProxyID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[ShelfProxyID]"
+                      length="10"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[ShelfProxyID]"
+                      name="ShelfProxyID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[StatusCode]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[StatusCode]"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[StatusCode]"
+                      name="StatusCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[ShelfDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[ShelfDescription]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[ShelfDescription]"
+                      name="ShelfDescription"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[LocationID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[LocationID]"
+                      length="10"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[LocationID]"
+                      name="LocationID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[SubjectKey]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[SubjectKey]"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[SubjectKey]"
+                      name="SubjectKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[DisplayUnitID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[DisplayUnitID]"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[DisplayUnitID]"
+                      name="DisplayUnitID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[ShelfLength]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[ShelfLength]"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[ShelfLength]"
+                      name="ShelfLength"
+                      precision="18"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[ShelfHeight]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[ShelfHeight]"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[ShelfHeight]"
+                      name="ShelfHeight"
+                      precision="18"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[ShelfDepth]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[ShelfDepth]"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[ShelfDepth]"
+                      name="ShelfDepth"
+                      precision="18"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[ShelfColor]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[ShelfColor]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[ShelfColor]"
+                      name="ShelfColor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[LastUpdateBy]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[LastUpdateBy]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[LastUpdateBy]"
+                      name="LastUpdateBy"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[LastUpdateOn]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[LastUpdateOn]"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[LastUpdateOn]"
+                      name="LastUpdateOn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[CreateTime]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[CreateTime]"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[CreateTime]"
+                      name="CreateTime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[CreateUser]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[CreateUser]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[CreateUser]"
+                      name="CreateUser"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[ListOnline]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[ListOnline]"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].Columns[ListOnline]"
+                      name="ListOnline"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[ShelfID]"
+                      dataType="i4"
+                      name="ShelfID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[ShelfProxyID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="ShelfProxyID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[StatusCode]"
+                      dataType="ui1"
+                      name="StatusCode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[ShelfDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="ShelfDescription" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[LocationID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="LocationID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[SubjectKey]"
+                      dataType="i2"
+                      name="SubjectKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[DisplayUnitID]"
+                      dataType="i4"
+                      name="DisplayUnitID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[ShelfLength]"
+                      dataType="numeric"
+                      name="ShelfLength"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[ShelfHeight]"
+                      dataType="numeric"
+                      name="ShelfHeight"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[ShelfDepth]"
+                      dataType="numeric"
+                      name="ShelfDepth"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[ShelfColor]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ShelfColor" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[LastUpdateBy]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="LastUpdateBy" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[LastUpdateOn]"
+                      dataType="dbTimeStamp"
+                      name="LastUpdateOn" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[CreateTime]"
+                      dataType="dbTimeStamp"
+                      name="CreateTime" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[CreateUser]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CreateUser" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output].ExternalColumns[ListOnline]"
+                      dataType="ui1"
+                      name="ListOnline" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[ShelfID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[ShelfID]"
+                      name="ShelfID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[ShelfProxyID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[ShelfProxyID]"
+                      name="ShelfProxyID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[StatusCode]"
+                      dataType="ui1"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[StatusCode]"
+                      name="StatusCode" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[ShelfDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[ShelfDescription]"
+                      name="ShelfDescription" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[LocationID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[LocationID]"
+                      name="LocationID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[SubjectKey]"
+                      dataType="i2"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[SubjectKey]"
+                      name="SubjectKey" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[DisplayUnitID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[DisplayUnitID]"
+                      name="DisplayUnitID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[ShelfLength]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[ShelfLength]"
+                      name="ShelfLength"
+                      precision="18" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[ShelfHeight]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[ShelfHeight]"
+                      name="ShelfHeight"
+                      precision="18" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[ShelfDepth]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[ShelfDepth]"
+                      name="ShelfDepth"
+                      precision="18" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[ShelfColor]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[ShelfColor]"
+                      name="ShelfColor" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[LastUpdateBy]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[LastUpdateBy]"
+                      name="LastUpdateBy" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[LastUpdateOn]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[LastUpdateOn]"
+                      name="LastUpdateOn" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[CreateTime]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[CreateTime]"
+                      name="CreateTime" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[CreateUser]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[CreateUser]"
+                      name="CreateUser" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[ListOnline]"
+                      dataType="ui1"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[ListOnline]"
+                      name="ListOnline" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source 1 - ShelfItemCount"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source 1 - ShelfItemCount"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ShelfItemCount]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Output].Columns[ShelfScanID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Output].ExternalColumns[ShelfScanID]"
+                      lineageId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Output].Columns[ShelfScanID]"
+                      name="ShelfScanID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Output].Columns[ItemCodeDips]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Output].ExternalColumns[ItemCodeDips]"
+                      length="20"
+                      lineageId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Output].Columns[ItemCodeDips]"
+                      name="ItemCodeDips"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Output].Columns[ItemCount]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Output].ExternalColumns[ItemCount]"
+                      lineageId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Output].Columns[ItemCount]"
+                      name="ItemCount"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Output].ExternalColumns[ShelfScanID]"
+                      dataType="i4"
+                      name="ShelfScanID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Output].ExternalColumns[ItemCodeDips]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="ItemCodeDips" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Output].ExternalColumns[ItemCount]"
+                      dataType="i4"
+                      name="ItemCount" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Error Output].Columns[ShelfScanID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Error Output].Columns[ShelfScanID]"
+                      name="ShelfScanID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Error Output].Columns[ItemCodeDips]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Error Output].Columns[ItemCodeDips]"
+                      name="ItemCodeDips" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Error Output].Columns[ItemCount]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Error Output].Columns[ItemCount]"
+                      name="ItemCount" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source 2 - ShelfItemScan"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ShelfItemScan]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[ShelfItemScanID]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].ExternalColumns[ShelfItemScanID]"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[ShelfItemScanID]"
+                      name="ShelfItemScanID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[ShelfScanID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].ExternalColumns[ShelfScanID]"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[ShelfScanID]"
+                      name="ShelfScanID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[ItemCodeDips]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].ExternalColumns[ItemCodeDips]"
+                      length="20"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[ItemCodeDips]"
+                      name="ItemCodeDips"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[ItemCodeSips]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].ExternalColumns[ItemCodeSips]"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[ItemCodeSips]"
+                      name="ItemCodeSips"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[ScannedOn]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].ExternalColumns[ScannedOn]"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[ScannedOn]"
+                      name="ScannedOn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[SkuExtension]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].ExternalColumns[SkuExtension]"
+                      length="10"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[SkuExtension]"
+                      name="SkuExtension"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[ScannedDeviceName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].ExternalColumns[ScannedDeviceName]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[ScannedDeviceName]"
+                      name="ScannedDeviceName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[ScannedBy]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].ExternalColumns[ScannedBy]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[ScannedBy]"
+                      name="ScannedBy"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[ScanMode]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].ExternalColumns[ScanMode]"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].Columns[ScanMode]"
+                      name="ScanMode"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].ExternalColumns[ShelfItemScanID]"
+                      dataType="i8"
+                      name="ShelfItemScanID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].ExternalColumns[ShelfScanID]"
+                      dataType="i4"
+                      name="ShelfScanID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].ExternalColumns[ItemCodeDips]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="ItemCodeDips" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].ExternalColumns[ItemCodeSips]"
+                      dataType="i4"
+                      name="ItemCodeSips" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].ExternalColumns[ScannedOn]"
+                      dataType="dbTimeStamp"
+                      name="ScannedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].ExternalColumns[SkuExtension]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="SkuExtension" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].ExternalColumns[ScannedDeviceName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ScannedDeviceName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].ExternalColumns[ScannedBy]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ScannedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output].ExternalColumns[ScanMode]"
+                      dataType="ui1"
+                      name="ScanMode" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Error Output].Columns[ShelfItemScanID]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Error Output].Columns[ShelfItemScanID]"
+                      name="ShelfItemScanID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Error Output].Columns[ShelfScanID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Error Output].Columns[ShelfScanID]"
+                      name="ShelfScanID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Error Output].Columns[ItemCodeDips]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Error Output].Columns[ItemCodeDips]"
+                      name="ItemCodeDips" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Error Output].Columns[ItemCodeSips]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Error Output].Columns[ItemCodeSips]"
+                      name="ItemCodeSips" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Error Output].Columns[ScannedOn]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Error Output].Columns[ScannedOn]"
+                      name="ScannedOn" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Error Output].Columns[SkuExtension]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Error Output].Columns[SkuExtension]"
+                      name="SkuExtension" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Error Output].Columns[ScannedDeviceName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Error Output].Columns[ScannedDeviceName]"
+                      name="ScannedDeviceName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Error Output].Columns[ScannedBy]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Error Output].Columns[ScannedBy]"
+                      name="ScannedBy" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Error Output].Columns[ScanMode]"
+                      dataType="ui1"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Error Output].Columns[ScanMode]"
+                      name="ScanMode" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source 3 - ShelfScan"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source 3 - ShelfScan"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ShelfScan]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[ShelfScanID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].ExternalColumns[ShelfScanID]"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[ShelfScanID]"
+                      name="ShelfScanID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[LocationID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].ExternalColumns[LocationID]"
+                      length="10"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[LocationID]"
+                      name="LocationID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[ShelfID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].ExternalColumns[ShelfID]"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[ShelfID]"
+                      name="ShelfID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[ScannedDeviceID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].ExternalColumns[ScannedDeviceID]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[ScannedDeviceID]"
+                      name="ScannedDeviceID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[ScannedDeviceName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].ExternalColumns[ScannedDeviceName]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[ScannedDeviceName]"
+                      name="ScannedDeviceName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[ScannedDeviceIP]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].ExternalColumns[ScannedDeviceIP]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[ScannedDeviceIP]"
+                      name="ScannedDeviceIP"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[DeviceMacAddress]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].ExternalColumns[DeviceMacAddress]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[DeviceMacAddress]"
+                      name="DeviceMacAddress"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[ScannedBy]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].ExternalColumns[ScannedBy]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[ScannedBy]"
+                      name="ScannedBy"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[ScannedOn]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].ExternalColumns[ScannedOn]"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[ScannedOn]"
+                      name="ScannedOn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[ScanMode]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].ExternalColumns[ScanMode]"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].Columns[ScanMode]"
+                      name="ScanMode"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].ExternalColumns[ShelfScanID]"
+                      dataType="i4"
+                      name="ShelfScanID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].ExternalColumns[LocationID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="LocationID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].ExternalColumns[ShelfID]"
+                      dataType="i4"
+                      name="ShelfID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].ExternalColumns[ScannedDeviceID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ScannedDeviceID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].ExternalColumns[ScannedDeviceName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ScannedDeviceName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].ExternalColumns[ScannedDeviceIP]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ScannedDeviceIP" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].ExternalColumns[DeviceMacAddress]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DeviceMacAddress" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].ExternalColumns[ScannedBy]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ScannedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].ExternalColumns[ScannedOn]"
+                      dataType="dbTimeStamp"
+                      name="ScannedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output].ExternalColumns[ScanMode]"
+                      dataType="ui1"
+                      name="ScanMode" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Error Output].Columns[ShelfScanID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Error Output].Columns[ShelfScanID]"
+                      name="ShelfScanID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Error Output].Columns[LocationID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Error Output].Columns[LocationID]"
+                      name="LocationID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Error Output].Columns[ShelfID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Error Output].Columns[ShelfID]"
+                      name="ShelfID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Error Output].Columns[ScannedDeviceID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Error Output].Columns[ScannedDeviceID]"
+                      name="ScannedDeviceID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Error Output].Columns[ScannedDeviceName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Error Output].Columns[ScannedDeviceName]"
+                      name="ScannedDeviceName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Error Output].Columns[ScannedDeviceIP]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Error Output].Columns[ScannedDeviceIP]"
+                      name="ScannedDeviceIP" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Error Output].Columns[DeviceMacAddress]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Error Output].Columns[DeviceMacAddress]"
+                      name="DeviceMacAddress" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Error Output].Columns[ScannedBy]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Error Output].Columns[ScannedBy]"
+                      name="ScannedBy" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Error Output].Columns[ScannedOn]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Error Output].Columns[ScannedOn]"
+                      name="ScannedOn" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Error Output].Columns[ScanMode]"
+                      dataType="ui1"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Error Output].Columns[ScanMode]"
+                      name="ScanMode" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[OLE DB Source Output2]"
+              endId="Package\Data Flow Task 1\Destination 2 - ShelfItemScan.Inputs[Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task 1\Source 2 - ShelfItemScan.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task 1.Paths[OLE DB Source Output3]"
+              endId="Package\Data Flow Task 1\Destination 3 - ShelfScan.Inputs[Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task 1\Source 3 - ShelfScan.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task 1\Destination - Shelf.Inputs[Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task 1\Source - Shelf.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task 1.Paths[OLE DB Source Output1]"
+              endId="Package\Data Flow Task 1\Destination 1 - ShelfItemCount.Inputs[Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task 1\Source 1 - ShelfItemCount.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Preparation SQL Task 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{1635DF19-409B-4AC6-AE50-F6B0FE82CDCC}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Preparation SQL Task 1"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A5BB27CF-1566-480E-8CA8-62DF57737842}"
+          SQLTask:SqlStatementSource="CREATE TABLE [dbo].[Shelf] (&#xA;[ShelfID] int NOT NULL,&#xA;[ShelfProxyID] varchar(10) NOT NULL,&#xA;[StatusCode] tinyint NOT NULL,&#xA;[ShelfDescription] varchar(255),&#xA;[LocationID] char(10),&#xA;[SubjectKey] smallint,&#xA;[DisplayUnitID] int,&#xA;[ShelfLength] decimal(18,0),&#xA;[ShelfHeight] decimal(18,0),&#xA;[ShelfDepth] decimal(18,0),&#xA;[ShelfColor] varchar(50),&#xA;[LastUpdateBy] varchar(50),&#xA;[LastUpdateOn] datetime,&#xA;[CreateTime] datetime NOT NULL,&#xA;[CreateUser] varchar(50) NOT NULL,&#xA;[ListOnline] tinyint NOT NULL&#xA;)&#xA;GO&#xA;CREATE TABLE [dbo].[ShelfItemCount] (&#xA;[ShelfScanID] int NOT NULL,&#xA;[ItemCodeDips] char(20) NOT NULL,&#xA;[ItemCount] int NOT NULL&#xA;)&#xA;GO&#xA;CREATE TABLE [dbo].[ShelfItemScan] (&#xA;[ShelfItemScanID] bigint NOT NULL,&#xA;[ShelfScanID] int NOT NULL,&#xA;[ItemCodeDips] char(20),&#xA;[ItemCodeSips] int,&#xA;[ScannedOn] datetime NOT NULL,&#xA;[SkuExtension] varchar(10),&#xA;[ScannedDeviceName] varchar(50),&#xA;[ScannedBy] varchar(50),&#xA;[ScanMode] tinyint&#xA;)&#xA;GO&#xA;CREATE TABLE [dbo].[ShelfScan] (&#xA;[ShelfScanID] int NOT NULL,&#xA;[LocationID] char(10) NOT NULL,&#xA;[ShelfID] int NOT NULL,&#xA;[ScannedDeviceID] varchar(50) NOT NULL,&#xA;[ScannedDeviceName] varchar(50),&#xA;[ScannedDeviceIP] varchar(50),&#xA;[DeviceMacAddress] varchar(50),&#xA;[ScannedBy] varchar(50) NOT NULL,&#xA;[ScannedOn] datetime NOT NULL,&#xA;[ScanMode] tinyint&#xA;)&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{E0469702-FCC1-429E-97D0-461334055238\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{E0469702-FCC1-429E-97D0-461334055238}"
+      DTS:From="Package\Preparation SQL Task 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{E0469702-FCC1-429E-97D0-461334055238}"
+      DTS:To="Package\Data Flow Task 1" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

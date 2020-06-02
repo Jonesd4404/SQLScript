@@ -1,0 +1,59 @@
+create new folder on the E: drive
+e:\mssql\data\
+
+Verify account SQL Service is running under has full access to the new folder.
+
+https://www.youtube.com/watch?v=QAlgpxjJCiM
+
+Verify account SQL Agent Service is running under has full access to the new folder.
+Add each account explicitly to the parent mssql folder permissions.
+Verify the account acl has propigated down to the data folder.
+
+ALTER DATABASE tempdb
+      MODIFY FILE (NAME = 'tempdev',FILENAME = 'e:\mssql\data\tempdb.mdf')
+
+ALTER DATABASE tempdb
+      MODIFY FILE(NAME = 'templog', FILENAME = 'e:\mssql\data\templog.ldf')
+
+ALTER DATABASE msdb
+      MODIFY FILE (NAME = 'MSDBData',FILENAME = 'e:\mssql\data\MSDBData.mdf')
+
+ALTER DATABASE msdb
+      MODIFY FILE(NAME = 'MSDBlog', FILENAME = 'e:\mssql\data\MSDBLog.ldf')
+
+ALTER DATABASE model
+      MODIFY FILE (NAME = 'ModelDev',FILENAME = 'e:\mssql\data\Model.mdf')
+
+ALTER DATABASE model
+      MODIFY FILE(NAME = 'Modellog', FILENAME = 'e:\mssql\data\ModelLog.ldf')
+
+----------------------------------------------------------------------------------
+STOP INSTANCE
+----------------------------------------------------------------------------------
+Move msdb,model mdf and ldf files to the new directory.
+
+Do Not move tempDB files
+These files get recreated when an instance starts
+----------------------------------------------------------------------------------
+START INSTANCE
+----------------------------------------------------------------------------------
+Verify everything on the startup and that the non-master system DBs are working correctly. 
+The system should create new tempdb.mdf and tempdb.ldf files. Verify that you cannot move 
+any of the files while SQL service is running.
+----------------------------------------------------------------------------------
+TO MOVE master
+----------------------------------------------------------------------------------
+WMSSQLCLUSTER12 startup parameters before any changes.
+right click on Master and select properties.
+Edit startup parameters.
+-dF:\MSSQL11.MSSQLSERVER\MSSQL\DATA\master.mdf;-eF:\MSSQL11.MSSQLSERVER\MSSQL\DATA\master.ldf
+------------------------------------------------------------------------------------
+STOP Instance
+------------------------------------------------------------------------------------
+move master files to the new location.
+------------------------------------------------------------------------------------
+Start Instance
+------------------------------------------------------------------------------------
+Verify that everything is working and the system is using the new files in their new location.
+
+
