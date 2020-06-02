@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="TXBKNOP_Production">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=Fig.hpb.hpbrm.com;Initial Catalog=TexasBookman_NOP</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>41ae2243-bf94-477d-980d-1ebe221b21a5</DataSourceID>
+</RptDataSource>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Vertex_Production">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=cucumber-sql.hpb.hpbrm.com;Initial Catalog=HPB_Reporting</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>6be16f63-276f-41ae-bbb8-ae0aac4c9350</DataSourceID>
+</RptDataSource>

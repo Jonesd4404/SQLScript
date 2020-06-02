@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="HPB_db">
+  <ConnectionProperties>
+    <Extension>OLEDB</Extension>
+    <ConnectString>Provider=SQLOLEDB.1;Data Source=sequoia.hpb.hpbrm.com;Initial Catalog=HPB_db</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>121cf987-e990-424d-851d-e3d882c2930c</DataSourceID>
+</RptDataSource>

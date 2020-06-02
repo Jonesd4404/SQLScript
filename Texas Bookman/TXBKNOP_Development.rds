@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="TXBKNOP_Development">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=Squirrel.hpb.hpbrm.com;Initial Catalog=TexasBookman_NOP</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>b6d9b13e-1da3-4888-943d-e9c44057e1a8</DataSourceID>
+</RptDataSource>

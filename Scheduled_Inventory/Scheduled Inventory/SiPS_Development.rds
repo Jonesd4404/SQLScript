@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="SiPS_Development">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=Guava;Initial Catalog=SIPS</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>2d83647d-f176-48e8-a1ae-d1de21742f04</DataSourceID>
+</RptDataSource>

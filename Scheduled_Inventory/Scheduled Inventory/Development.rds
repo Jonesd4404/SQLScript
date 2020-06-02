@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Development">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=RABBIT;Initial Catalog=Reports</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>43cccdc3-8e86-41d0-ac22-06dc40940fb3</DataSourceID>
+</RptDataSource>

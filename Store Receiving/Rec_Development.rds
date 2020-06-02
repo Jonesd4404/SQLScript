@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Rec_Development">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=Porcupine;Initial Catalog=StoreReceiving</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>af69c6b5-fb84-4370-bb85-45ae89bb0cfb</DataSourceID>
+</RptDataSource>

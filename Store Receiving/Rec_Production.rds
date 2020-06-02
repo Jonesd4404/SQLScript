@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Rec_Production">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=Silverbell;Initial Catalog=StoreReceiving</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>8ccda530-0c34-4642-b433-c15847085c45</DataSourceID>
+</RptDataSource>
