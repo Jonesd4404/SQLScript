@@ -1,0 +1,22 @@
+--Run on System Databases MSDB
+SELECT TOP (1000) H.[instance_id]
+      ,H.[job_id]
+	  ,J.[name]
+      ,H.[step_id]
+      ,H.[step_name]
+      ,H.[sql_message_id]
+      ,H.[sql_severity]
+      ,H.[message]
+      ,H.[run_status]
+      ,H.[run_date]
+      ,H.[run_time]
+      ,H.[run_duration]
+      ,H.[operator_id_emailed]
+      ,H.[operator_id_netsent]
+      ,H.[operator_id_paged]
+      ,H.[retries_attempted]
+      ,H.[server]
+  FROM [msdb].[dbo].[sysjobhistory] AS H
+  JOIN sysjobs J
+  ON H.[job_id] = J.[job_id]
+  ORDER BY H.[run_date]

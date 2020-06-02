@@ -1,0 +1,26 @@
+Sumac
+
+http://sumac:2005/Reports/Pages/Report.aspx?ItemPath=%2fInventory%2fSips+Transfer+Packing+List
+
+http://sumac:2005/ReportServer/Pages/ReportViewer.aspx?%2fInventory%2fSips+Transfer+Packing+List&rs:Command=Render&TransferBinNo=
+
+Squirrel
+Transaction Detail
+POS
+http://squirrel/Reports/Pages/Report.aspx?ItemPath=%2fPOS%2fTransaction+Detail
+LP
+http://squirrel/Reports/Pages/Report.aspx?ItemPath=%2fLP%2fTransaction+Detail
+ 
+Transaction History
+POS
+http://squirrel/Reports/Pages/Report.aspx?ItemPath=%2fPOS%2fTransaction+History
+LP
+http://squirrel/Reports/Pages/Report.aspx?ItemPath=%2fLP%2fTransaction+History
+ 
+Get Key Cars
+http://squirrel/Reports/Pages/Report.aspx?ItemPath=%2fLP%2fGet+Keyed+Cards
+ 
+Reprint Signature (Signature sub report)
+http://squirrel/Reports/Pages/Report.aspx?ItemPath=%2fLP%2fReprintSignature
+
+

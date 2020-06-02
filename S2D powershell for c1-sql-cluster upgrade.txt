@@ -1,0 +1,129 @@
+This is not a script.  This is a sequence of commands to paste into an elevated
+Powershell session.  Be mindful of the output, and double-check any weird
+results.
+
+===============================================================================
+
+Helper function::
+
+    function Get-S2DPhysicalDisks() {
+        Get-StoragePool S2D* |
+            Get-PhysicalDisk |
+            % {
+                $node = $_ | 
+                    Get-PhysicalDiskStorageNodeView | 
+                    ? IsPhysicallyConnected |
+                    % { $_.StorageNodeObjectId -replace '^.*:([^:"]+)"?', '$1' }
+                $_ | Add-Member -Passthru -MemberType NoteProperty -Name 'Node' -Value $node
+            } |
+            sort Node, PhysicalLocation |
+            ft -group Node -auto Node, PhysicalLocation, FriendlyName, OperationalStatus, HealthStatus
+    }
+
+===============================================================================
+
+Adapted from https://docs.microsoft.com/en-us/windows-server/storage/storage-spaces/upgrade-storage-spaces-direct-to-windows-server-2019
+
+Before node upgrade::
+
+    # verify all disks are healthy
+    Get-StoragePool S2D*
+    Get-StoragePool S2D* | Get-VirtualDisk
+    Get-S2DPhysicalDisks
+
+    # stop node's cluster tasks
+    Suspend-ClusterNode -Drain
+    Get-StorageFaultDomain -type StorageScaleUnit | 
+        ? FriendlyName -eq $env:COMPUTERNAME | 
+        Enable-StorageMaintenanceMode
+
+    # verify this node's physical disks are in Maintenance Mode
+    Get-S2DPhysicalDisks
+
+    # note pre-upgrade Windows version
+    Get-WmiObject Win32_OperatingSystem |
+        fl PSComputerName, Caption, Version, BuildNumber, InstallDate, WindowsDirectory
+
+    # upgrade node to Windows 2019 Datacenter now
+    # ...with options:
+    # - Download updates, drivers and optional features
+    # - Select Image = Windows Server 2019 Datacenter (Desktop Experience)
+    # - Choose what to keep = Keep personal files and apps
+
+===============================================================================
+
+After node upgrade::
+
+    # note post-upgrade Windows version
+    Get-WmiObject Win32_OperatingSystem |
+        fl PSComputerName, Caption, Version, BuildNumber, InstallDate, WindowsDirectory
+
+    # verify this node's physical disks are still in Maintenance Mode
+    Get-S2DPhysicalDisks
+
+    # restart node's cluster tasks
+    Get-StorageFaultDomain -type StorageScaleUnit | 
+        ? FriendlyName -eq $env:COMPUTERNAME | 
+        Disable-StorageMaintenanceMode
+    Resume-ClusterNode
+
+    # verify disks are rebuilding
+    Get-StoragePool S2D*
+    Get-StoragePool S2D* | Get-VirtualDisk
+    Get-S2DPhysicalDisks
+    
+    # don't proceed until all storage jobs are complete
+    Get-StorageJob
+
+===============================================================================
+
+After all nodes are upgraded::
+
+    # verify disks are all healthy
+    Get-StoragePool S2D*
+    Get-StoragePool S2D* | Get-VirtualDisk
+    Get-S2DPhysicalDisks
+
+    # bring cluster up to Windows 2019 level
+    # ...needs to happen within 4 weeks of last node upgrade
+    Update-ClusterFunctionalLevel
+    
+    # upgrade S2D storage pool to allow new management features
+    Get-StoragePool S2D* | Update-StoragePool
+
+===============================================================================
+
+Double-check Windows server licensing and activation.
+
+===============================================================================
+
+Troubleshooting Server Manager refresh error take 1
+
+In the left-hand tree view, under "All Servers", remove any non-existant or
+obsolete servers, cluster nodes, and roles.
+
+===============================================================================
+
+Troubleshooting Server Manager refresh error take 2
+
+Error example:
+    Error c1-sql-cluster:
+    Configuration refresh failed with the following error:
+    The WS-Management service cannot process the request. The computed response
+    packet size (525495) exceeds the maximum envelope size that is allowed
+    (512000).
+    12/9/2019 1:41:24 PM
+
+Powershell on each node::
+
+    # see current MaxEnvelopeSizekb setting
+    Get-Item -Path 'WSMan:\localhost\MaxEnvelopeSizeKb'
+    # e.g.:
+    #   WSManConfig: Microsoft.WSMan.Management\WSMan::localhost
+    #   Type          Name              SourceOfValue Value
+    #   ----          ----              ------------- -----
+    #   System.String MaxEnvelopeSizekb               500
+
+    # set MaxEnvelopeSizekb setting to higher value
+    Set-Item -Path 'WSMan:\localhost\MaxEnvelopeSizeKb' -Value 1000
+

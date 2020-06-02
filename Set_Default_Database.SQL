@@ -1,0 +1,1 @@
+sp_defaultdb @loginame='YourDomain\YourLogin', @defdb='YourDatabase'

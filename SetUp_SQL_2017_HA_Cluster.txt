@@ -1,0 +1,34 @@
+
+
+1) Install two SQL instances on two different nodes of domain network - 
+
+	Enable Ip4 - TCP/IP MSSQLService
+	Disable domain firewall or provision the inbound and out bound rules for ports 1433 and 5022 for database mirroring end point\
+	Domain account as service account
+
+2) Install Failover Clustering Role
+
+3) Setup WFSC cluster for the two nodes C1-sqlpoc2019 and C1-sqlpoc2016-a
+	Give cluster computer account full permission to AD computer object.
+
+4) Enable SQL HA at instance level on both nodes.
+	Setup HA groups
+	Join database in to the HA group.
+	Setup Listner
+	Take full backup from which ever node we setup HA first, restore on the second node with no recovery.
+	Join the second node to HA group.
+
+Verify
+
+Done!
+
+
+SQLHA03	-	10.201.24.	-	SQL AG Listner
+
+SQLCL03	-	10.201.24.	-	WFCS Cluster
+
+NODES
+NODE:1	C1-sqlpoc2019	10.201.24.24
+NODE:2	C1-sqlpoc2016-a	10.201.24.22
+
+
