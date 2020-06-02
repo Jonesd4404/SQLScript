@@ -1,0 +1,15 @@
+9083 OLTP
+9783 Back Office
+9883 Data
+9983 Estate Manager
+
+
+Change hostname in serverindex
+change sql connection in hosts file.
+
+
+Update hosts file on PCMS-APP. Change DBServer ip to point to new PCMS-SQL
+Posting apps on PCMS-SQL needs config files updated to point to new SQL server.
+
+
+

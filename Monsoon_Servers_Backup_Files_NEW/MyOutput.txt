@@ -1,0 +1,17 @@
+Changed database context to 'master'.
+Processed 352 pages for database 'master', file 'master' on file 1.
+Processed 2 pages for database 'master', file 'mastlog' on file 1.
+BACKUP DATABASE successfully processed 354 pages in 0.086 seconds (33.672 MB/sec).
+master
+Processed 152 pages for database 'model', file 'modeldev' on file 1.
+Processed 2 pages for database 'model', file 'modellog' on file 1.
+BACKUP DATABASE successfully processed 154 pages in 0.078 seconds (16.121 MB/sec).
+model
+Processed 1112 pages for database 'msdb', file 'MSDBData' on file 1.
+Processed 5 pages for database 'msdb', file 'MSDBLog' on file 1.
+BACKUP DATABASE successfully processed 1117 pages in 0.447 seconds (20.470 MB/sec).
+msdb
+Processed 504 pages for database 'Monsoon', file 'Monsoon' on file 1.
+Processed 1 pages for database 'Monsoon', file 'Monsoon_log' on file 1.
+BACKUP DATABASE successfully processed 505 pages in 0.297 seconds (13.905 MB/sec).
+Monsoon

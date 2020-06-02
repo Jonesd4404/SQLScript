@@ -1,0 +1,1 @@
+sqlcmd -S 677Media-LAR-1\MONSOON -i C:\MSSQL\BACKUP\Backup_All_Databases_For_C1-VEEAM.SQL -o C:\MSSQL\BACKUP\MyOutput.txt
