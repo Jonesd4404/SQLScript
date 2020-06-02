@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Production_RR">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=Orange.hpb.hpbrm.com;Initial Catalog=Reports</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>4ca602dd-a649-4f82-90c4-af61a078cd15</DataSourceID>
+</RptDataSource>

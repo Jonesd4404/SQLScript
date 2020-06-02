@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="ISIS Development">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=Guava;Initial Catalog=ISIS</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>2a41edc3-8d55-4cc5-8c7f-7d8e0e1bd63d</DataSourceID>
+</RptDataSource>

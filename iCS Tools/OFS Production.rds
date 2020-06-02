@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="OFS Production">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=silverbell;Initial Catalog=OFS</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>cc83dc11-150b-4ba8-a4a9-9eaaa3191be1</DataSourceID>
+</RptDataSource>
