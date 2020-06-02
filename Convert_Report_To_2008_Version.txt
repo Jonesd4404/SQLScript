@@ -1,0 +1,12 @@
+I actually ran into a similar problem where a change I needed to make resulted in an "Undocumented Error/Invalid RDL Structure" error in 2016, so I edited the RDL file so I could open it in an earlier version and make my changes. Not too hard, but you need to make a couple of tag edits.
+
+For new reports you should probably just use an older version, but for existing reports you can do this: (I reverted to 2008)
+
+Change the Report tag:
+Remove MustUnderstand="df"
+Change the xmlns value to "http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition"
+Delete the xmlns:df attribute.
+Delete the entire "ReportParametersLayout" block.
+Delete the "df" tag and its content.
+Delete the "ReportSections" and "ReportSection" opening and closing tags (not the content).
+Actually wrote some superhackish code to do this as part of a blog post, but the manual edit is simple enough.
