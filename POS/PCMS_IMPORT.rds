@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>PCMS_IMPORT</Name>
+  <DataSourceID>6616c8a8-7b5f-41cb-ab5a-edb43c3649bd</DataSourceID>
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=PCMSSQL-BCKUP.hpb.hpbrm.com;Initial Catalog=PCMS_IMPORT_RPT</ConnectString>
+  </ConnectionProperties>
+</RptDataSource>

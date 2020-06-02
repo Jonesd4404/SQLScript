@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Web_RR">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=Fig;Initial Catalog=OMNI_Lists</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>1bd79312-e083-4337-a5fc-906c9e37ca09</DataSourceID>
+</RptDataSource>

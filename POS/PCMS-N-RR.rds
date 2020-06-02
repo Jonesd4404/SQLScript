@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="PCMS-N-RR">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=pcms-sql-N.hpb.hpbrm.com;Initial Catalog=PCMS_IMPORT</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>25d054c4-3681-4411-8732-02c68c249794</DataSourceID>
+</RptDataSource>

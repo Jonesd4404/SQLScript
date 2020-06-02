@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ToolsVersion="2.0">
+  <State>$base64$PFNvdXJjZUNvbnRyb2xJbmZvIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOmRkbDI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yIiB4bWxuczpkZGwyXzI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yLzIiIHhtbG5zOmRkbDEwMF8xMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDA4L2VuZ2luZS8xMDAvMTAwIiB4bWxuczpkZGwyMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAiIHhtbG5zOmRkbDIwMF8yMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAvMjAwIiB4bWxuczpkZGwzMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDExL2VuZ2luZS8zMDAiIHhtbG5zOmRkbDMwMF8zMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDExL2VuZ2luZS8zMDAvMzAwIiB4bWxuczpkZGw0MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEyL2VuZ2luZS80MDAiIHhtbG5zOmRkbDQwMF80MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEyL2VuZ2luZS80MDAvNDAwIiB4bWxuczpkZGw1MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEzL2VuZ2luZS81MDAiIHhtbG5zOmRkbDUwMF81MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEzL2VuZ2luZS81MDAvNTAwIiB4bWxuczpkd2Q9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vRGF0YVdhcmVob3VzZS9EZXNpZ25lci8xLjAiPg0KICA8RW5hYmxlZD50cnVlPC9FbmFibGVkPg0KICA8UHJvamVjdE5hbWU+JC9TU1JTIFZlcnNpb24gMjAxMi9TU1JTdjIwMTI8L1Byb2plY3ROYW1lPg0KICA8QXV4UGF0aD5odHRwOi8veWVsbG93d29vZDo4MDgwL3Rmcy9kZWZhdWx0Y29sbGVjdGlvbjwvQXV4UGF0aD4NCiAgPExvY2FsUGF0aD4uLjwvTG9jYWxQYXRoPg0KICA8UHJvdmlkZXI+ezRDQTU4QUIyLTE4RkEtNEY4RC05NUQ0LTMyRERGMjdEMTg0Q308L1Byb3ZpZGVyPg0KPC9Tb3VyY2VDb250cm9sSW5mbz4=</State>
+  <DataSources>
+    <ProjectItem>
+      <Name>Development_RR.rds</Name>
+      <FullPath>Development_RR.rds</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>PCMS_IMPORT.rds</Name>
+      <FullPath>PCMS_IMPORT.rds</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>PCMS_SQL_PCMS_HPB_db.rds</Name>
+      <FullPath>PCMS_SQL_PCMS_HPB_db.rds</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>PCMS-DEV.rds</Name>
+      <FullPath>PCMS-DEV.rds</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>PCMS-N-RR.rds</Name>
+      <FullPath>PCMS-N-RR.rds</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>PCMS-RR.rds</Name>
+      <FullPath>PCMS-RR.rds</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Production.rds</Name>
+      <FullPath>Production.rds</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Production_RR.rds</Name>
+      <FullPath>Production_RR.rds</FullPath>
+    </ProjectItem>
+  </DataSources>
+  <DataSets />
+  <Reports>
+    <ProjectItem>
+      <Name>Accounts Receivable Report.rdl</Name>
+      <FullPath>Accounts Receivable Report.rdl</FullPath>
+    </ProjectItem>
+    <ResourceProjectItem>
+      <Name>Buy Reconciliation by Till Guide</Name>
+      <FullPath>Buy Reconciliation by Till Guide</FullPath>
+      <MimeType>application/pdf</MimeType>
+    </ResourceProjectItem>
+    <ProjectItem>
+      <Name>Buy Reconciliation By Till.rdl</Name>
+      <FullPath>Buy Reconciliation By Till.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Daily Graph Beanstore.rdl</Name>
+      <FullPath>Daily Graph Beanstore.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Daily Graph Corporate.rdl</Name>
+      <FullPath>Daily Graph Corporate.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Daily Graph.rdl</Name>
+      <FullPath>Daily Graph.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Get Keyed Cards.rdl</Name>
+      <FullPath>Get Keyed Cards.rdl</FullPath>
+    </ProjectItem>
+    <ResourceProjectItem>
+      <Name>Gift Card Transaction Guide</Name>
+      <FullPath>Gift Card Transaction Guide</FullPath>
+      <MimeType>application/pdf</MimeType>
+    </ResourceProjectItem>
+    <ProjectItem>
+      <Name>Gift Card Transaction History.rdl</Name>
+      <FullPath>Gift Card Transaction History.rdl</FullPath>
+    </ProjectItem>
+    <ResourceProjectItem>
+      <Name>Transaction Detail Guide</Name>
+      <FullPath>Transaction Detail Guide</FullPath>
+      <MimeType>application/pdf</MimeType>
+    </ResourceProjectItem>
+    <ProjectItem>
+      <Name>Transaction Detail Test.rdl</Name>
+      <FullPath>Transaction Detail Test.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Transaction Detail.rdl</Name>
+      <FullPath>Transaction Detail.rdl</FullPath>
+    </ProjectItem>
+    <ResourceProjectItem>
+      <Name>Transaction History Guide</Name>
+      <FullPath>Transaction History Guide</FullPath>
+      <MimeType>application/pdf</MimeType>
+    </ResourceProjectItem>
+    <ProjectItem>
+      <Name>Transaction History Test.rdl</Name>
+      <FullPath>Transaction History Test.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Transaction History.rdl</Name>
+      <FullPath>Transaction History.rdl</FullPath>
+    </ProjectItem>
+  </Reports>
+  <Configurations>
+    <Configuration>
+      <Name>Debug</Name>
+      <Platform>Win32</Platform>
+      <Options>
+        <OutputPath>bin\Debug</OutputPath>
+        <TargetServerVersion>SSRS2008R2</TargetServerVersion>
+        <TargetServerURL>http://squirrel.hpb.hpbrm.com/ReportServer</TargetServerURL>
+        <TargetFolder>POS</TargetFolder>
+        <TargetDataSourceFolder>Data Sources</TargetDataSourceFolder>
+      </Options>
+    </Configuration>
+    <Configuration>
+      <Name>DebugLocal</Name>
+      <Platform>Win32</Platform>
+      <Options>
+        <OutputPath>bin\DebugLocal</OutputPath>
+        <TargetServerVersion>SSRS2008</TargetServerVersion>
+        <TargetServerURL>http://hickory:2005/ReportServer</TargetServerURL>
+        <TargetFolder>Beanstore POS</TargetFolder>
+        <TargetDataSourceFolder>Data Sources</TargetDataSourceFolder>
+      </Options>
+    </Configuration>
+    <Configuration>
+      <Name>Release</Name>
+      <Platform>Win32</Platform>
+      <Options>
+        <OutputPath>bin\Release</OutputPath>
+        <TargetServerVersion>SSRS2008R2</TargetServerVersion>
+        <TargetServerURL>http://reportssrs.hpb.hpbrm.com/ReportServer</TargetServerURL>
+        <TargetFolder>POS</TargetFolder>
+        <TargetDataSourceFolder>Data Sources</TargetDataSourceFolder>
+        <TargetDatasetFolder>Datasets</TargetDatasetFolder>
+        <TargetReportPartFolder>Report Parts</TargetReportPartFolder>
+      </Options>
+    </Configuration>
+  </Configurations>
+</Project>
