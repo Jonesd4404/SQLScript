@@ -1,0 +1,1494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
+  <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DSScale">
+      <DataSourceReference>SCALE</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>b91ae09b-7e26-49f7-8183-a097569b04b3</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="ds_Shipping">
+      <Query>
+        <DataSourceName>DSScale</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@INTERNAL_SHIPMENT_NUM">
+            <Value>=Parameters!INTERNAL_SHIPMENT_NUM.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>RPT_TTBShipmentPackList</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ITEM">
+          <DataField>ITEM</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ITEM_DESC">
+          <DataField>ITEM_DESC</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Qty_Shipped">
+          <DataField>Qty_Shipped</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Qty_Ordered">
+          <DataField>Qty_Ordered</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Customer_ID">
+          <DataField>Customer_ID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="stShipToName">
+          <DataField>stShipToName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="stPhone">
+          <DataField>stPhone</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="stAddress1">
+          <DataField>stAddress1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="stAddress2">
+          <DataField>stAddress2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="stAddress3">
+          <DataField>stAddress3</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="stCity">
+          <DataField>stCity</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="stState">
+          <DataField>stState</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="stZip">
+          <DataField>stZip</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="stAttTo">
+          <DataField>stAttTo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="btBillToName">
+          <DataField>btBillToName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="btPhone">
+          <DataField>btPhone</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="btAddress1">
+          <DataField>btAddress1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="btAddress2">
+          <DataField>btAddress2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="btAddress3">
+          <DataField>btAddress3</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="btCity">
+          <DataField>btCity</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="btState">
+          <DataField>btState</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="btZip">
+          <DataField>btZip</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="btAttTo">
+          <DataField>btAttTo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="INTERMEDIATE_CONSIGNEE">
+          <DataField>INTERMEDIATE_CONSIGNEE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="INTERMEDIATE_NAME">
+          <DataField>INTERMEDIATE_NAME</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="INTERMEDIATE_ADDRESS1">
+          <DataField>INTERMEDIATE_ADDRESS1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="INTERMEDIATE_ADDRESS2">
+          <DataField>INTERMEDIATE_ADDRESS2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="INTERMEDIATE_ADDRESS3">
+          <DataField>INTERMEDIATE_ADDRESS3</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="INTERMEDIATE_ATTENTION_TO">
+          <DataField>INTERMEDIATE_ATTENTION_TO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="INTERMEDIATE_CITY">
+          <DataField>INTERMEDIATE_CITY</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="INTERMEDIATE_STATE">
+          <DataField>INTERMEDIATE_STATE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="INTERMEDIATE_COUNTRY">
+          <DataField>INTERMEDIATE_COUNTRY</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="INTERMEDIATE_POSTAL_CODE">
+          <DataField>INTERMEDIATE_POSTAL_CODE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="INTERMEDIATE_PHONE_NUM">
+          <DataField>INTERMEDIATE_PHONE_NUM</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="INTERMEDIATE_FAX_NUM">
+          <DataField>INTERMEDIATE_FAX_NUM</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="INTERMEDIATE_EMAIL_ADDRESS">
+          <DataField>INTERMEDIATE_EMAIL_ADDRESS</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="purOrd">
+          <DataField>purOrd</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="invoice">
+          <DataField>invoice</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="shpDate">
+          <DataField>shpDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="shipmentID">
+          <DataField>shipmentID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="hdr_comments">
+          <DataField>hdr_comments</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="HDR_INTERNAL_SHIPMENT_NUM">
+          <DataField>HDR_INTERNAL_SHIPMENT_NUM</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="PCount">
+          <DataField>PCount</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CARRIER">
+          <DataField>CARRIER</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Tablix Name="Tablix1">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>4.01667in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.65in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.70833in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.36667in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox8">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>ITEM DESC</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox8</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox33">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Qty Ordered</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox33</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox10">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Qty Shipped</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox10</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.175in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ITEM_DESC">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!ITEM_DESC.Value</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ITEM_DESC</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Qty_Ordered">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Qty_Ordered.Value</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <Format>0;(0)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Qty_Ordered</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Qty_Shipped">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Qty_Shipped.Value</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <Format>0;(0)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Qty_Shipped</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <TablixHeader>
+                    <Size>1in</Size>
+                    <CellContents>
+                      <Textbox Name="Textbox3">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>ITEM</Value>
+                                <Style>
+                                  <FontSize>8pt</FontSize>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style>
+                              <TextAlign>Center</TextAlign>
+                            </Style>
+                          </Paragraph>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>NUMBER</Value>
+                                <Style>
+                                  <FontSize>8pt</FontSize>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style>
+                              <TextAlign>Center</TextAlign>
+                            </Style>
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox3</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Color>LightGrey</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <TablixMembers>
+                    <TablixMember />
+                  </TablixMembers>
+                  <KeepWithGroup>After</KeepWithGroup>
+                  <RepeatOnNewPage>true</RepeatOnNewPage>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="ITEM">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!ITEM.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!ITEM.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixHeader>
+                    <Size>1in</Size>
+                    <CellContents>
+                      <Textbox Name="ITEM1">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>=Fields!ITEM.Value</Value>
+                                <Style>
+                                  <FontSize>8pt</FontSize>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style />
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>ITEM1</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Color>LightGrey</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <TablixMembers>
+                    <TablixMember>
+                      <Group Name="Details" />
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <RepeatRowHeaders>true</RepeatRowHeaders>
+            <DataSetName>ds_Shipping</DataSetName>
+            <Top>0.04167in</Top>
+            <Left>0.32202in</Left>
+            <Height>0.54167in</Height>
+            <Width>6.375in</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+        </ReportItems>
+        <Height>0.58334in</Height>
+        <Style />
+      </Body>
+      <Width>6.94959in</Width>
+      <Page>
+        <PageHeader>
+          <Height>3.68554in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Image Name="TXBLogo">
+              <Source>Embedded</Source>
+              <Value>TXBLogo</Value>
+              <Sizing>FitProportional</Sizing>
+              <Left>0.14562in</Left>
+              <Height>1.57388in</Height>
+              <Width>1.85833in</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Image>
+            <Textbox Name="Textbox35">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>PACKING LIST</Value>
+                      <Style>
+                        <FontSize>18pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox35</rd:DefaultName>
+              <Top>0.96055in</Top>
+              <Left>2.24785in</Left>
+              <Height>0.44639in</Height>
+              <Width>2.14167in</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox70">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Label>txtBillTo</Label>
+                      <Value>=Switch(Parameters!LANGUAGE.Value = "en-US" , "Bill To:", 1=1,"Bill To:")</Value>
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>11pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Fields!btBillToName.Value</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Fields!btAddress1.Value</Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value>=Fields!btAddress2.Value</Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value>=Fields!btAddress3.Value</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Fields!btCity.Value</Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Label>txtComma</Label>
+                      <Value>=IIf(Globals!PageNumber = 1,Switch(Parameters!LANGUAGE.Value = "en-US" , ",",Parameters!LANGUAGE.Value = "es-MX", ",",1=1,","),nothing)</Value>
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>11pt</FontSize>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value>=Fields!btState.Value</Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value>=Fields!btZip.Value</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Label>txtAttn</Label>
+                      <Value>=Switch(Parameters!LANGUAGE.Value = "en-US" , "Attn:", 1=1,"Attn:")</Value>
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>11pt</FontSize>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>11pt</FontSize>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>=Fields!btAttTo.Value</Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Label>txtShipVia</Label>
+                      <Value>=Switch(Parameters!LANGUAGE.Value = "en-US" , "Ship Via:", 1=1,"Ship Via:")</Value>
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>11pt</FontSize>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>11pt</FontSize>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>=First(Fields!CARRIER.Value, "ds_Shipping")</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox70</rd:DefaultName>
+              <Top>1.57388in</Top>
+              <Left>0.15562in</Left>
+              <Height>1.45833in</Height>
+              <Width>2.93389in</Width>
+              <ZIndex>2</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox71">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Label>txtShipTo</Label>
+                      <Value>=Switch(Parameters!LANGUAGE.Value = "en-US" , "Ship To:", 1=1,"Ship To:")</Value>
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>11pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!stShipToName.Value, "ds_Shipping")</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!stAddress1.Value, "ds_Shipping")</Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value>=First(Fields!stAddress2.Value, "ds_Shipping")</Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value>=First(Fields!stAddress3.Value, "ds_Shipping")</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!stCity.Value, "ds_Shipping")</Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Label>txtComma</Label>
+                      <Value>=IIf(Globals!PageNumber = 1, Switch(Parameters!LANGUAGE.Value = "en-US", ",", Parameters!LANGUAGE.Value = "es-MX", ",", 1 = 1, ","), Nothing)</Value>
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>11pt</FontSize>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value>=First(Fields!stState.Value, "ds_Shipping")</Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value>=First(Fields!stZip.Value, "ds_Shipping")</Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!stAttTo.Value, "ds_Shipping")</Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox70</rd:DefaultName>
+              <Top>1.51832in</Top>
+              <Left>3.48672in</Left>
+              <Height>0.99083in</Height>
+              <Width>3.31723in</Width>
+              <ZIndex>3</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox72">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Label>txtConsignee</Label>
+                      <Value>=Switch(Parameters!LANGUAGE.Value = "en-US" , "Consignee:", 1=1,"Consignee:")</Value>
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>11pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!INTERMEDIATE_NAME.Value, "ds_Shipping")</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!INTERMEDIATE_ADDRESS1.Value, "ds_Shipping")</Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value>=First(Fields!INTERMEDIATE_ADDRESS2.Value, "ds_Shipping")</Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value>=First(Fields!INTERMEDIATE_ADDRESS3.Value, "ds_Shipping")</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!INTERMEDIATE_CITY.Value, "ds_Shipping")</Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Label>txtComma</Label>
+                      <Value>=IIf(Globals!PageNumber = 1, Switch(Parameters!LANGUAGE.Value = "en-US", ",", Parameters!LANGUAGE.Value = "es-MX", ",", 1 = 1, ","), Nothing)</Value>
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>11pt</FontSize>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value>=First(Fields!INTERMEDIATE_STATE.Value, "ds_Shipping")</Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value>=First(Fields!INTERMEDIATE_POSTAL_CODE.Value, "ds_Shipping")</Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!INTERMEDIATE_ATTENTION_TO.Value, "ds_Shipping")</Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox70</rd:DefaultName>
+              <Top>2.57859in</Top>
+              <Left>3.48673in</Left>
+              <Height>1.10695in</Height>
+              <Width>3.31723in</Width>
+              <ZIndex>4</ZIndex>
+              <Visibility>
+                <Hidden>=IIF(NOT IsNothing(Fields!INTERMEDIATE_NAME.Value), False, True)</Hidden>
+              </Visibility>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox4">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Label>lbl_PurchaseOrder#</Label>
+                      <Value>=Switch(Parameters!LANGUAGE.Value = "en-US" , "Purchase Order #:", 1=1,"Purchase Order #:")</Value>
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Label>purord</Label>
+                      <Value>=First(Fields!purOrd.Value, "ds_Shipping")</Value>
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Label>lbl_InvoiceNum</Label>
+                      <Value />
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Label>lbl_InvoiceNum</Label>
+                      <Value>=Switch(Parameters!LANGUAGE.Value = "en-US" , "Invoice Number:", 1=1,"Invoice Number:")</Value>
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Label>invnum</Label>
+                      <Value>=IIF(NOT IsNothing(Fields!invoice.Value), Fields!invoice.Value, "N/A")</Value>
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Label>lbl_ScheduledShipDate</Label>
+                      <Value />
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Label>lbl_ScheduledShipDate</Label>
+                      <Value>=Switch(Parameters!LANGUAGE.Value = "en-US" , "Scheduled Ship Date:", 1=1,"Scheduled Ship Date:")</Value>
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Label>SchShipDate</Label>
+                      <Value>=First(Fields!shpDate.Value, "ds_Shipping")</Value>
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <Format>M/d/yyyy</Format>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Label>lbl_ShipmentId</Label>
+                      <Value />
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Label>lbl_ShipmentId</Label>
+                      <Value>=Switch(Parameters!LANGUAGE.Value = "en-US" , "Shipment ID:", 1=1,"Shipment ID:")</Value>
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Label>shipid</Label>
+                      <Value>=First(Fields!shipmentID.Value, "ds_Shipping")</Value>
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Label>lbl_CustomerId</Label>
+                      <Value />
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Label>lbl_CustomerId</Label>
+                      <Value>=Switch(Parameters!LANGUAGE.Value = "en-US" , "Customer ID:", 1=1,"Customer ID:")</Value>
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Label>custid</Label>
+                      <Value>=First(Fields!Customer_ID.Value, "ds_Shipping")</Value>
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox4</rd:DefaultName>
+              <Top>0.04027in</Top>
+              <Left>4.59674in</Left>
+              <Height>1.36667in</Height>
+              <Width>2.20722in</Width>
+              <ZIndex>5</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageHeader>
+        <PageFooter>
+          <Height>1.07299in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="Textbox5">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Label>PAGE_N_OF_M</Label>
+                      <Value>=Switch(Parameters!LANGUAGE.Value = "en-US", "Page " + Globals!PageNumber.ToString + " of " + Globals!TotalPages.ToString, Parameters!LANGUAGE.Value = "es-MX", "Hoja " + Globals!PageNumber.ToString + " de " + Globals!TotalPages.ToString, 1 = 1, "Page " + Globals!PageNumber.ToString + " of " + Globals!TotalPages.ToString)</Value>
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value />
+                      <Style>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox4</rd:DefaultName>
+              <Top>0.82299in</Top>
+              <Left>5.29702in</Left>
+              <Height>0.25in</Height>
+              <Width>1.61111in</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox76">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>2700 Lone Star Drive * Dallas, TX 75212 Phone: (800)566-2665 (214)678-6680Fax: (214) 678-6699</Value>
+                      <Style>
+                        <FontStyle>Normal</FontStyle>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <FontWeight>Normal</FontWeight>
+                        <TextDecoration>None</TextDecoration>
+                        <Color>#000000</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox76</rd:DefaultName>
+              <Top>0.82299in</Top>
+              <Left>0.04146in</Left>
+              <Height>0.25in</Height>
+              <Width>5.29723in</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox75">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>ANY TITLE ORDERED BUT NOT APPEARING ON THIS PACKING LIST IS OUT OF STOCK.
+DAMAGE &amp; SHORTAGE MUST BE REPORTED WITHIN 10 DAYS OF RECEIPT OF GOODS.
+** 1 Pallet w/ 13 boxes = 508 lbs total **</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox75</rd:DefaultName>
+              <Left>0.77313in</Left>
+              <Height>0.65833in</Height>
+              <Width>4.925in</Width>
+              <ZIndex>2</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
+        <LeftMargin>0.5in</LeftMargin>
+        <RightMargin>0.1in</RightMargin>
+        <TopMargin>0.5in</TopMargin>
+        <BottomMargin>0.5in</BottomMargin>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="INTERNAL_SHIPMENT_NUM">
+      <DataType>String</DataType>
+      <Prompt>INTERNAL SHIPMENT NUM</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LANGUAGE">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>en-US</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LANGUAGE</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>2</NumberOfColumns>
+      <NumberOfRows>1</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>INTERNAL_SHIPMENT_NUM</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>LANGUAGE</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <EmbeddedImages>
+    <EmbeddedImage Name="TXBLogo">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>a97e9d9c-bd1f-448b-b724-ae8d092653af</rd:ReportID>
+</Report>

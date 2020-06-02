@@ -1,0 +1,1482 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Rectangle Name="rectangle1">
+        <ReportItems>
+          <Chart Name="chart1">
+            <ChartCategoryHierarchy>
+              <ChartMembers>
+                <ChartMember>
+                  <Label />
+                </ChartMember>
+              </ChartMembers>
+            </ChartCategoryHierarchy>
+            <ChartSeriesHierarchy>
+              <ChartMembers>
+                <ChartMember>
+                  <Group Name="chart1_SeriesGroup1">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!name.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <Label>=Fields!name.Value &amp; ": " &amp; Format(Sum(CDbl(Fields!value.Value)), Fields!format_string.Value)</Label>
+                  <DataElementOutput>Output</DataElementOutput>
+                </ChartMember>
+              </ChartMembers>
+            </ChartSeriesHierarchy>
+            <ChartData>
+              <ChartSeriesCollection>
+                <ChartSeries Name="Series1">
+                  <ChartDataPoints>
+                    <ChartDataPoint>
+                      <ChartDataPointValues>
+                        <Y>=Sum(CDbl(Fields!value.Value))</Y>
+                      </ChartDataPointValues>
+                      <ChartDataLabel>
+                        <Style>
+                          <FontFamily>Segoe UI</FontFamily>
+                          <FontSize>8pt</FontSize>
+                          <Color>#183452</Color>
+                        </Style>
+                        <Label>=FormatPercent(CDbl(Fields!value.Value)/Sum(CDbl(Fields!value.Value), "ChartData"),0)</Label>
+                        <Visible>true</Visible>
+                      </ChartDataLabel>
+                      <Style>
+                        <Border>
+                          <Color>Black</Color>
+                        </Border>
+                      </Style>
+                      <ChartMarker>
+                        <Size>6pt</Size>
+                        <Style />
+                      </ChartMarker>
+                    </ChartDataPoint>
+                  </ChartDataPoints>
+                  <Type>Shape</Type>
+                  <Style />
+                  <ChartEmptyPoints>
+                    <Style />
+                    <ChartMarker>
+                      <Style />
+                    </ChartMarker>
+                    <ChartDataLabel>
+                      <Style />
+                    </ChartDataLabel>
+                  </ChartEmptyPoints>
+                  <ValueAxisName>Primary</ValueAxisName>
+                  <CategoryAxisName>Primary</CategoryAxisName>
+                  <ChartSmartLabel>
+                    <CalloutLineColor>Black</CalloutLineColor>
+                    <MinMovingDistance>0pt</MinMovingDistance>
+                  </ChartSmartLabel>
+                </ChartSeries>
+              </ChartSeriesCollection>
+            </ChartData>
+            <ChartAreas>
+              <ChartArea Name="Default">
+                <ChartCategoryAxes>
+                  <ChartAxis Name="Primary">
+                    <Style>
+                      <Border>
+                        <Style>None</Style>
+                        <Width>0.75pt</Width>
+                      </Border>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption />
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </ChartAxisTitle>
+                    <Margin>False</Margin>
+                    <Interval>1</Interval>
+                    <ChartMajorGridLines>
+                      <Enabled>False</Enabled>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                          <Width>0.75pt</Width>
+                        </Border>
+                      </Style>
+                      <Interval>NaN</Interval>
+                    </ChartMajorGridLines>
+                    <ChartMinorGridLines>
+                      <Enabled>False</Enabled>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                          <Width>0.75pt</Width>
+                        </Border>
+                      </Style>
+                      <Interval>NaN</Interval>
+                      <IntervalOffset>-1</IntervalOffset>
+                    </ChartMinorGridLines>
+                    <ChartMajorTickMarks>
+                      <Enabled>True</Enabled>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                          <Width>0.75pt</Width>
+                        </Border>
+                      </Style>
+                      <Interval>NaN</Interval>
+                    </ChartMajorTickMarks>
+                    <ChartMinorTickMarks>
+                      <Type>None</Type>
+                    </ChartMinorTickMarks>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <PreventFontShrink>true</PreventFontShrink>
+                    <PreventFontGrow>true</PreventFontGrow>
+                    <IncludeZero>false</IncludeZero>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                  <ChartAxis Name="Secondary">
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption />
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </ChartAxisTitle>
+                    <CrossAt>NaN</CrossAt>
+                    <Location>Opposite</Location>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                </ChartCategoryAxes>
+                <ChartValueAxes>
+                  <ChartAxis Name="Primary">
+                    <Style>
+                      <Border>
+                        <Style>None</Style>
+                        <Width>0.75pt</Width>
+                      </Border>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption />
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </ChartAxisTitle>
+                    <Margin>True</Margin>
+                    <ChartMajorGridLines>
+                      <Enabled>True</Enabled>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                          <Width>0.75pt</Width>
+                        </Border>
+                      </Style>
+                      <Interval>NaN</Interval>
+                    </ChartMajorGridLines>
+                    <ChartMinorGridLines>
+                      <Enabled>False</Enabled>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                          <Width>0.75pt</Width>
+                        </Border>
+                      </Style>
+                      <Interval>NaN</Interval>
+                    </ChartMinorGridLines>
+                    <ChartMajorTickMarks>
+                      <Enabled>True</Enabled>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                          <Width>0.75pt</Width>
+                        </Border>
+                      </Style>
+                      <Interval>NaN</Interval>
+                    </ChartMajorTickMarks>
+                    <ChartMinorTickMarks>
+                      <Type>None</Type>
+                    </ChartMinorTickMarks>
+                    <Scalar>true</Scalar>
+                    <Minimum>0</Minimum>
+                    <PreventFontShrink>true</PreventFontShrink>
+                    <PreventFontGrow>true</PreventFontGrow>
+                    <IncludeZero>false</IncludeZero>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                  <ChartAxis Name="Secondary">
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption />
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </ChartAxisTitle>
+                    <CrossAt>NaN</CrossAt>
+                    <Location>Opposite</Location>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                </ChartValueAxes>
+                <ChartThreeDProperties>
+                  <Enabled>true</Enabled>
+                  <ProjectionMode>Perspective</ProjectionMode>
+                  <Shading>Simple</Shading>
+                  <WallThickness>15</WallThickness>
+                  <Clustered>true</Clustered>
+                </ChartThreeDProperties>
+                <Style>
+                  <Border>
+                    <Width>0.75pt</Width>
+                  </Border>
+                  <BackgroundColor>White</BackgroundColor>
+                </Style>
+              </ChartArea>
+            </ChartAreas>
+            <ChartLegends>
+              <ChartLegend Name="Default">
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                    <Width>0.75pt</Width>
+                  </Border>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <Color>#183452</Color>
+                </Style>
+                <Position>LeftTop</Position>
+                <Layout>Column</Layout>
+                <DockToChartArea>Default</DockToChartArea>
+                <ChartLegendTitle>
+                  <Caption />
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </ChartLegendTitle>
+                <AutoFitTextDisabled>true</AutoFitTextDisabled>
+              </ChartLegend>
+            </ChartLegends>
+            <ChartTitles>
+              <ChartTitle Name="Default">
+                <Caption>=First(Fields!title.Value, "Chart") &amp; First(Fields!text.Value, "ColonResource") &amp; " " &amp; Format(Sum(CDbl(Fields!value.Value)), First(Fields!format_string.Value))</Caption>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                  <Color>#183452</Color>
+                </Style>
+              </ChartTitle>
+            </ChartTitles>
+            <Palette>Pastel</Palette>
+            <ChartBorderSkin>
+              <Style>
+                <BackgroundColor>Gray</BackgroundColor>
+                <BackgroundGradientType>None</BackgroundGradientType>
+                <Color>White</Color>
+              </Style>
+            </ChartBorderSkin>
+            <ChartNoDataMessage Name="NoDataMessage">
+              <Caption>No Data Available</Caption>
+              <Style>
+                <BackgroundGradientType>None</BackgroundGradientType>
+                <TextAlign>General</TextAlign>
+                <VerticalAlign>Top</VerticalAlign>
+              </Style>
+            </ChartNoDataMessage>
+            <DataSetName>ChartData</DataSetName>
+            <Top>0.4375in</Top>
+            <Height>2.375in</Height>
+            <Width>6.5in</Width>
+            <Visibility>
+              <Hidden>=IsNothing(First(Fields!title.Value, "Chart"))</Hidden>
+            </Visibility>
+            <CustomProperties>
+              <CustomProperty>
+                <Name>__Upgraded2005__</Name>
+                <Value>__Upgraded2005__</Value>
+              </CustomProperty>
+            </CustomProperties>
+            <DataElementOutput>NoOutput</DataElementOutput>
+            <Style>
+              <BackgroundColor>White</BackgroundColor>
+              <FontFamily>Segoe UI</FontFamily>
+            </Style>
+          </Chart>
+          <Tablix Name="table7">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>1.6875in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.5in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="textbox9">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!name.Value &amp; First(Fields!text.Value, "ColonResource")</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <Color>#183452</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <ZIndex>1</ZIndex>
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="textbox10">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!value.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <Format>=Fields!format_string.Value</Format>
+                                    <Color>#183452</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="table7_Details_Group">
+                    <DataElementName>Detail</DataElementName>
+                  </Group>
+                  <TablixMembers>
+                    <TablixMember />
+                  </TablixMembers>
+                  <DataElementName>Detail_Collection</DataElementName>
+                  <DataElementOutput>Output</DataElementOutput>
+                  <KeepTogether>true</KeepTogether>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>GroupFields</DataSetName>
+            <Filters>
+              <Filter>
+                <FilterExpression>=Fields!column_position.Value</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue>=CInt(0)</FilterValue>
+                </FilterValues>
+              </Filter>
+            </Filters>
+            <Top>0.0625in</Top>
+            <Height>0.25in</Height>
+            <Width>3.1875in</Width>
+            <ZIndex>1</ZIndex>
+            <Visibility>
+              <Hidden>=CountRows() = 0</Hidden>
+            </Visibility>
+            <DataElementOutput>NoOutput</DataElementOutput>
+            <Style />
+          </Tablix>
+          <Tablix Name="table2">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>1.6875in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.5in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="textbox1">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!name.Value &amp; First(Fields!text.Value, "ColonResource")</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <Color>#183452</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <ZIndex>1</ZIndex>
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="textbox4">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!value.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <Format>=Fields!format_string.Value</Format>
+                                    <Color>#183452</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="table2_Details_Group">
+                    <DataElementName>Detail</DataElementName>
+                  </Group>
+                  <TablixMembers>
+                    <TablixMember />
+                  </TablixMembers>
+                  <DataElementName>Detail_Collection</DataElementName>
+                  <DataElementOutput>Output</DataElementOutput>
+                  <KeepTogether>true</KeepTogether>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>GroupFields</DataSetName>
+            <Filters>
+              <Filter>
+                <FilterExpression>=Fields!column_position.Value</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue>=CInt(1)</FilterValue>
+                </FilterValues>
+              </Filter>
+            </Filters>
+            <Top>0.0625in</Top>
+            <Left>3.3125in</Left>
+            <Height>0.25in</Height>
+            <Width>3.1875in</Width>
+            <ZIndex>2</ZIndex>
+            <Visibility>
+              <Hidden>=CountRows() = 0</Hidden>
+            </Visibility>
+            <DataElementOutput>NoOutput</DataElementOutput>
+            <Style />
+          </Tablix>
+        </ReportItems>
+        <DataElementOutput>ContentsOnly</DataElementOutput>
+        <Top>0.84375in</Top>
+        <Left>0.25in</Left>
+        <Height>2.8125in</Height>
+        <Width>6.5in</Width>
+        <Style />
+      </Rectangle>
+      <Tablix Name="table1">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>1.6875in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.5in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="name">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!name.Value &amp; First(Fields!text.Value, "ColonResource")</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <Color>#183452</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>name</rd:DefaultName>
+                      <ZIndex>1</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="value">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Code.TryConvertDateTime(Fields!value.Value)</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <Color>#183452</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>value</rd:DefaultName>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Group Name="table1_Details_Group">
+                <DataElementName>Detail</DataElementName>
+              </Group>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+              <DataElementName>Detail_Collection</DataElementName>
+              <DataElementOutput>Output</DataElementOutput>
+              <KeepTogether>true</KeepTogether>
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>SourceHeaderFields</DataSetName>
+        <Filters>
+          <Filter>
+            <FilterExpression>=Fields!column_position.Value</FilterExpression>
+            <Operator>Equal</Operator>
+            <FilterValues>
+              <FilterValue>=CInt(0)</FilterValue>
+            </FilterValues>
+          </Filter>
+        </Filters>
+        <Top>0.0625in</Top>
+        <Left>0.25in</Left>
+        <Height>0.25in</Height>
+        <Width>3.1875in</Width>
+        <ZIndex>1</ZIndex>
+        <Style />
+      </Tablix>
+      <Tablix Name="table3">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>1.6875in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.5in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="textbox3">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!name.Value &amp; First(Fields!text.Value, "ColonResource")</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <Color>#183452</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <ZIndex>1</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="textbox6">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Code.TryConvertDateTime(Fields!value.Value)</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <Color>#183452</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Group Name="table3_Details_Group">
+                <DataElementName>Detail</DataElementName>
+              </Group>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+              <DataElementName>Detail_Collection</DataElementName>
+              <DataElementOutput>Output</DataElementOutput>
+              <KeepTogether>true</KeepTogether>
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>SourceHeaderFields</DataSetName>
+        <Filters>
+          <Filter>
+            <FilterExpression>=CInt(Fields!column_position.Value)</FilterExpression>
+            <Operator>Equal</Operator>
+            <FilterValues>
+              <FilterValue>=CInt(1)</FilterValue>
+            </FilterValues>
+          </Filter>
+        </Filters>
+        <Top>0.0625in</Top>
+        <Left>3.5625in</Left>
+        <Height>0.25in</Height>
+        <Width>3.1875in</Width>
+        <ZIndex>2</ZIndex>
+        <Style />
+      </Tablix>
+      <Textbox Name="buttonTextBox0">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!name.Value, "Group0")</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <Color>White</Color>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <ActionInfo>
+          <Actions>
+            <Action>
+              <Drillthrough>
+                <ReportName>Statistics-2column-PieChart</ReportName>
+                <Parameters>
+                  <Parameter Name="ConnectionString">
+                    <Value>=Parameters!ConnectionString.Value</Value>
+                  </Parameter>
+                  <Parameter Name="SourceName">
+                    <Value>=Parameters!SourceName.Value</Value>
+                  </Parameter>
+                  <Parameter Name="SourceKey">
+                    <Value>=Parameters!SourceKey.Value</Value>
+                  </Parameter>
+                  <Parameter Name="SourceHeaderFieldsProcedure">
+                    <Value>=Parameters!SourceHeaderFieldsProcedure.Value</Value>
+                  </Parameter>
+                  <Parameter Name="GroupSequence">
+                    <Value>0</Value>
+                  </Parameter>
+                </Parameters>
+              </Drillthrough>
+            </Action>
+          </Actions>
+        </ActionInfo>
+        <Top>0.45833in</Top>
+        <Left>0.25in</Left>
+        <Height>0.23958in</Height>
+        <Width>1.5625in</Width>
+        <ZIndex>3</ZIndex>
+        <Visibility>
+          <Hidden>=Len(First(Fields!name.Value, "Group0")) &lt;= 0</Hidden>
+        </Visibility>
+        <DataElementOutput>NoOutput</DataElementOutput>
+        <Style>
+          <BackgroundColor>Black</BackgroundColor>
+          <BackgroundImage>
+            <Source>Embedded</Source>
+            <Value>=iif(Parameters!GroupSequence.Value = 0, "buttonselected150x23", "button150x23")</Value>
+            <BackgroundRepeat>Clip</BackgroundRepeat>
+          </BackgroundImage>
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="buttonTextBox1">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!name.Value, "Group1")</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <Color>White</Color>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <ActionInfo>
+          <Actions>
+            <Action>
+              <Drillthrough>
+                <ReportName>Statistics-2column-PieChart</ReportName>
+                <Parameters>
+                  <Parameter Name="ConnectionString">
+                    <Value>=Parameters!ConnectionString.Value</Value>
+                  </Parameter>
+                  <Parameter Name="SourceName">
+                    <Value>=Parameters!SourceName.Value</Value>
+                  </Parameter>
+                  <Parameter Name="SourceKey">
+                    <Value>=Parameters!SourceKey.Value</Value>
+                  </Parameter>
+                  <Parameter Name="SourceHeaderFieldsProcedure">
+                    <Value>=Parameters!SourceHeaderFieldsProcedure.Value</Value>
+                  </Parameter>
+                  <Parameter Name="GroupSequence">
+                    <Value>1</Value>
+                  </Parameter>
+                </Parameters>
+              </Drillthrough>
+            </Action>
+          </Actions>
+        </ActionInfo>
+        <Top>0.45833in</Top>
+        <Left>1.875in</Left>
+        <Height>0.23958in</Height>
+        <Width>1.5625in</Width>
+        <ZIndex>4</ZIndex>
+        <Visibility>
+          <Hidden>=Len(First(Fields!name.Value, "Group1")) &lt;= 0</Hidden>
+        </Visibility>
+        <DataElementOutput>NoOutput</DataElementOutput>
+        <Style>
+          <BackgroundColor>Black</BackgroundColor>
+          <BackgroundImage>
+            <Source>Embedded</Source>
+            <Value>=iif(Parameters!GroupSequence.Value = 1, "buttonselected150x23", "button150x23")</Value>
+            <BackgroundRepeat>Clip</BackgroundRepeat>
+          </BackgroundImage>
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="buttonTextBox2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!name.Value, "Group2")</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <Color>White</Color>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <ActionInfo>
+          <Actions>
+            <Action>
+              <Drillthrough>
+                <ReportName>Statistics-2column-PieChart</ReportName>
+                <Parameters>
+                  <Parameter Name="ConnectionString">
+                    <Value>=Parameters!ConnectionString.Value</Value>
+                  </Parameter>
+                  <Parameter Name="SourceName">
+                    <Value>=Parameters!SourceName.Value</Value>
+                  </Parameter>
+                  <Parameter Name="SourceKey">
+                    <Value>=Parameters!SourceKey.Value</Value>
+                  </Parameter>
+                  <Parameter Name="SourceHeaderFieldsProcedure">
+                    <Value>=Parameters!SourceHeaderFieldsProcedure.Value</Value>
+                  </Parameter>
+                  <Parameter Name="GroupSequence">
+                    <Value>2</Value>
+                  </Parameter>
+                </Parameters>
+              </Drillthrough>
+            </Action>
+          </Actions>
+        </ActionInfo>
+        <Top>0.45833in</Top>
+        <Left>3.5in</Left>
+        <Height>0.23958in</Height>
+        <Width>1.5625in</Width>
+        <ZIndex>5</ZIndex>
+        <Visibility>
+          <Hidden>=Len(First(Fields!name.Value, "Group2")) &lt;= 0</Hidden>
+        </Visibility>
+        <DataElementOutput>NoOutput</DataElementOutput>
+        <Style>
+          <BackgroundColor>Black</BackgroundColor>
+          <BackgroundImage>
+            <Source>Embedded</Source>
+            <Value>=iif(Parameters!GroupSequence.Value = 2, "buttonselected150x23", "button150x23")</Value>
+            <BackgroundRepeat>Clip</BackgroundRepeat>
+          </BackgroundImage>
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="buttonTextBox3">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!name.Value, "Group3")</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <Color>White</Color>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <ActionInfo>
+          <Actions>
+            <Action>
+              <Drillthrough>
+                <ReportName>Statistics-2column-PieChart</ReportName>
+                <Parameters>
+                  <Parameter Name="ConnectionString">
+                    <Value>=Parameters!ConnectionString.Value</Value>
+                  </Parameter>
+                  <Parameter Name="SourceName">
+                    <Value>=Parameters!SourceName.Value</Value>
+                  </Parameter>
+                  <Parameter Name="SourceKey">
+                    <Value>=Parameters!SourceKey.Value</Value>
+                  </Parameter>
+                  <Parameter Name="SourceHeaderFieldsProcedure">
+                    <Value>=Parameters!SourceHeaderFieldsProcedure.Value</Value>
+                  </Parameter>
+                  <Parameter Name="GroupSequence">
+                    <Value>3</Value>
+                  </Parameter>
+                </Parameters>
+              </Drillthrough>
+            </Action>
+          </Actions>
+        </ActionInfo>
+        <Top>0.45833in</Top>
+        <Left>5.125in</Left>
+        <Height>0.23958in</Height>
+        <Width>1.5625in</Width>
+        <ZIndex>6</ZIndex>
+        <Visibility>
+          <Hidden>=Len(First(Fields!name.Value, "Group3")) &lt;= 0</Hidden>
+        </Visibility>
+        <DataElementOutput>NoOutput</DataElementOutput>
+        <Style>
+          <BackgroundColor>Black</BackgroundColor>
+          <BackgroundImage>
+            <Source>Embedded</Source>
+            <Value>=iif(Parameters!GroupSequence.Value = 3, "buttonselected150x23", "button150x23")</Value>
+            <BackgroundRepeat>Clip</BackgroundRepeat>
+          </BackgroundImage>
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="line1">
+        <Top>0.77083in</Top>
+        <Left>6.75in</Left>
+        <Height>0in</Height>
+        <Width>-6.5in</Width>
+        <ZIndex>7</ZIndex>
+        <Style>
+          <Border>
+            <Color>#183452</Color>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Line Name="line2">
+        <Top>0.38542in</Top>
+        <Left>6.75in</Left>
+        <Height>0in</Height>
+        <Width>-6.5in</Width>
+        <ZIndex>8</ZIndex>
+        <Style>
+          <Border>
+            <Color>#183452</Color>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+    </ReportItems>
+    <Height>3.65625in</Height>
+    <Style />
+  </Body>
+  <Width>7in</Width>
+  <Page>
+    <TopMargin>1in</TopMargin>
+    <BottomMargin>1in</BottomMargin>
+    <Style>
+      <BackgroundColor>White</BackgroundColor>
+    </Style>
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="ILS">
+      <DataSourceReference>SCALE</DataSourceReference>
+      <rd:SecurityType>DataBase</rd:SecurityType>
+      <rd:DataSourceID>5830719e-a68e-4ac1-9017-92b85f081e74</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="Group0">
+      <Query>
+        <DataSourceName>ILS</DataSourceName>
+        <CommandText>="select " &amp;
+	"grp.object_id," &amp;
+	"dbo.RSCMfn_RtrvResource(grp.name, 'Text', '" &amp; User!Language &amp; "') name " &amp;
+"from " &amp;
+	"statistics_source source " &amp;
+	
+	"inner join statistics_group grp " &amp;
+	"on " &amp;
+		"grp.source_id = source.object_id " &amp;
+		"and " &amp;
+		"grp.sequence = 0 " &amp;
+"where " &amp;
+	"source.name = '" &amp; Parameters!SourceName.Value &amp; "'"</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="object_id">
+          <DataField>object_id</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="name">
+          <DataField>name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="Group1">
+      <Query>
+        <DataSourceName>ILS</DataSourceName>
+        <CommandText>="select " &amp;
+	"grp.object_id," &amp;
+	"dbo.RSCMfn_RtrvResource(grp.name, 'Text', '" &amp; User!Language &amp; "') name " &amp;
+"from " &amp;
+	"statistics_source source " &amp;
+	
+	"inner join statistics_group grp " &amp;
+	"on " &amp;
+		"grp.source_id = source.object_id " &amp;
+		"and " &amp;
+		"grp.sequence = 1 " &amp;
+"where " &amp;
+	"source.name = '" &amp; Parameters!SourceName.Value &amp; "'"</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="object_id">
+          <DataField>object_id</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="name">
+          <DataField>name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="Group2">
+      <Query>
+        <DataSourceName>ILS</DataSourceName>
+        <CommandText>="select " &amp;
+	"grp.object_id," &amp;
+	"dbo.RSCMfn_RtrvResource(grp.name, 'Text', '" &amp; User!Language &amp; "') name " &amp;
+"from " &amp;
+	"statistics_source source " &amp;
+	
+	"inner join statistics_group grp " &amp;
+	"on " &amp;
+		"grp.source_id = source.object_id " &amp;
+		"and " &amp;
+		"grp.sequence = 2 " &amp;
+"where " &amp;
+	"source.name = '" &amp; Parameters!SourceName.Value &amp; "'"</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="object_id">
+          <DataField>object_id</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="name">
+          <DataField>name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="Group3">
+      <Query>
+        <DataSourceName>ILS</DataSourceName>
+        <CommandText>="select " &amp;
+	"grp.object_id," &amp;
+	"dbo.RSCMfn_RtrvResource(grp.name, 'Text', '" &amp; User!Language &amp; "') name " &amp;
+"from " &amp;
+	"statistics_source source " &amp;
+	
+	"inner join statistics_group grp " &amp;
+	"on " &amp;
+		"grp.source_id = source.object_id " &amp;
+		"and " &amp;
+		"grp.sequence = 3 " &amp;
+"where " &amp;
+	"source.name = '" &amp; Parameters!SourceName.Value &amp; "'"</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="object_id">
+          <DataField>object_id</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="name">
+          <DataField>name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="GroupFields">
+      <Query>
+        <DataSourceName>ILS</DataSourceName>
+        <CommandText>="select " &amp;
+	"dbo.RSCMfn_RtrvResource(isnull(field.resource_key, field.name), 'Text', '" &amp; User!Language &amp; "') name," &amp;
+	"isnull(val.value, 0) value," &amp;
+	"isnull(field.column_position, 0) column_position," &amp;
+	"isnull(field.format_string, 'g') format_string " &amp;
+"from " &amp;
+	"statistics_source source " &amp;
+
+	"inner join statistics_group grp " &amp;
+	"on " &amp;
+		"grp.source_id = source.object_id " &amp;
+		"and " &amp;
+		"grp.sequence = " &amp; Parameters!GroupSequence.Value &amp; " " &amp;
+	
+	"inner join statistics_field field " &amp;
+	"on " &amp;
+		"field.source_id = source.object_id " &amp;
+		"and " &amp;
+		"field.group_id = grp.object_id " &amp;
+		"and " &amp;
+		"field.chart_id is null " &amp;
+
+	"left outer join statistics_value val " &amp;
+	"on " &amp;
+		"val.field_id = field.object_id " &amp;
+		"and " &amp;
+		"val.source_key = '" &amp; Parameters!SourceKey.Value &amp; "' " &amp;
+"where " &amp;
+	"source.name = '" &amp; Parameters!SourceName.Value &amp; "' " &amp;
+"order by " &amp;
+	"field.row_position, field.column_position"</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="name">
+          <DataField>name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="value">
+          <DataField>value</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="column_position">
+          <DataField>column_position</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="format_string">
+          <DataField>format_string</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="Chart">
+      <Query>
+        <DataSourceName>ILS</DataSourceName>
+        <CommandText>="select " &amp;
+	"dbo.RSCMfn_RtrvResource(chart.title, 'Text', '" &amp; User!Language &amp; "') title " &amp;
+"from " &amp;
+	"statistics_source source " &amp;
+	
+	"inner join statistics_group grp " &amp;
+	"on " &amp;
+		"grp.source_id = source.object_id " &amp;
+		"and " &amp;
+		"grp.sequence = " &amp; Parameters!GroupSequence.Value &amp; " " &amp;
+	
+	"inner join statistics_chart chart " &amp;
+	"on " &amp;
+		"chart.source_id = source.object_id " &amp;
+		"and " &amp;
+		"chart.group_id = grp.object_id " &amp;
+
+"where " &amp;
+	"source.name = '" &amp; Parameters!SourceName.Value &amp; "'"</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="title">
+          <DataField>title</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="ChartData">
+      <Query>
+        <DataSourceName>ILS</DataSourceName>
+        <CommandText>="select " &amp;
+	"dbo.RSCMfn_RtrvResource(isnull(field.resource_key, field.name), 'Text', '" &amp; User!Language &amp; "') name," &amp;
+	"isnull(val.value, 0) value," &amp;
+	"isnull(field.format_string, 'g') format_string " &amp;
+"from " &amp;
+	"statistics_source source " &amp;
+	
+	"inner join statistics_group grp " &amp;
+	"on " &amp;
+		"grp.source_id = source.object_id " &amp;
+		"and " &amp;
+		"grp.sequence = " &amp; Parameters!GroupSequence.Value &amp; " " &amp;
+	
+	"inner join statistics_field field " &amp;
+	"on " &amp;
+		"field.source_id = source.object_id " &amp;
+		"and " &amp;
+		"field.group_id = grp.object_id " &amp;
+		"and " &amp;
+		"field.chart_id is not null " &amp;
+
+	"left outer join statistics_value val " &amp;
+	"on " &amp;
+		"val.field_id = field.object_id " &amp;
+		"and " &amp;
+		"val.source_key = '" &amp; Parameters!SourceKey.Value &amp; "' " &amp;
+"where " &amp;
+	"source.name = '" &amp; Parameters!SourceName.Value &amp; "' " &amp;
+"order by " &amp;
+	"field.row_position"</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="name">
+          <DataField>name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="value">
+          <DataField>value</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="format_string">
+          <DataField>format_string</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="SourceHeaderFields">
+      <Query>
+        <DataSourceName>ILS</DataSourceName>
+        <CommandText>=Parameters!SourceHeaderFieldsProcedure.Value &amp; " " &amp; Parameters!SourceKey.Value &amp; ", '" &amp; User!Language &amp; "'"</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="row_position">
+          <DataField>row_position</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="column_position">
+          <DataField>column_position</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="name">
+          <DataField>name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="value">
+          <DataField>value</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="ColonResource">
+      <Query>
+        <DataSourceName>ILS</DataSourceName>
+        <CommandText>="select dbo.RSCMfn_RtrvResource('COLON', 'Text', '" &amp; User!Language &amp; "') text"</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="text">
+          <DataField>text</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="ConnectionString">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Data Source=wmssqlcluster12;Initial Catalog=ILS</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ConnectionString</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="SourceName">
+      <DataType>String</DataType>
+      <Prompt>SourceName</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="SourceKey">
+      <DataType>String</DataType>
+      <Prompt>SourceKey</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="SourceHeaderFieldsProcedure">
+      <DataType>String</DataType>
+      <Prompt>Source Data Subreport</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="GroupSequence">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>0</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>GroupSequence</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Shared Function TryConvertDateTime(ByVal s As String) As String
+    Dim result As DateTime
+
+    If DateTime.TryParse(s, result) Then
+        Return result.ToString()
+    End If
+
+    Return s
+End Function</Code>
+  <EmbeddedImages>
+    <EmbeddedImage Name="button150x23">
+      <MIMEType>image/jpeg</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+    <EmbeddedImage Name="buttonselected150x23">
+      <MIMEType>image/jpeg</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <Language>en-US</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>07c5e874-56b6-4e5c-9fd5-0589f2ce6d6b</rd:ReportID>
+</Report>

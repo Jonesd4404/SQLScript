@@ -1,0 +1,692 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Chart Name="Chart3">
+        <ChartCategoryHierarchy>
+          <ChartMembers>
+            <ChartMember>
+              <Label />
+            </ChartMember>
+          </ChartMembers>
+        </ChartCategoryHierarchy>
+        <ChartSeriesHierarchy>
+          <ChartMembers>
+            <ChartMember>
+              <Label>sum Detail Open Qty</Label>
+            </ChartMember>
+            <ChartMember>
+              <Label>locate Pending Qty</Label>
+            </ChartMember>
+            <ChartMember>
+              <Label>putaway Pending Qty</Label>
+            </ChartMember>
+            <ChartMember>
+              <Label>in Putaway Qty</Label>
+            </ChartMember>
+            <ChartMember>
+              <Label>closed Qty</Label>
+            </ChartMember>
+          </ChartMembers>
+        </ChartSeriesHierarchy>
+        <ChartData>
+          <ChartSeriesCollection>
+            <ChartSeries Name="sumDetailOpenQty">
+              <ChartDataPoints>
+                <ChartDataPoint>
+                  <ChartDataPointValues>
+                    <Y>=Sum(Fields!sumDetailOpenQty.Value)</Y>
+                  </ChartDataPointValues>
+                  <ChartDataLabel>
+                    <Style />
+                    <Label>#PERCENT{P0}</Label>
+                    <Visible>=(Sum(Fields!sumDetailOpenQty.Value, "ReceiptStatusGraph")&gt;0)</Visible>
+                    <Position>Outside</Position>
+                  </ChartDataLabel>
+                  <Style>
+                    <Color>Red</Color>
+                  </Style>
+                  <ChartMarker>
+                    <Style />
+                  </ChartMarker>
+                  <DataElementOutput>Output</DataElementOutput>
+                  <ChartItemInLegend>
+                    <LegendText>Check In Pending</LegendText>
+                  </ChartItemInLegend>
+                </ChartDataPoint>
+              </ChartDataPoints>
+              <Type>Shape</Type>
+              <Style />
+              <ChartEmptyPoints>
+                <Style />
+                <ChartMarker>
+                  <Style />
+                </ChartMarker>
+                <ChartDataLabel>
+                  <Style />
+                </ChartDataLabel>
+              </ChartEmptyPoints>
+              <ValueAxisName>Primary</ValueAxisName>
+              <CategoryAxisName>Primary</CategoryAxisName>
+              <ChartSmartLabel>
+                <CalloutLineColor>Black</CalloutLineColor>
+                <MinMovingDistance>0pt</MinMovingDistance>
+              </ChartSmartLabel>
+            </ChartSeries>
+            <ChartSeries Name="locatePendingQty">
+              <ChartDataPoints>
+                <ChartDataPoint>
+                  <ChartDataPointValues>
+                    <Y>=Sum(Fields!locatePendingQty.Value)</Y>
+                  </ChartDataPointValues>
+                  <ChartDataLabel>
+                    <Style />
+                    <Label>#PERCENT{P0}</Label>
+                    <Visible>=(Sum(Fields!locatePendingQty.Value, "ReceiptStatusGraph")&gt;0)</Visible>
+                    <Position>Outside</Position>
+                  </ChartDataLabel>
+                  <Style>
+                    <Color>Yellow</Color>
+                  </Style>
+                  <ChartMarker>
+                    <Style />
+                  </ChartMarker>
+                  <DataElementOutput>Output</DataElementOutput>
+                  <ChartItemInLegend>
+                    <LegendText>Locate Pending</LegendText>
+                  </ChartItemInLegend>
+                </ChartDataPoint>
+              </ChartDataPoints>
+              <Type>Shape</Type>
+              <Style />
+              <ChartEmptyPoints>
+                <Style />
+                <ChartMarker>
+                  <Style />
+                </ChartMarker>
+                <ChartDataLabel>
+                  <Style />
+                </ChartDataLabel>
+              </ChartEmptyPoints>
+              <ValueAxisName>Primary</ValueAxisName>
+              <CategoryAxisName>Primary</CategoryAxisName>
+              <ChartSmartLabel>
+                <CalloutLineColor>Black</CalloutLineColor>
+                <MinMovingDistance>0pt</MinMovingDistance>
+              </ChartSmartLabel>
+            </ChartSeries>
+            <ChartSeries Name="putawayPendingQty">
+              <ChartDataPoints>
+                <ChartDataPoint>
+                  <ChartDataPointValues>
+                    <Y>=Sum(Fields!putawayPendingQty.Value)</Y>
+                  </ChartDataPointValues>
+                  <ChartDataLabel>
+                    <Style />
+                    <Label>#PERCENT{P0}</Label>
+                    <Visible>=(Sum(Fields!putawayPendingQty.Value, "ReceiptStatusGraph")&gt;0)</Visible>
+                    <Position>Outside</Position>
+                  </ChartDataLabel>
+                  <Style>
+                    <Color>Green</Color>
+                  </Style>
+                  <ChartMarker>
+                    <Style />
+                  </ChartMarker>
+                  <DataElementOutput>Output</DataElementOutput>
+                  <ChartItemInLegend>
+                    <LegendText>Putaway Pending</LegendText>
+                  </ChartItemInLegend>
+                </ChartDataPoint>
+              </ChartDataPoints>
+              <Type>Shape</Type>
+              <Style />
+              <ChartEmptyPoints>
+                <Style />
+                <ChartMarker>
+                  <Style />
+                </ChartMarker>
+                <ChartDataLabel>
+                  <Style />
+                </ChartDataLabel>
+              </ChartEmptyPoints>
+              <ValueAxisName>Primary</ValueAxisName>
+              <CategoryAxisName>Primary</CategoryAxisName>
+              <ChartSmartLabel>
+                <CalloutLineColor>Black</CalloutLineColor>
+                <MinMovingDistance>0pt</MinMovingDistance>
+              </ChartSmartLabel>
+            </ChartSeries>
+            <ChartSeries Name="inPutawayQty">
+              <ChartDataPoints>
+                <ChartDataPoint>
+                  <ChartDataPointValues>
+                    <Y>=Sum(Fields!inPutawayQty.Value)</Y>
+                  </ChartDataPointValues>
+                  <ChartDataLabel>
+                    <Style />
+                    <Label>#PERCENT{P0}</Label>
+                    <Visible>=(Sum(Fields!inPutawayQty.Value, "ReceiptStatusGraph")&gt;0)</Visible>
+                    <Position>Outside</Position>
+                  </ChartDataLabel>
+                  <Style>
+                    <Color>DarkViolet</Color>
+                  </Style>
+                  <ChartMarker>
+                    <Style />
+                  </ChartMarker>
+                  <DataElementOutput>Output</DataElementOutput>
+                  <ChartItemInLegend>
+                    <LegendText>In Putaway</LegendText>
+                  </ChartItemInLegend>
+                </ChartDataPoint>
+              </ChartDataPoints>
+              <Type>Shape</Type>
+              <Style />
+              <ChartEmptyPoints>
+                <Style />
+                <ChartMarker>
+                  <Style />
+                </ChartMarker>
+                <ChartDataLabel>
+                  <Style />
+                </ChartDataLabel>
+              </ChartEmptyPoints>
+              <ValueAxisName>Primary</ValueAxisName>
+              <CategoryAxisName>Primary</CategoryAxisName>
+              <ChartSmartLabel>
+                <CalloutLineColor>Black</CalloutLineColor>
+                <MinMovingDistance>0pt</MinMovingDistance>
+              </ChartSmartLabel>
+            </ChartSeries>
+            <ChartSeries Name="closedQty">
+              <ChartDataPoints>
+                <ChartDataPoint>
+                  <ChartDataPointValues>
+                    <Y>=Sum(Fields!closedQty.Value)</Y>
+                  </ChartDataPointValues>
+                  <ChartDataLabel>
+                    <Style />
+                    <Label>#PERCENT{P0}</Label>
+                    <Visible>=(Sum(Fields!closedQty.Value, "ReceiptStatusGraph")&gt;0)</Visible>
+                    <Position>Outside</Position>
+                  </ChartDataLabel>
+                  <Style>
+                    <Color>Blue</Color>
+                  </Style>
+                  <ChartMarker>
+                    <Style />
+                  </ChartMarker>
+                  <DataElementOutput>Output</DataElementOutput>
+                  <ChartItemInLegend>
+                    <LegendText>Closed</LegendText>
+                  </ChartItemInLegend>
+                </ChartDataPoint>
+              </ChartDataPoints>
+              <Type>Shape</Type>
+              <Style />
+              <ChartEmptyPoints>
+                <Style />
+                <ChartMarker>
+                  <Style />
+                </ChartMarker>
+                <ChartDataLabel>
+                  <Style />
+                </ChartDataLabel>
+              </ChartEmptyPoints>
+              <ValueAxisName>Primary</ValueAxisName>
+              <CategoryAxisName>Primary</CategoryAxisName>
+              <ChartSmartLabel>
+                <CalloutLineColor>Black</CalloutLineColor>
+                <MinMovingDistance>0pt</MinMovingDistance>
+              </ChartSmartLabel>
+            </ChartSeries>
+          </ChartSeriesCollection>
+        </ChartData>
+        <ChartAreas>
+          <ChartArea Name="Default">
+            <ChartCategoryAxes>
+              <ChartAxis Name="Primary">
+                <Style>
+                  <FontSize>8pt</FontSize>
+                </Style>
+                <ChartAxisTitle>
+                  <Caption>Axis Title</Caption>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </ChartAxisTitle>
+                <ChartMajorGridLines>
+                  <Enabled>False</Enabled>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                    </Border>
+                  </Style>
+                </ChartMajorGridLines>
+                <ChartMinorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                      <Style>Dotted</Style>
+                    </Border>
+                  </Style>
+                </ChartMinorGridLines>
+                <ChartMinorTickMarks>
+                  <Length>0.5</Length>
+                </ChartMinorTickMarks>
+                <CrossAt>NaN</CrossAt>
+                <Minimum>NaN</Minimum>
+                <Maximum>NaN</Maximum>
+                <ChartAxisScaleBreak>
+                  <Style />
+                </ChartAxisScaleBreak>
+              </ChartAxis>
+              <ChartAxis Name="Secondary">
+                <Style>
+                  <FontSize>8pt</FontSize>
+                </Style>
+                <ChartAxisTitle>
+                  <Caption>Axis Title</Caption>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </ChartAxisTitle>
+                <ChartMajorGridLines>
+                  <Enabled>False</Enabled>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                    </Border>
+                  </Style>
+                </ChartMajorGridLines>
+                <ChartMinorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                      <Style>Dotted</Style>
+                    </Border>
+                  </Style>
+                </ChartMinorGridLines>
+                <ChartMinorTickMarks>
+                  <Length>0.5</Length>
+                </ChartMinorTickMarks>
+                <CrossAt>NaN</CrossAt>
+                <Location>Opposite</Location>
+                <Minimum>NaN</Minimum>
+                <Maximum>NaN</Maximum>
+                <ChartAxisScaleBreak>
+                  <Style />
+                </ChartAxisScaleBreak>
+              </ChartAxis>
+            </ChartCategoryAxes>
+            <ChartValueAxes>
+              <ChartAxis Name="Primary">
+                <Style>
+                  <FontSize>8pt</FontSize>
+                </Style>
+                <ChartAxisTitle>
+                  <Caption>Axis Title</Caption>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </ChartAxisTitle>
+                <ChartMajorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                    </Border>
+                  </Style>
+                </ChartMajorGridLines>
+                <ChartMinorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                      <Style>Dotted</Style>
+                    </Border>
+                  </Style>
+                </ChartMinorGridLines>
+                <ChartMinorTickMarks>
+                  <Length>0.5</Length>
+                </ChartMinorTickMarks>
+                <CrossAt>NaN</CrossAt>
+                <Minimum>NaN</Minimum>
+                <Maximum>NaN</Maximum>
+                <ChartAxisScaleBreak>
+                  <Style />
+                </ChartAxisScaleBreak>
+              </ChartAxis>
+              <ChartAxis Name="Secondary">
+                <Style>
+                  <FontSize>8pt</FontSize>
+                </Style>
+                <ChartAxisTitle>
+                  <Caption>Axis Title</Caption>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </ChartAxisTitle>
+                <ChartMajorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                    </Border>
+                  </Style>
+                </ChartMajorGridLines>
+                <ChartMinorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                      <Style>Dotted</Style>
+                    </Border>
+                  </Style>
+                </ChartMinorGridLines>
+                <ChartMinorTickMarks>
+                  <Length>0.5</Length>
+                </ChartMinorTickMarks>
+                <CrossAt>NaN</CrossAt>
+                <Location>Opposite</Location>
+                <Minimum>NaN</Minimum>
+                <Maximum>NaN</Maximum>
+                <ChartAxisScaleBreak>
+                  <Style />
+                </ChartAxisScaleBreak>
+              </ChartAxis>
+            </ChartValueAxes>
+            <ChartThreeDProperties>
+              <Enabled>true</Enabled>
+            </ChartThreeDProperties>
+            <Style>
+              <BackgroundGradientType>None</BackgroundGradientType>
+            </Style>
+          </ChartArea>
+        </ChartAreas>
+        <ChartLegends>
+          <ChartLegend Name="Default">
+            <Style>
+              <BackgroundGradientType>None</BackgroundGradientType>
+              <FontSize>8pt</FontSize>
+            </Style>
+            <Position>RightBottom</Position>
+            <DockOutsideChartArea>true</DockOutsideChartArea>
+            <ChartLegendTitle>
+              <Caption>Legend </Caption>
+              <Style>
+                <FontSize>8pt</FontSize>
+                <FontWeight>Bold</FontWeight>
+                <TextDecoration>Underline</TextDecoration>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </ChartLegendTitle>
+            <HeaderSeparatorColor>Black</HeaderSeparatorColor>
+            <ColumnSeparatorColor>Black</ColumnSeparatorColor>
+          </ChartLegend>
+        </ChartLegends>
+        <Palette>BrightPastel</Palette>
+        <ChartBorderSkin>
+          <Style>
+            <BackgroundColor>Gray</BackgroundColor>
+            <BackgroundGradientType>None</BackgroundGradientType>
+            <Color>White</Color>
+          </Style>
+        </ChartBorderSkin>
+        <ChartNoDataMessage Name="NoDataMessage">
+          <Caption>No Data Available</Caption>
+          <Style>
+            <BackgroundGradientType>None</BackgroundGradientType>
+            <TextAlign>General</TextAlign>
+            <VerticalAlign>Top</VerticalAlign>
+          </Style>
+        </ChartNoDataMessage>
+        <DataSetName>ReceiptStatusGraph</DataSetName>
+        <Height>2.20833in</Height>
+        <Width>4.47917in</Width>
+        <Style>
+          <Border>
+            <Color>White</Color>
+            <Style>Solid</Style>
+          </Border>
+          <BackgroundColor>White</BackgroundColor>
+          <BackgroundGradientType>None</BackgroundGradientType>
+        </Style>
+      </Chart>
+    </ReportItems>
+    <Height>2.20833in</Height>
+    <Style />
+  </Body>
+  <Width>4.47917in</Width>
+  <Page>
+    <PageHeight>1.6125in</PageHeight>
+    <PageWidth>4.32927in</PageWidth>
+    <Style>
+      <BackgroundColor>White</BackgroundColor>
+    </Style>
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="ReceiptStatusGraph">
+      <DataSourceReference>SCALE</DataSourceReference>
+      <rd:SecurityType>DataBase</rd:SecurityType>
+      <rd:DataSourceID>5830719e-a68e-4ac1-9017-92b85f081e74</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="ReceiptStatusGraph">
+      <Query>
+        <DataSourceName>ReceiptStatusGraph</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@INTERNAL_RECEIPT_NUM">
+            <Value>=Parameters!INTERNAL_RECEIPT_NUM.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>RPT_ReceiptStatusHeader</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="company">
+          <DataField>company</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="receipt_date">
+          <DataField>receipt_date</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="receipt_id">
+          <DataField>receipt_id</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="receipt_id_type">
+          <DataField>receipt_id_type</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="receipt_type">
+          <DataField>receipt_type</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ship_from_name">
+          <DataField>ship_from_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ship_from_address1">
+          <DataField>ship_from_address1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ship_from_address2">
+          <DataField>ship_from_address2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ship_from_address3">
+          <DataField>ship_from_address3</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ship_from_city">
+          <DataField>ship_from_city</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ship_from_country">
+          <DataField>ship_from_country</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ship_from_postal_code">
+          <DataField>ship_from_postal_code</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ship_from_state">
+          <DataField>ship_from_state</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="total_lines">
+          <DataField>total_lines</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="sumDetailOpenQty">
+          <DataField>sumDetailOpenQty</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="sumDetailTotalQty">
+          <DataField>sumDetailTotalQty</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="aggregatePOId">
+          <DataField>aggregatePOId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="trailing_sts">
+          <DataField>trailing_sts</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="close_date">
+          <DataField>close_date</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="total_qty">
+          <DataField>total_qty</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="total_containers">
+          <DataField>total_containers</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="trailer_id">
+          <DataField>trailer_id</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="user_def1">
+          <DataField>user_def1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="user_def2">
+          <DataField>user_def2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="user_def3">
+          <DataField>user_def3</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="user_def4">
+          <DataField>user_def4</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="user_def5">
+          <DataField>user_def5</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="user_def6">
+          <DataField>user_def6</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="user_def7">
+          <DataField>user_def7</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="user_def8">
+          <DataField>user_def8</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="warehouse">
+          <DataField>warehouse</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="locatePendingQty">
+          <DataField>locatePendingQty</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="putawayPendingQty">
+          <DataField>putawayPendingQty</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="inPutawayQty">
+          <DataField>inPutawayQty</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="closedQty">
+          <DataField>closedQty</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="CONNECTIONSTRING">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Data Source=wmssqlcluster12;Initial Catalog=ILS</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ConnectionString</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="DOCUMENT_TYPE">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>30</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>DOCUMENT TYPE</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LANGUAGE">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>English</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LANGUAGE</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="INTERNAL_RECEIPT_NUM">
+      <DataType>Float</DataType>
+      <Prompt>INTERNAL RECEIPT NUM</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Shared Function TryConvertDateTime(ByVal s As String) As String
+    Dim result As DateTime
+
+    If DateTime.TryParse(s, result) Then
+        Return result.ToString()
+    End If
+
+    Return s
+End Function</Code>
+  <EmbeddedImages>
+    <EmbeddedImage Name="button150x23">
+      <MIMEType>image/jpeg</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+    <EmbeddedImage Name="buttonselected150x23">
+      <MIMEType>image/jpeg</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <Language>en-US</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>07c5e874-56b6-4e5c-9fd5-0589f2ce6d6b</rd:ReportID>
+</Report>

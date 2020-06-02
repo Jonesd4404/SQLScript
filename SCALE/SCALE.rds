@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="SCALE">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=wmssqlcluster12;Initial Catalog=ILS</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>9b2a11f9-b28a-42c4-b9b8-513a711f77d9</DataSourceID>
+</RptDataSource>
