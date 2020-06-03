@@ -1,0 +1,13 @@
+Existing SAGE Drive Sizes
+C: 1.02 TB free of 1.08 TB
+E: 425 GB Free of  2.18 TB
+F: 249 GB Free of  3.27 TB
+G: 1.45 TB Free of 2.18 TB
+
+Proposed Sizes
+C: 2TB
+E: 4TB
+F: 8TB
+G: 4TB
+
+with additional drives to be installed at a later date to provide another 10 TB of space.

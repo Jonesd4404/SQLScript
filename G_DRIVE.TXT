@@ -1,0 +1,133 @@
+ Volume in drive G is TEMPDB
+ Volume Serial Number is 0AD4-49C2
+
+ Directory of G:\
+
+03/28/2019  06:41 AM    <DIR>          BackupFromBS-MAILFLOW-SQL
+03/28/2019  07:41 AM    <DIR>          BackupFromPCMS-SQL-N
+06/01/2018  09:11 AM    <DIR>          BackupFromPorcupine
+03/28/2019  04:30 AM    <DIR>          BackupFromSilverbell
+03/28/2019  06:53 AM    <DIR>          BackupFromWeirwood-Bckup
+03/11/2019  07:41 AM    <DIR>          DEJ
+07/20/2018  11:05 AM    <DIR>          MSSQL
+02/06/2015  03:57 PM    <DIR>          OLAP
+09/11/2018  01:23 PM    <DIR>          SAGE_Backups_For_Cashew
+               0 File(s)              0 bytes
+
+ Directory of G:\$RECYCLE.BIN\S-1-5-21-1847013600-811948178-1848903544-53871
+
+03/28/2019  01:49 PM               544 $I0D5MMB.sqb
+03/28/2019  01:49 PM               544 $IN8U9ZH.bak
+03/28/2019  01:49 PM               544 $IPNLCD4.BAK
+03/28/2019  01:49 PM               544 $ISKFNSX.partial
+03/28/2019  06:36 AM    10,089,279,488 $R0D5MMB.sqb
+03/27/2019  08:02 PM    10,401,853,440 $RN8U9ZH.bak
+03/23/2019  03:44 AM    82,032,469,504 $RPNLCD4.BAK
+03/27/2019  08:35 PM     9,573,768,704 $RSKFNSX.partial
+               8 File(s) 112,097,373,312 bytes
+
+ Directory of G:\BackupFromBS-MAILFLOW-SQL
+
+03/28/2019  06:41 AM    <DIR>          .
+03/28/2019  06:41 AM    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of G:\BackupFromPCMS-SQL-N
+
+03/28/2019  07:41 AM    <DIR>          .
+03/28/2019  07:41 AM    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of G:\BackupFromPorcupine
+
+06/01/2018  09:11 AM    <DIR>          .
+06/01/2018  09:11 AM    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of G:\BackupFromSilverbell
+
+03/28/2019  04:30 AM    <DIR>          .
+03/28/2019  04:30 AM    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of G:\BackupFromWeirwood-Bckup
+
+03/28/2019  06:53 AM    <DIR>          .
+03/28/2019  06:53 AM    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of G:\DEJ
+
+03/11/2019  07:41 AM    <DIR>          .
+03/11/2019  07:41 AM    <DIR>          ..
+03/27/2019  10:59 PM   413,400,760,320 ReportsData3.MDF
+02/18/2019  09:45 AM         1,558,016 SQL2000SampleDb.msi
+03/07/2019  09:07 AM         1,040,384 Visnetic_History.LDF
+03/07/2019  09:07 AM    44,784,549,888 VisNetic_History.MDF
+               4 File(s) 458,187,908,608 bytes
+
+ Directory of G:\MSSQL
+
+07/20/2018  11:05 AM    <DIR>          .
+07/20/2018  11:05 AM    <DIR>          ..
+03/28/2019  01:49 PM    <DIR>          Backup
+11/07/2018  08:28 AM    <DIR>          Data
+               0 File(s)              0 bytes
+
+ Directory of G:\MSSQL\Backup
+
+03/28/2019  01:49 PM    <DIR>          .
+03/28/2019  01:49 PM    <DIR>          ..
+03/28/2019  01:49 PM    <DIR>          BackupFromOrange
+03/28/2019  01:49 PM    <DIR>          BackupFromWeirwood
+               0 File(s)              0 bytes
+
+ Directory of G:\MSSQL\Backup\BackupFromOrange
+
+03/28/2019  01:49 PM    <DIR>          .
+03/28/2019  01:49 PM    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of G:\MSSQL\Backup\BackupFromWeirwood
+
+03/28/2019  01:49 PM    <DIR>          .
+03/28/2019  01:49 PM    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of G:\MSSQL\Data
+
+11/07/2018  08:28 AM    <DIR>          .
+11/07/2018  08:28 AM    <DIR>          ..
+03/26/2019  03:44 AM   145,227,841,536 tempdb.mdf
+03/26/2019  03:44 AM   145,679,908,864 tempdev2.mdf
+03/26/2019  03:44 AM   145,383,358,464 tempdev3.mdf
+03/26/2019  03:44 AM   142,065,926,144 tempdev4.mdf
+03/26/2019  03:44 AM   145,548,115,968 tempdev5.mdf
+03/26/2019  03:44 AM   145,532,715,008 tempdev6.mdf
+03/26/2019  03:44 AM   145,693,081,600 tempdev7.mdf
+03/26/2019  03:44 AM    32,532,463,616 tempdev8.mdf
+03/27/2019  05:17 AM    11,811,684,352 templog.ldf
+               9 File(s) 1,059,475,095,552 bytes
+
+ Directory of G:\OLAP
+
+02/06/2015  03:57 PM    <DIR>          .
+02/06/2015  03:57 PM    <DIR>          ..
+02/06/2015  03:57 PM    <DIR>          Temp
+               0 File(s)              0 bytes
+
+ Directory of G:\OLAP\Temp
+
+02/06/2015  03:57 PM    <DIR>          .
+02/06/2015  03:57 PM    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of G:\SAGE_Backups_For_Cashew
+
+09/11/2018  01:23 PM    <DIR>          .
+09/11/2018  01:23 PM    <DIR>          ..
+               0 File(s)              0 bytes
+
+     Total Files Listed:
+              21 File(s) 1,629,760,377,472 bytes
+              42 Dir(s)  769,115,557,888 bytes free

@@ -1,0 +1,182 @@
+ Volume in drive F is DATA
+ Volume Serial Number is 62AE-45FF
+
+ Directory of F:\
+
+06/04/2018  10:23 AM    <DIR>          MSSQL
+02/06/2015  03:57 PM    <DIR>          OLAP
+               0 File(s)              0 bytes
+
+ Directory of F:\$RECYCLE.BIN\S-1-5-21-1847013600-811948178-1848903544-53871
+
+03/07/2019  01:00 PM               544 $IQY432Q.bak
+03/06/2019  09:07 PM   107,012,844,032 $RQY432Q.bak
+               2 File(s) 107,012,844,576 bytes
+
+ Directory of F:\MSSQL
+
+06/04/2018  10:23 AM    <DIR>          .
+06/04/2018  10:23 AM    <DIR>          ..
+03/28/2019  08:01 AM    <DIR>          Backup
+03/27/2019  10:21 PM    <DIR>          BKUPFromSilverBell
+03/21/2019  07:53 AM    <DIR>          Data
+11/11/2016  12:21 PM    <DIR>          Log
+09/17/2015  11:16 AM    <DIR>          MaintResults
+06/01/2017  08:14 AM    <DIR>          SSIS_Jobs
+               0 File(s)              0 bytes
+
+ Directory of F:\MSSQL\Backup
+
+03/28/2019  08:01 AM    <DIR>          .
+03/28/2019  08:01 AM    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of F:\MSSQL\BKUPFromSilverBell
+
+03/27/2019  10:21 PM    <DIR>          .
+03/27/2019  10:21 PM    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of F:\MSSQL\Data
+
+03/21/2019  07:53 AM    <DIR>          .
+03/21/2019  07:53 AM    <DIR>          ..
+03/07/2019  09:08 AM   237,027,721,216 archHPB_SALES.mdf
+03/07/2019  09:08 AM    80,413,196,288 archShelfScan.mdf
+03/07/2019  09:08 AM    21,474,836,480 archSIPS.mdf
+03/27/2019  10:21 PM   261,421,006,848 BakerTaylor.mdf
+03/07/2019  09:07 AM    62,854,791,168 BuyOffersDev.mdf
+03/28/2019  05:58 AM   194,408,087,552 BUYS.mdf
+03/27/2019  11:06 PM    38,863,372,288 Catalog.mdf
+03/28/2019  08:01 AM     1,577,058,304 Cosmos.mdf
+03/28/2019  04:30 AM    11,641,815,040 Customers.mdf
+03/07/2019  09:07 AM         8,388,608 DBAAdmin.mdf
+03/07/2019  09:07 AM    42,653,974,528 Hive.mdf
+01/02/2018  01:18 PM     4,894,752,768 Hoarder.mdf
+03/07/2019  09:07 AM    92,341,796,864 HPB_HistoricalDaily.mdf
+03/27/2019  08:06 PM     9,328,984,064 HPB_INV.mdf
+03/28/2019  07:07 AM   229,777,473,536 HPB_SALES.mdf
+03/28/2019  06:52 AM    82,343,624,704 ISIS.mdf
+03/07/2019  09:07 AM    37,748,736,000 MathLab.mdf
+03/27/2019  07:36 PM    11,942,494,208 Monsoon.mdf
+01/02/2018  01:18 PM         4,194,304 MonsoonPerformance.mdf
+03/07/2019  09:07 AM       936,378,368 NewReportsDEV.mdf
+03/07/2019  09:07 AM        10,485,760 NorthWind.mdf
+03/07/2019  09:07 AM     7,871,660,032 OFS.mdf
+03/28/2019  07:41 AM   650,117,120,000 PCMS_IMPORT.mdf
+03/07/2019  09:07 AM         7,340,032 PUBS.mdf
+03/28/2019  06:52 AM    11,335,761,920 Reports.mdf
+03/20/2019  08:40 AM   673,322,106,880 ReportsView.mdf
+03/28/2019  07:32 AM    69,975,801,856 rHPB_Historical.mdf
+03/27/2019  08:45 PM   149,132,214,272 rILS_Data_1.mdf
+03/07/2019  02:59 PM   104,857,600,000 Sandbox.mdf
+03/07/2019  09:07 AM         4,194,304 Sandbox_RD.mdf
+01/02/2018  01:19 PM    15,533,604,864 SipsCore.mdf
+03/18/2019  08:34 AM    56,131,190,784 VisNetic MailFlow.mdf
+03/28/2019  06:40 AM    57,052,889,088 VisNetic_MailFlow_Original.mdf
+              33 File(s) 3,217,014,652,928 bytes
+
+ Directory of F:\MSSQL\Log
+
+11/11/2016  12:21 PM    <DIR>          .
+11/11/2016  12:21 PM    <DIR>          ..
+02/14/2019  11:05 PM               704 DBAAdmin__BackupLog.txt
+02/20/2015  08:55 AM             1,992 errAssignPermissions.txt
+02/14/2019  11:00 PM               700 master__BackupLog.txt
+02/14/2019  11:01 PM               698 model__BackupLog.txt
+02/14/2019  11:00 PM               696 msdb__BackupLog.txt
+03/28/2019  06:59 AM           212,828 result_sp_who2.txt
+               6 File(s)        217,618 bytes
+
+ Directory of F:\MSSQL\MaintResults
+
+09/17/2015  11:16 AM    <DIR>          .
+09/17/2015  11:16 AM    <DIR>          ..
+02/15/2015  05:32 PM           142,396 err_mtce_archHPB_SALES.txt
+01/03/2017  05:20 PM           114,614 err_mtce_archShelfScan.txt
+05/15/2017  11:47 AM           148,474 err_mtce_archSIPS.txt
+03/20/2015  11:09 AM           204,842 err_mtce_HPB_INV.txt
+04/07/2015  01:44 AM           780,802 err_mtce_HPB_SALES.txt
+09/13/2015  09:15 AM            83,602 err_mtce_ISIS.txt
+04/06/2015  07:51 PM           718,904 err_mtce_Monsoon.txt
+04/06/2015  08:16 PM         1,063,668 err_mtce_Reports.txt
+05/15/2017  02:48 PM         1,183,276 err_mtce_ReportsData.txt
+03/21/2019  07:44 AM           527,774 err_mtce_ReportsView.txt
+04/04/2015  11:52 PM           316,480 err_mtce_rHPB_Historical.txt
+04/06/2015  08:34 PM           722,638 err_mtce_rILS_Data.txt
+09/17/2015  04:09 PM           152,590 err_mtce_zzz_ReportsData.txt
+              13 File(s)      6,160,060 bytes
+
+ Directory of F:\MSSQL\SSIS_Jobs
+
+06/01/2017  08:14 AM    <DIR>          .
+06/01/2017  08:14 AM    <DIR>          ..
+06/01/2017  08:11 AM            23,829 Weirwood_SIPS_Evening_Import.dtsx
+               1 File(s)         23,829 bytes
+
+ Directory of F:\OLAP
+
+02/06/2015  03:57 PM    <DIR>          .
+02/06/2015  03:57 PM    <DIR>          ..
+02/06/2015  03:57 PM    <DIR>          Backup
+03/26/2019  03:43 AM    <DIR>          Data
+               0 File(s)              0 bytes
+
+ Directory of F:\OLAP\Backup
+
+02/06/2015  03:57 PM    <DIR>          .
+02/06/2015  03:57 PM    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of F:\OLAP\Data
+
+03/26/2019  03:43 AM    <DIR>          .
+03/26/2019  03:43 AM    <DIR>          ..
+02/06/2015  03:58 PM             1,966 Administrators.1.role.xml
+02/06/2015  03:58 PM               144 CryptKey.bin
+02/06/2015  03:58 PM    <DIR>          ExcelMDX.0.asm
+02/06/2015  03:58 PM             1,763 ExcelMDX.0.asm.xml
+02/06/2015  03:58 PM    <DIR>          EXCELXLINTERNAL.0.asm
+02/06/2015  03:58 PM             1,785 EXCELXLINTERNAL.0.asm.xml
+03/26/2019  03:43 AM             1,208 master.vmp
+02/06/2015  03:58 PM    <DIR>          System.0.asm
+02/06/2015  03:58 PM             1,937 System.0.asm.xml
+02/06/2015  03:58 PM    <DIR>          VBAMDX.0.asm
+02/06/2015  03:58 PM             1,939 VBAMDX.0.asm.xml
+02/06/2015  03:58 PM    <DIR>          VBAMDXINTERNAL.0.asm
+02/06/2015  03:58 PM             1,783 VBAMDXINTERNAL.0.asm.xml
+               8 File(s)         12,525 bytes
+
+ Directory of F:\OLAP\Data\ExcelMDX.0.asm
+
+02/06/2015  03:58 PM    <DIR>          .
+02/06/2015  03:58 PM    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of F:\OLAP\Data\EXCELXLINTERNAL.0.asm
+
+02/06/2015  03:58 PM    <DIR>          .
+02/06/2015  03:58 PM    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of F:\OLAP\Data\System.0.asm
+
+02/06/2015  03:58 PM    <DIR>          .
+02/06/2015  03:58 PM    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of F:\OLAP\Data\VBAMDX.0.asm
+
+02/06/2015  03:58 PM    <DIR>          .
+02/06/2015  03:58 PM    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of F:\OLAP\Data\VBAMDXINTERNAL.0.asm
+
+02/06/2015  03:58 PM    <DIR>          .
+02/06/2015  03:58 PM    <DIR>          ..
+               0 File(s)              0 bytes
+
+     Total Files Listed:
+              63 File(s) 3,324,033,911,536 bytes
+              45 Dir(s)  274,444,967,936 bytes free
