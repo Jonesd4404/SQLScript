@@ -1,0 +1,8 @@
+settlement-id	settlement-start-date	settlement-end-date	deposit-date	total-amount	currency	transaction-type	order-id	merchant-order-id	adjustment-id	shipment-id	marketplace-name	shipment-fee-type	shipment-fee-amount	order-fee-type	order-fee-amount	fulfillment-id	posted-date	order-item-code	merchant-order-item-id	merchant-adjustment-item-id	sku	quantity-purchased	price-type	price-amount	item-related-fee-type	item-related-fee-amount	misc-fee-amount	other-fee-amount	other-fee-reason-description	promotion-id	promotion-type	promotion-amount	direct-payment-type	direct-payment-amount	other-amount
+11521217151	2019-01-10T09:29:01+00:00	2019-01-24T09:29:00+00:00	2019-01-26T09:29:00+00:00	7.95	USD																														
+11521217151						Order	114-3443918-7128232			DxMlV1PW2	Amazon.com					MFN	2019-01-14T20:31:16+00:00	33340159957722			mon0001212307_loc	1													
+11521217151						Order	114-3443918-7128232			DxMlV1PW2	Amazon.com					MFN	2019-01-14T20:31:16+00:00	33340159957722			mon0001212307_loc		Principal	7.48											
+11521217151						Order	114-3443918-7128232			DxMlV1PW2	Amazon.com					MFN	2019-01-14T20:31:16+00:00	33340159957722			mon0001212307_loc		Shipping	3.99											
+11521217151						Order	114-3443918-7128232			DxMlV1PW2	Amazon.com					MFN	2019-01-14T20:31:16+00:00	33340159957722			mon0001212307_loc				Commission	-1.12									
+11521217151						Order	114-3443918-7128232			DxMlV1PW2	Amazon.com					MFN	2019-01-14T20:31:16+00:00	33340159957722			mon0001212307_loc				ShippingHB	-0.60									
+11521217151						Order	114-3443918-7128232			DxMlV1PW2	Amazon.com					MFN	2019-01-14T20:31:16+00:00	33340159957722			mon0001212307_loc				VariableClosingFee	-1.80									

@@ -1,0 +1,14 @@
+settlement-id	settlement-start-date	settlement-end-date	deposit-date	total-amount	currency	transaction-type	order-id	merchant-order-id	adjustment-id	shipment-id	marketplace-name	shipment-fee-type	shipment-fee-amount	order-fee-type	order-fee-amount	fulfillment-id	posted-date	order-item-code	merchant-order-item-id	merchant-adjustment-item-id	sku	quantity-purchased	price-type	price-amount	item-related-fee-type	item-related-fee-amount	misc-fee-amount	other-fee-amount	other-fee-reason-description	promotion-id	promotion-type	promotion-amount	direct-payment-type	direct-payment-amount	other-amount
+11017815701	2018-12-27T09:29:00+00:00	2019-01-10T09:29:01+00:00	2019-01-12T09:29:01+00:00	8.62	USD																														
+11017815701						Order	114-6637026-0600231			DqNMhFQf2	Amazon.com					MFN	2019-01-07T20:21:41+00:00	65809075797498			mon0002393204_loc	1													
+11017815701						Order	114-6637026-0600231			DqNMhFQf2	Amazon.com					MFN	2019-01-07T20:21:41+00:00	65809075797498			mon0002393204_loc		Principal	7.48											
+11017815701						Order	114-6637026-0600231			DqNMhFQf2	Amazon.com					MFN	2019-01-07T20:21:41+00:00	65809075797498			mon0002393204_loc		Tax	0.45											
+11017815701						Order	114-6637026-0600231			DqNMhFQf2	Amazon.com					MFN	2019-01-07T20:21:41+00:00	65809075797498			mon0002393204_loc		Shipping	3.99											
+11017815701						Order	114-6637026-0600231			DqNMhFQf2	Amazon.com					MFN	2019-01-07T20:21:41+00:00	65809075797498			mon0002393204_loc		ShippingTax	0.24											
+11017815701						Order	114-6637026-0600231			DqNMhFQf2	Amazon.com					MFN	2019-01-07T20:21:41+00:00	65809075797498			mon0002393204_loc				Commission	-1.12									
+11017815701						Order	114-6637026-0600231			DqNMhFQf2	Amazon.com					MFN	2019-01-07T20:21:41+00:00	65809075797498			mon0002393204_loc				SalesTaxServiceFee	-0.02									
+11017815701						Order	114-6637026-0600231			DqNMhFQf2	Amazon.com					MFN	2019-01-07T20:21:41+00:00	65809075797498			mon0002393204_loc				ShippingHB	-0.60									
+11017815701						Order	114-6637026-0600231			DqNMhFQf2	Amazon.com					MFN	2019-01-07T20:21:41+00:00	65809075797498			mon0002393204_loc				VariableClosingFee	-1.80									
+11017815701						Payable to Amazon											2018-12-27T09:29:00+00:00																		-50.49
+11017815701						Successful charge											2018-12-27T13:01:53+00:00																		50.49    
+

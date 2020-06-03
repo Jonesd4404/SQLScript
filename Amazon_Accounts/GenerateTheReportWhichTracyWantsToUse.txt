@@ -1,0 +1,14 @@
+Log into Amazon Seller Central using the account you want a report for
+Use the Last Pass application for the password
+select payments from the Reports menu
+Select Date Range Reports or month from the Date Range Reports
+click Generate Report
+Refresh until the report has been generated.
+Download Report created and import into SQL
+
+
+
+
+https://sellercentral.amazon.com/payments/reports/custom/request?tbla_daterangereportstable=sort:%7B%22sortOrder%22%3A%22DESCENDING%22%7D;search:undefined;pagination:1;
+
+

@@ -1,0 +1,11 @@
+settlement-id	settlement-start-date	settlement-end-date	deposit-date	total-amount	currency	transaction-type	order-id	merchant-order-id	adjustment-id	shipment-id	marketplace-name	shipment-fee-type	shipment-fee-amount	order-fee-type	order-fee-amount	fulfillment-id	posted-date	order-item-code	merchant-order-item-id	merchant-adjustment-item-id	sku	quantity-purchased	price-type	price-amount	item-related-fee-type	item-related-fee-amount	misc-fee-amount	other-fee-amount	other-fee-reason-description	promotion-id	promotion-type	promotion-amount	direct-payment-type	direct-payment-amount	other-amount
+10228183411	2018-08-08T13:15:13+00:00	2018-09-19T13:11:13+00:00	2018-09-21T13:11:13+00:00	8.76	USD																														
+10228183411						Order	112-4918420-3982609			D7mKgVQW9	Amazon.com					MFN	2018-09-19T08:51:54+00:00	49729903439818			mon0000309715_loc	1													
+10228183411						Order	112-4918420-3982609			D7mKgVQW9	Amazon.com					MFN	2018-09-19T08:51:54+00:00	49729903439818			mon0000309715_loc		Principal	7.48											
+10228183411						Order	112-4918420-3982609			D7mKgVQW9	Amazon.com					MFN	2018-09-19T08:51:54+00:00	49729903439818			mon0000309715_loc		Tax	0.54											
+10228183411						Order	112-4918420-3982609			D7mKgVQW9	Amazon.com					MFN	2018-09-19T08:51:54+00:00	49729903439818			mon0000309715_loc		Shipping	3.99											
+10228183411						Order	112-4918420-3982609			D7mKgVQW9	Amazon.com					MFN	2018-09-19T08:51:54+00:00	49729903439818			mon0000309715_loc		ShippingTax	0.29											
+10228183411						Order	112-4918420-3982609			D7mKgVQW9	Amazon.com					MFN	2018-09-19T08:51:54+00:00	49729903439818			mon0000309715_loc				Commission	-1.12									
+10228183411						Order	112-4918420-3982609			D7mKgVQW9	Amazon.com					MFN	2018-09-19T08:51:54+00:00	49729903439818			mon0000309715_loc				SalesTaxServiceFee	-0.02									
+10228183411						Order	112-4918420-3982609			D7mKgVQW9	Amazon.com					MFN	2018-09-19T08:51:54+00:00	49729903439818			mon0000309715_loc				ShippingHB	-0.60									
+10228183411						Order	112-4918420-3982609			D7mKgVQW9	Amazon.com					MFN	2018-09-19T08:51:54+00:00	49729903439818			mon0000309715_loc				VariableClosingFee	-1.80									
