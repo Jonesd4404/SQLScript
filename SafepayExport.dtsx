@@ -1,0 +1,560 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/12/2017 12:03:25 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="WHITEBUD"
+  DTS:CreatorName="HPB\paul_neyland"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{54F0F205-81B2-428D-A41B-BAC72BFCD2A9}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.5000.0"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="SafepayExport"
+  DTS:VersionGUID="{8B447BD5-0AC8-4C68-9058-A15DFFA51247}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionFlatFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{EC09508B-B515-48DA-AE30-1EFA8C7B7A15}"
+      DTS:ObjectName="DestinationConnectionFlatFile">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="F:\custom\Dynamics\Safepay\BOT\Safepay.CSV">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TRANSTYPE"
+              DTS:DTSID="{404E1376-95FA-448C-A08A-24B3168BA676}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="15"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="BNKACTNM"
+              DTS:DTSID="{27AA6FDD-419E-40F3-AE78-9F675F970F13}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="304"
+              DTS:DataScale="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TRXDATE"
+              DTS:DTSID="{12D91324-C834-48C3-8C36-94EB92D8B94D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="21"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CMTrxNum"
+              DTS:DTSID="{9FB02E1A-A2CC-4386-A1A8-9D216F2197AC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="31"
+              DTS:DataType="131"
+              DTS:DataPrecision="38"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TRXAMNT"
+              DTS:DTSID="{CE7A9394-8971-4DC8-A60C-7AF87BB5A0A5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="65"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="paidtorcvdfrom"
+              DTS:DTSID="{1D2F1A21-33C0-4A35-A236-40AC2D689051}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="61"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ADDRESS1"
+              DTS:DTSID="{AEAA59D1-15D5-41D1-916E-49817B23B143}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{55E10160-BAAA-4C99-84AF-A530CC5D9FEE}"
+      DTS:ObjectName="SourceConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=WHITEBUD;User ID=sa;Initial Catalog=HPB;Provider=SQLNCLI11;Auto Translate=false;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAsIV2AR0PbkGh1p4/jG94tgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAXeOYbLXprAjKf1kj8NFy2AAAAAASAAACgAAAAEAAAANpmHRmv7vtWRoEcwcToA50YAAAAANRi7NVW+aaVDN22TePmbv8mLFMM59q5FAAAAMuJZ25t86lAoyVm47glnZHP197f</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{C0388CDE-038C-414C-A3D5-84FCC533ABA5}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - Safepay_CSV"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Flat File Destination"
+              localeId="1033"
+              name="Destination - Safepay_CSV">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - Safepay_CSV.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionFlatFile]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionFlatFile]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - Safepay_CSV.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Safepay_CSV.Inputs[Flat File Destination Input].Columns[TRANSTYPE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="TRANSTYPE"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Safepay_CSV.Inputs[Flat File Destination Input].ExternalColumns[TRANSTYPE]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[TRANSTYPE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Safepay_CSV.Inputs[Flat File Destination Input].Columns[BNKACTNM]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="BNKACTNM"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Safepay_CSV.Inputs[Flat File Destination Input].ExternalColumns[BNKACTNM]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[BNKACTNM]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Safepay_CSV.Inputs[Flat File Destination Input].Columns[TRXDATE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="TRXDATE"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Safepay_CSV.Inputs[Flat File Destination Input].ExternalColumns[TRXDATE]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[TRXDATE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Safepay_CSV.Inputs[Flat File Destination Input].Columns[CMTrxNum]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="21"
+                      cachedName="CMTrxNum"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Safepay_CSV.Inputs[Flat File Destination Input].ExternalColumns[CMTrxNum]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[CMTrxNum]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Safepay_CSV.Inputs[Flat File Destination Input].Columns[TRXAMNT]"
+                      cachedDataType="numeric"
+                      cachedName="TRXAMNT"
+                      cachedPrecision="19"
+                      cachedScale="5"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Safepay_CSV.Inputs[Flat File Destination Input].ExternalColumns[TRXAMNT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[TRXAMNT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Safepay_CSV.Inputs[Flat File Destination Input].Columns[paidtorcvdfrom]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="65"
+                      cachedName="paidtorcvdfrom"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Safepay_CSV.Inputs[Flat File Destination Input].ExternalColumns[paidtorcvdfrom]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[paidtorcvdfrom]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Safepay_CSV.Inputs[Flat File Destination Input].Columns[ADDRESS1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="61"
+                      cachedName="ADDRESS1"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Safepay_CSV.Inputs[Flat File Destination Input].ExternalColumns[ADDRESS1]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[ADDRESS1]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Safepay_CSV.Inputs[Flat File Destination Input].ExternalColumns[TRANSTYPE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="TRANSTYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Safepay_CSV.Inputs[Flat File Destination Input].ExternalColumns[BNKACTNM]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="BNKACTNM" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Safepay_CSV.Inputs[Flat File Destination Input].ExternalColumns[TRXDATE]"
+                      dataType="dbTimeStamp2"
+                      name="TRXDATE"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Safepay_CSV.Inputs[Flat File Destination Input].ExternalColumns[CMTrxNum]"
+                      codePage="1252"
+                      dataType="str"
+                      length="21"
+                      name="CMTrxNum" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Safepay_CSV.Inputs[Flat File Destination Input].ExternalColumns[TRXAMNT]"
+                      dataType="numeric"
+                      name="TRXAMNT"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Safepay_CSV.Inputs[Flat File Destination Input].ExternalColumns[paidtorcvdfrom]"
+                      codePage="1252"
+                      dataType="str"
+                      length="65"
+                      name="paidtorcvdfrom" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Safepay_CSV.Inputs[Flat File Destination Input].ExternalColumns[ADDRESS1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="61"
+                      name="ADDRESS1" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - Query"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source - Query"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DECLARE @UPLOADDATE DATETIME
+
+SET @UPLOADDATE = (SELECT GETDATE ()  )
+
+SELECT 
+
+TRANSTYPE = 
+	CASE A.CMTrxType
+	WHEN 4 THEN 'V'
+	ELSE 'C'
+	END,
+
+D.BNKACTNM,
+A.TRXDATE,
+A.CMTrxNum,
+A.TRXAMNT,
+A.paidtorcvdfrom,
+C.ADDRESS1
+-- FROM THIS POINT DOWN ONLY FOR CONFIRMATION PURPOSES
+/*
+B.CMLinkID,
+C.VNDCHKNM,
+A.MEUPLDID,
+A.CHEKBKID,
+A.CMTrxType
+*/
+
+
+FROM ME123504 A INNER JOIN CM20200 B ON A.CHEKBKID = B.CHEKBKID AND A.CMTrxNum = B.CMTrxNum INNER JOIN PM00200 C ON B.CMLinkID = C.VENDORID INNER JOIN CM00100 D ON A.CHEKBKID = D.CHEKBKID
+
+WHERE YEAR(A.MEUPDT) = YEAR(@UPLOADDATE) AND MONTH(A.MEUPDT) = MONTH(@UPLOADDATE) AND DAY(A.MEUPDT) = DAY(@UPLOADDATE)</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - Query.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[TRANSTYPE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[TRANSTYPE]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[TRANSTYPE]"
+                      name="TRANSTYPE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[BNKACTNM]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[BNKACTNM]"
+                      length="15"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[BNKACTNM]"
+                      name="BNKACTNM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[TRXDATE]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[TRXDATE]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[TRXDATE]"
+                      name="TRXDATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[CMTrxNum]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[CMTrxNum]"
+                      length="21"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[CMTrxNum]"
+                      name="CMTrxNum"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[TRXAMNT]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[TRXAMNT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[TRXAMNT]"
+                      name="TRXAMNT"
+                      precision="19"
+                      scale="5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[paidtorcvdfrom]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[paidtorcvdfrom]"
+                      length="65"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[paidtorcvdfrom]"
+                      name="paidtorcvdfrom"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[ADDRESS1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[ADDRESS1]"
+                      length="61"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[ADDRESS1]"
+                      name="ADDRESS1"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[TRANSTYPE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="TRANSTYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[BNKACTNM]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="BNKACTNM" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[TRXDATE]"
+                      dataType="dbTimeStamp"
+                      name="TRXDATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[CMTrxNum]"
+                      codePage="1252"
+                      dataType="str"
+                      length="21"
+                      name="CMTrxNum" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[TRXAMNT]"
+                      dataType="numeric"
+                      name="TRXAMNT"
+                      precision="19"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[paidtorcvdfrom]"
+                      codePage="1252"
+                      dataType="str"
+                      length="65"
+                      name="paidtorcvdfrom" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[ADDRESS1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="61"
+                      name="ADDRESS1" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[TRANSTYPE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[TRANSTYPE]"
+                      name="TRANSTYPE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[BNKACTNM]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[BNKACTNM]"
+                      name="BNKACTNM" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[TRXDATE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[TRXDATE]"
+                      name="TRXDATE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[CMTrxNum]"
+                      codePage="1252"
+                      dataType="str"
+                      length="21"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[CMTrxNum]"
+                      name="CMTrxNum" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[TRXAMNT]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[TRXAMNT]"
+                      name="TRXAMNT"
+                      precision="19"
+                      scale="5" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[paidtorcvdfrom]"
+                      codePage="1252"
+                      dataType="str"
+                      length="65"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[paidtorcvdfrom]"
+                      name="paidtorcvdfrom" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ADDRESS1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="61"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ADDRESS1]"
+                      name="ADDRESS1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task 1\Destination - Safepay_CSV.Inputs[Flat File Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+</DTS:Executable>

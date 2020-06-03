@@ -1,0 +1,24 @@
+db.createUser({
+		user:"DJones",
+		pwd:"08428167",
+		roles: ["readWrite", "dbAdmin"]
+});
+
+db.createUser({
+		user:"BPaul",
+		pwd:"1234567890",
+		roles: ["readWrite", "dbAdmin"]
+});
+
+db.createUser({
+		user:"Cobra_Worker",
+		pwd:"c0BrAwo3k51",
+		roles: ["readWrite"]
+});
+
+
+db.createUser({
+		user:"DGreen",
+		pwd:"1234567890",
+		roles: ["readWrite", "dbAdmin"]
+});

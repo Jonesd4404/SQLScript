@@ -1,0 +1,13 @@
+{
+	first_name:"Dale",
+	last_name:"Jones",
+	guitars: ["Les Paul Futura","Les Paul Classic","Les Paul Classic T"],
+	address:{
+		street:"2714 Blackwood Dr.",
+		city:"Arlington",
+		state:"Texas",
+		zipcode:"76013"
+		}
+
+
+}

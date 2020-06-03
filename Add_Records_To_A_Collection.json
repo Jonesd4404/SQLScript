@@ -1,0 +1,3 @@
+db.customers.insert({first_name:"John", last_name:"Doe"});
+db.customers.insert({first_name:"Tessa", last_name:"Jones"});
+db.customers.insert({first_name:"Chico", last_name:"Jones"});
