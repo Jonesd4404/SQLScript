@@ -3,7 +3,7 @@
   <DataSources>
     <DataSource Name="SPRUCE">
       <DataSourceReference>SPRUCE</DataSourceReference>
-      <rd:DataSourceID>ef4246bd-2a8f-404d-8ed8-ef6478e3f206</rd:DataSourceID>
+      <rd:DataSourceID>a4828f9c-f7cb-41f2-8971-b7d207f320b3</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <BottomMargin>0.25in</BottomMargin>
@@ -39,7 +39,7 @@
   <Body>
     <ReportItems>
       <Table Name="table1">
-        <DataSetName>ACT_StoreTransferSummary</DataSetName>
+        <DataSetName>ACT_RDCDistributionSummary</DataSetName>
         <Details>
           <TableRows>
             <TableRow>
@@ -324,8 +324,8 @@
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox7">
-                      <rd:DefaultName>textbox7</rd:DefaultName>
+                    <Textbox Name="textbox16">
+                      <rd:DefaultName>textbox16</rd:DefaultName>
                       <ZIndex>8</ZIndex>
                       <Style>
                         <BorderStyle>
@@ -345,8 +345,8 @@
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox3">
-                      <rd:DefaultName>textbox3</rd:DefaultName>
+                    <Textbox Name="textbox12">
+                      <rd:DefaultName>textbox12</rd:DefaultName>
                       <ZIndex>7</ZIndex>
                       <Style>
                         <BorderStyle>
@@ -372,25 +372,25 @@
         </Header>
         <TableColumns>
           <TableColumn>
-            <Width>1.08727in</Width>
+            <Width>1.06443in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>1.31617in</Width>
+            <Width>1.28852in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>1.20172in</Width>
+            <Width>1.23249in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>1.56795in</Width>
+            <Width>1.53501in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>1.56795in</Width>
+            <Width>1.53501in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>0.6867in</Width>
+            <Width>0.72829in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>0.57225in</Width>
+            <Width>0.61625in</Width>
           </TableColumn>
         </TableColumns>
       </Table>
@@ -411,20 +411,20 @@
           <PaddingTop>2pt</PaddingTop>
         </Style>
         <CanGrow>true</CanGrow>
-        <Value>Store Transfers Summary</Value>
+        <Value>RDC Distributions Summary</Value>
       </Textbox>
     </ReportItems>
     <Height>0.3in</Height>
     <PrintOnLastPage>true</PrintOnLastPage>
     <PrintOnFirstPage>true</PrintOnFirstPage>
   </PageHeader>
-  <rd:ReportID>2943ce09-f725-4584-98c1-c7959c9a8a95</rd:ReportID>
+  <rd:ReportID>f2715fef-25a2-4d3b-b776-7fc96c6590fd</rd:ReportID>
   <LeftMargin>0.25in</LeftMargin>
   <DataSets>
-    <DataSet Name="ACT_StoreTransferSummary">
+    <DataSet Name="ACT_RDCDistributionSummary">
       <Query>
         <CommandType>StoredProcedure</CommandType>
-        <CommandText>ACT_StoreTransferSummary</CommandText>
+        <CommandText>ACT_RDCDistributionSummary</CommandText>
         <QueryParameters>
           <QueryParameter Name="@Month">
             <Value>=Parameters!Month.Value</Value>
@@ -436,13 +436,13 @@
         <DataSourceName>SPRUCE</DataSourceName>
       </Query>
       <Fields>
-        <Field Name="Credit">
-          <rd:TypeName>System.Decimal</rd:TypeName>
-          <DataField>Credit</DataField>
-        </Field>
         <Field Name="Debit">
           <rd:TypeName>System.Decimal</rd:TypeName>
           <DataField>Debit</DataField>
+        </Field>
+        <Field Name="Credit">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>Credit</DataField>
         </Field>
         <Field Name="ToLocationNo">
           <rd:TypeName>System.String</rd:TypeName>
@@ -519,7 +519,7 @@
         <CanGrow>true</CanGrow>
         <Value>="Page " + Cstr(Globals!PageNumber) + " of " + Cstr(Globals!TotalPages)</Value>
       </Textbox>
-      <Textbox Name="textbox12">
+      <Textbox Name="textbox1">
         <Left>3.25in</Left>
         <ZIndex>1</ZIndex>
         <Width>1.5in</Width>
@@ -533,7 +533,7 @@
         <CanGrow>true</CanGrow>
         <Value>=Globals!ExecutionTime</Value>
       </Textbox>
-      <Textbox Name="textbox1">
+      <Textbox Name="textbox3">
         <Width>2.35in</Width>
         <Style>
           <TextAlign>Left</TextAlign>

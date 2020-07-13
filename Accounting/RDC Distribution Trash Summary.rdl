@@ -3,7 +3,7 @@
   <DataSources>
     <DataSource Name="SPRUCE">
       <DataSourceReference>SPRUCE</DataSourceReference>
-      <rd:DataSourceID>ef4246bd-2a8f-404d-8ed8-ef6478e3f206</rd:DataSourceID>
+      <rd:DataSourceID>286bd0e0-4a12-4771-b716-ca5ff15f35e1</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <BottomMargin>0.25in</BottomMargin>
@@ -39,7 +39,85 @@
   <Body>
     <ReportItems>
       <Table Name="table1">
-        <DataSetName>ACT_StoreTransferSummary</DataSetName>
+        <Footer>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox7">
+                      <rd:DefaultName>textbox7</rd:DefaultName>
+                      <ZIndex>7</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <FontFamily>Verdana</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>8pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox10">
+                      <rd:DefaultName>textbox10</rd:DefaultName>
+                      <ZIndex>6</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <FontFamily>Verdana</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>8pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox11">
+                      <rd:DefaultName>textbox11</rd:DefaultName>
+                      <ZIndex>5</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <FontFamily>Verdana</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>8pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox12">
+                      <rd:DefaultName>textbox12</rd:DefaultName>
+                      <ZIndex>4</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <FontFamily>Verdana</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>8pt</FontSize>
+                        <Format>N</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=SUM(Fields!Debit.Value)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.15in</Height>
+            </TableRow>
+          </TableRows>
+        </Footer>
+        <DataSetName>ACT_RDCDistributionTrashSummary</DataSetName>
         <Details>
           <TableRows>
             <TableRow>
@@ -48,7 +126,7 @@
                   <ReportItems>
                     <Textbox Name="ToLocationNo_1">
                       <rd:DefaultName>ToLocationNo_1</rd:DefaultName>
-                      <ZIndex>6</ZIndex>
+                      <ZIndex>3</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Bottom>Solid</Bottom>
@@ -71,7 +149,7 @@
                   <ReportItems>
                     <Textbox Name="FromLocationNo">
                       <rd:DefaultName>FromLocationNo</rd:DefaultName>
-                      <ZIndex>5</ZIndex>
+                      <ZIndex>2</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Bottom>Solid</Bottom>
@@ -94,7 +172,7 @@
                   <ReportItems>
                     <Textbox Name="PTypeClass_1">
                       <rd:DefaultName>PTypeClass_1</rd:DefaultName>
-                      <ZIndex>4</ZIndex>
+                      <ZIndex>1</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Bottom>Solid</Bottom>
@@ -117,7 +195,6 @@
                   <ReportItems>
                     <Textbox Name="Debit">
                       <rd:DefaultName>Debit</rd:DefaultName>
-                      <ZIndex>3</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Bottom>Solid</Bottom>
@@ -137,77 +214,6 @@
                     </Textbox>
                   </ReportItems>
                 </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="Credit">
-                      <rd:DefaultName>Credit</rd:DefaultName>
-                      <ZIndex>2</ZIndex>
-                      <Style>
-                        <BorderStyle>
-                          <Bottom>Solid</Bottom>
-                        </BorderStyle>
-                        <TextAlign>Right</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <FontFamily>Verdana</FontFamily>
-                        <FontSize>8pt</FontSize>
-                        <Format>N</Format>
-                        <BorderColor>
-                          <Default>Gainsboro</Default>
-                        </BorderColor>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value>=Fields!Credit.Value</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="Month">
-                      <rd:DefaultName>Month</rd:DefaultName>
-                      <ZIndex>1</ZIndex>
-                      <Style>
-                        <BorderStyle>
-                          <Bottom>Solid</Bottom>
-                        </BorderStyle>
-                        <TextAlign>Right</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <FontFamily>Verdana</FontFamily>
-                        <FontSize>8pt</FontSize>
-                        <Format>g</Format>
-                        <BorderColor>
-                          <Default>Gainsboro</Default>
-                        </BorderColor>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value>=Fields!Month.Value</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="Year">
-                      <rd:DefaultName>Year</rd:DefaultName>
-                      <Style>
-                        <BorderStyle>
-                          <Bottom>Solid</Bottom>
-                        </BorderStyle>
-                        <TextAlign>Right</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <FontFamily>Verdana</FontFamily>
-                        <FontSize>8pt</FontSize>
-                        <Format>g</Format>
-                        <BorderColor>
-                          <Default>Gainsboro</Default>
-                        </BorderColor>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value>=Fields!Year.Value</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
               </TableCells>
               <Height>0.15in</Height>
             </TableRow>
@@ -218,10 +224,79 @@
             <TableRow>
               <TableCells>
                 <TableCell>
+                  <ColSpan>2</ColSpan>
+                  <ReportItems>
+                    <Textbox Name="textbox4">
+                      <rd:DefaultName>textbox4</rd:DefaultName>
+                      <ZIndex>14</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Bottom>Solid</Bottom>
+                        </BorderStyle>
+                        <TextAlign>Left</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <FontFamily>Verdana</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>8pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>="Run For: " + Cstr(Fields!Month.Value) + "/" + Cstr(Fields!Year.Value)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox8">
+                      <rd:DefaultName>textbox8</rd:DefaultName>
+                      <ZIndex>13</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Bottom>Solid</Bottom>
+                        </BorderStyle>
+                        <TextAlign>Left</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <FontFamily>Verdana</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>8pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox9">
+                      <rd:DefaultName>textbox9</rd:DefaultName>
+                      <ZIndex>12</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Bottom>Solid</Bottom>
+                        </BorderStyle>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <FontFamily>Verdana</FontFamily>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>8pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.15in</Height>
+            </TableRow>
+            <TableRow>
+              <TableCells>
+                <TableCell>
                   <ReportItems>
                     <Textbox Name="ToLocationNo">
                       <rd:DefaultName>ToLocationNo</rd:DefaultName>
-                      <ZIndex>13</ZIndex>
+                      <ZIndex>11</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Bottom>Solid</Bottom>
@@ -242,7 +317,7 @@
                   <ReportItems>
                     <Textbox Name="textbox2">
                       <rd:DefaultName>textbox2</rd:DefaultName>
-                      <ZIndex>12</ZIndex>
+                      <ZIndex>10</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Bottom>Solid</Bottom>
@@ -263,7 +338,7 @@
                   <ReportItems>
                     <Textbox Name="PTypeClass">
                       <rd:DefaultName>PTypeClass</rd:DefaultName>
-                      <ZIndex>11</ZIndex>
+                      <ZIndex>9</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Bottom>Solid</Bottom>
@@ -284,7 +359,7 @@
                   <ReportItems>
                     <Textbox Name="textbox13">
                       <rd:DefaultName>textbox13</rd:DefaultName>
-                      <ZIndex>10</ZIndex>
+                      <ZIndex>8</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Bottom>Solid</Bottom>
@@ -301,69 +376,6 @@
                     </Textbox>
                   </ReportItems>
                 </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox10">
-                      <rd:DefaultName>textbox10</rd:DefaultName>
-                      <ZIndex>9</ZIndex>
-                      <Style>
-                        <BorderStyle>
-                          <Bottom>Solid</Bottom>
-                        </BorderStyle>
-                        <TextAlign>Right</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <FontFamily>Verdana</FontFamily>
-                        <FontWeight>700</FontWeight>
-                        <FontSize>8pt</FontSize>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value>Credit</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox7">
-                      <rd:DefaultName>textbox7</rd:DefaultName>
-                      <ZIndex>8</ZIndex>
-                      <Style>
-                        <BorderStyle>
-                          <Bottom>Solid</Bottom>
-                        </BorderStyle>
-                        <TextAlign>Right</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <FontFamily>Verdana</FontFamily>
-                        <FontWeight>700</FontWeight>
-                        <FontSize>8pt</FontSize>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value>Month</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox3">
-                      <rd:DefaultName>textbox3</rd:DefaultName>
-                      <ZIndex>7</ZIndex>
-                      <Style>
-                        <BorderStyle>
-                          <Bottom>Solid</Bottom>
-                        </BorderStyle>
-                        <TextAlign>Right</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <FontFamily>Verdana</FontFamily>
-                        <FontWeight>700</FontWeight>
-                        <FontSize>8pt</FontSize>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value>Year</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
               </TableCells>
               <Height>0.15in</Height>
             </TableRow>
@@ -372,30 +384,21 @@
         </Header>
         <TableColumns>
           <TableColumn>
-            <Width>1.08727in</Width>
+            <Width>1.7125in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>1.31617in</Width>
+            <Width>1.7125in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>1.20172in</Width>
+            <Width>1.7125in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>1.56795in</Width>
-          </TableColumn>
-          <TableColumn>
-            <Width>1.56795in</Width>
-          </TableColumn>
-          <TableColumn>
-            <Width>0.6867in</Width>
-          </TableColumn>
-          <TableColumn>
-            <Width>0.57225in</Width>
+            <Width>1.7125in</Width>
           </TableColumn>
         </TableColumns>
       </Table>
     </ReportItems>
-    <Height>0.3in</Height>
+    <Height>0.6in</Height>
   </Body>
   <PageHeader>
     <ReportItems>
@@ -411,20 +414,20 @@
           <PaddingTop>2pt</PaddingTop>
         </Style>
         <CanGrow>true</CanGrow>
-        <Value>Store Transfers Summary</Value>
+        <Value>RDC Distributions Trash Summary</Value>
       </Textbox>
     </ReportItems>
     <Height>0.3in</Height>
     <PrintOnLastPage>true</PrintOnLastPage>
     <PrintOnFirstPage>true</PrintOnFirstPage>
   </PageHeader>
-  <rd:ReportID>2943ce09-f725-4584-98c1-c7959c9a8a95</rd:ReportID>
+  <rd:ReportID>966bf501-0e4e-49d1-a44f-9f6631f4110b</rd:ReportID>
   <LeftMargin>0.25in</LeftMargin>
   <DataSets>
-    <DataSet Name="ACT_StoreTransferSummary">
+    <DataSet Name="ACT_RDCDistributionTrashSummary">
       <Query>
         <CommandType>StoredProcedure</CommandType>
-        <CommandText>ACT_StoreTransferSummary</CommandText>
+        <CommandText>ACT_RDCDistributionTrashSummary</CommandText>
         <QueryParameters>
           <QueryParameter Name="@Month">
             <Value>=Parameters!Month.Value</Value>
@@ -436,13 +439,13 @@
         <DataSourceName>SPRUCE</DataSourceName>
       </Query>
       <Fields>
-        <Field Name="Credit">
-          <rd:TypeName>System.Decimal</rd:TypeName>
-          <DataField>Credit</DataField>
-        </Field>
         <Field Name="Debit">
           <rd:TypeName>System.Decimal</rd:TypeName>
           <DataField>Debit</DataField>
+        </Field>
+        <Field Name="Credit">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>Credit</DataField>
         </Field>
         <Field Name="ToLocationNo">
           <rd:TypeName>System.String</rd:TypeName>
@@ -501,13 +504,13 @@
       </Fields>
     </DataSet>
   </DataSets>
-  <Width>8in</Width>
+  <Width>6.85in</Width>
   <InteractiveHeight>11in</InteractiveHeight>
   <Language>en-US</Language>
   <PageFooter>
     <ReportItems>
       <Textbox Name="textbox6">
-        <Left>6.5in</Left>
+        <Left>5.35in</Left>
         <ZIndex>2</ZIndex>
         <Style>
           <TextAlign>Right</TextAlign>
@@ -519,8 +522,8 @@
         <CanGrow>true</CanGrow>
         <Value>="Page " + Cstr(Globals!PageNumber) + " of " + Cstr(Globals!TotalPages)</Value>
       </Textbox>
-      <Textbox Name="textbox12">
-        <Left>3.25in</Left>
+      <Textbox Name="textbox1">
+        <Left>2.675in</Left>
         <ZIndex>1</ZIndex>
         <Width>1.5in</Width>
         <Style>
@@ -533,7 +536,8 @@
         <CanGrow>true</CanGrow>
         <Value>=Globals!ExecutionTime</Value>
       </Textbox>
-      <Textbox Name="textbox1">
+      <Textbox Name="textbox3">
+        <Left>0in</Left>
         <Width>2.35in</Width>
         <Style>
           <TextAlign>Left</TextAlign>
