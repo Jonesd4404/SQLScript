@@ -7,16 +7,15 @@
   <RightMargin>1in</RightMargin>
   <LeftMargin>1in</LeftMargin>
   <BottomMargin>1in</BottomMargin>
-  <rd:ReportID>58621e21-5635-47e6-86a6-2b92239d1fc6</rd:ReportID>
-  <Width>3.625in</Width>
+  <rd:ReportID>31738e72-7c0a-4ae7-86dd-cc49483af7ca</rd:ReportID>
+  <Width>6in</Width>
   <Body>
     <ReportItems>
       <Textbox Name="textbox1">
         <rd:DefaultName>textbox1</rd:DefaultName>
         <Action>
-          <Hyperlink>http://reportssrs/Reports/Pages/Report.aspx?ItemPath=%2fMoney%2fZ+Monthly+Ledger+I-VI</Hyperlink>
+          <Hyperlink>http://reportssrs/Reports/Pages/Report.aspx?ItemPath=%2fHPB.com%2fHPB+E-Commerce+Order+Detail</Hyperlink>
         </Action>
-        <Width>3in</Width>
         <Style>
           <Color>Blue</Color>
           <PaddingLeft>2pt</PaddingLeft>
@@ -25,10 +24,11 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
         <CanGrow>true</CanGrow>
-        <Value>Z Monthly Ledger I-VI </Value>
+        <Height>0.25in</Height>
+        <Value>HPB E-Commerce Order Detail </Value>
       </Textbox>
     </ReportItems>
-    <Height>0.25in</Height>
+    <Height>0.375in</Height>
   </Body>
   <Language>en-US</Language>
   <TopMargin>1in</TopMargin>
