@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <DataSources>
-    <DataSource Name="SiPS_Development">
-      <rd:DataSourceID>0ab4292f-5348-4bad-871e-3dc688fafaae</rd:DataSourceID>
-      <DataSourceReference>SiPS_Development</DataSourceReference>
+    <DataSource Name="Development">
+      <rd:DataSourceID>d354951a-c6fb-4588-ad8a-e0d92e035eb8</rd:DataSourceID>
+      <DataSourceReference>Development</DataSourceReference>
+    </DataSource>
+    <DataSource Name="SiPS_Production">
+      <rd:DataSourceID>fda4181b-eee4-4817-a866-2f30943f331f</rd:DataSourceID>
+      <DataSourceReference>SiPS_Production</DataSourceReference>
     </DataSource>
   </DataSources>
   <InteractiveHeight>11in</InteractiveHeight>
   <ReportParameters>
-    <ReportParameter Name="LocationNo">
+    <ReportParameter Name="locationno">
       <DataType>String</DataType>
-      <AllowBlank>true</AllowBlank>
-      <Prompt>LocationNo</Prompt>
+      <Prompt>locationno</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>RPT_PARAMS_ShelfScanLocations</DataSetName>
@@ -20,17 +23,46 @@
         </DataSetReference>
       </ValidValues>
     </ReportParameter>
+    <ReportParameter Name="startdate">
+      <DataType>DateTime</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>=DateAdd(DateInterval.Day,-7,Today())</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>startdate</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="enddate">
+      <DataType>DateTime</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>=today()</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>enddate</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="reporttype">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value>="Totals"</Value>
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>reporttype</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
   </ReportParameters>
   <rd:DrawGrid>true</rd:DrawGrid>
   <InteractiveWidth>8.5in</InteractiveWidth>
   <rd:SnapToGrid>true</rd:SnapToGrid>
-  <RightMargin>0.25in</RightMargin>
-  <LeftMargin>0.25in</LeftMargin>
+  <RightMargin>1in</RightMargin>
+  <LeftMargin>1in</LeftMargin>
   <PageHeader>
     <PrintOnFirstPage>true</PrintOnFirstPage>
     <ReportItems>
-      <Textbox Name="textbox1">
-        <rd:DefaultName>textbox1</rd:DefaultName>
+      <Textbox Name="textbox4">
         <Style>
           <FontSize>18pt</FontSize>
           <TextAlign>Center</TextAlign>
@@ -38,66 +70,62 @@
           <PaddingRight>2pt</PaddingRight>
         </Style>
         <CanGrow>true</CanGrow>
-        <Value>Shelf Scan Report</Value>
+        <Value>Sales by Section</Value>
       </Textbox>
     </ReportItems>
     <Height>0.375in</Height>
     <PrintOnLastPage>true</PrintOnLastPage>
   </PageHeader>
-  <BottomMargin>0.25in</BottomMargin>
-  <rd:ReportID>6ff67eef-a89d-4c55-ac4c-ded3f5fa04aa</rd:ReportID>
-  <PageWidth>11in</PageWidth>
+  <BottomMargin>1in</BottomMargin>
+  <rd:ReportID>e6a91af6-153b-44f2-8009-012da1beb92b</rd:ReportID>
   <DataSets>
-    <DataSet Name="RPT_ShelfScanReport">
+    <DataSet Name="sips_shelfscansalesbysubject">
       <Fields>
-        <Field Name="locationno">
-          <DataField>locationno</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="subject">
           <DataField>subject</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="subjectkey">
-          <DataField>subjectkey</DataField>
-          <rd:TypeName>System.Int16</rd:TypeName>
-        </Field>
-        <Field Name="shelfQty">
-          <DataField>shelfQty</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="Qty">
-          <DataField>Qty</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="RetailValue">
-          <DataField>RetailValue</DataField>
+        <Field Name="totalsales">
+          <DataField>totalsales</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="SiPS">
-          <DataField>SiPS</DataField>
+        <Field Name="totalqty">
+          <DataField>totalqty</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="SiPSRetailValue">
-          <DataField>SiPSRetailValue</DataField>
+        <Field Name="sipssales">
+          <DataField>sipssales</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="DiPS">
-          <DataField>DiPS</DataField>
+        <Field Name="sipsqty">
+          <DataField>sipsqty</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="DiPSRetailValue">
-          <DataField>DiPSRetailValue</DataField>
+        <Field Name="dipssales">
+          <DataField>dipssales</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="dipsqty">
+          <DataField>dipsqty</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
       </Fields>
       <Query>
-        <DataSourceName>SiPS_Development</DataSourceName>
+        <DataSourceName>Development</DataSourceName>
         <CommandType>StoredProcedure</CommandType>
-        <CommandText>sips..RPT_ShelfScanReport</CommandText>
+        <CommandText>sips_shelfscansalesbysubject</CommandText>
         <QueryParameters>
           <QueryParameter Name="@locationno">
-            <Value>=Parameters!LocationNo.Value</Value>
+            <Value>=Parameters!locationno.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@startdate">
+            <Value>=Parameters!startdate.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@enddate">
+            <Value>=Parameters!enddate.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@reporttype">
+            <Value>=Parameters!reporttype.Value</Value>
           </QueryParameter>
         </QueryParameters>
       </Query>
@@ -110,43 +138,28 @@
         </Field>
       </Fields>
       <Query>
-        <DataSourceName>SiPS_Development</DataSourceName>
+        <DataSourceName>SiPS_Production</DataSourceName>
         <CommandType>StoredProcedure</CommandType>
         <CommandText>sips..RPT_PARAMS_ShelfScanLocations</CommandText>
       </Query>
     </DataSet>
   </DataSets>
-  <Code />
-  <Width>9.5in</Width>
+  <Width>6.125in</Width>
   <Body>
     <ReportItems>
       <Table Name="table1">
-        <DataSetName>RPT_ShelfScanReport</DataSetName>
+        <DataSetName>sips_shelfscansalesbysubject</DataSetName>
         <Details>
           <TableRows>
             <TableRow>
               <TableCells>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="subject_1">
-                      <rd:DefaultName>subject_1</rd:DefaultName>
-                      <Action>
-                        <Drillthrough>
-                          <ReportName>Shelf Scan Detail</ReportName>
-                          <Parameters>
-                            <Parameter Name="LocationNo">
-                              <Value>=Parameters!LocationNo.Value</Value>
-                            </Parameter>
-                            <Parameter Name="subjectkey">
-                              <Value>=Fields!subjectkey.Value</Value>
-                            </Parameter>
-                          </Parameters>
-                        </Drillthrough>
-                      </Action>
+                    <Textbox Name="subject">
+                      <rd:DefaultName>subject</rd:DefaultName>
                       <Style>
-                        <Color>MidnightBlue</Color>
                         <BorderColor>
-                          <Bottom>WhiteSmoke</Bottom>
+                          <Bottom>Gainsboro</Bottom>
                         </BorderColor>
                         <BorderStyle>
                           <Bottom>Solid</Bottom>
@@ -155,7 +168,7 @@
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
-                      <ZIndex>7</ZIndex>
+                      <ZIndex>6</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>=Fields!subject.Value</Value>
                     </Textbox>
@@ -163,54 +176,34 @@
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="shelfQty">
-                      <rd:DefaultName>shelfQty</rd:DefaultName>
+                    <Textbox Name="totalsales">
+                      <rd:DefaultName>totalsales</rd:DefaultName>
                       <Style>
                         <BorderColor>
-                          <Bottom>WhiteSmoke</Bottom>
+                          <Bottom>Gainsboro</Bottom>
                         </BorderColor>
                         <BorderStyle>
                           <Bottom>Solid</Bottom>
                         </BorderStyle>
                         <FontSize>8pt</FontSize>
+                        <Format>n2</Format>
                         <TextAlign>Right</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <ZIndex>6</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value>=Fields!shelfQty.Value</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox6">
-                      <rd:DefaultName>textbox6</rd:DefaultName>
-                      <Style>
-                        <BorderColor>
-                          <Bottom>WhiteSmoke</Bottom>
-                        </BorderColor>
-                        <BorderStyle>
-                          <Bottom>Solid</Bottom>
-                        </BorderStyle>
-                        <FontSize>8pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                       <ZIndex>5</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=fields!Qty.Value</Value>
+                      <Value>=Fields!totalsales.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="SiPS">
-                      <rd:DefaultName>SiPS</rd:DefaultName>
+                    <Textbox Name="totalqty">
+                      <rd:DefaultName>totalqty</rd:DefaultName>
                       <Style>
                         <BorderColor>
-                          <Bottom>WhiteSmoke</Bottom>
+                          <Bottom>Gainsboro</Bottom>
                         </BorderColor>
                         <BorderStyle>
                           <Bottom>Solid</Bottom>
@@ -222,39 +215,17 @@
                       </Style>
                       <ZIndex>4</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!SiPS.Value</Value>
+                      <Value>=Fields!totalqty.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="DiPS">
-                      <rd:DefaultName>DiPS</rd:DefaultName>
+                    <Textbox Name="sipssales">
+                      <rd:DefaultName>sipssales</rd:DefaultName>
                       <Style>
                         <BorderColor>
-                          <Bottom>WhiteSmoke</Bottom>
-                        </BorderColor>
-                        <BorderStyle>
-                          <Bottom>Solid</Bottom>
-                        </BorderStyle>
-                        <FontSize>8pt</FontSize>
-                        <TextAlign>Right</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <ZIndex>3</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value>=Fields!DiPS.Value</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="RetailValue">
-                      <rd:DefaultName>RetailValue</rd:DefaultName>
-                      <Style>
-                        <BorderColor>
-                          <Bottom>WhiteSmoke</Bottom>
+                          <Bottom>Gainsboro</Bottom>
                         </BorderColor>
                         <BorderStyle>
                           <Bottom>Solid</Bottom>
@@ -265,19 +236,41 @@
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
-                      <ZIndex>2</ZIndex>
+                      <ZIndex>3</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!RetailValue.Value</Value>
+                      <Value>=Fields!sipssales.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="SiPSRetailValue">
-                      <rd:DefaultName>SiPSRetailValue</rd:DefaultName>
+                    <Textbox Name="sipsqty">
+                      <rd:DefaultName>sipsqty</rd:DefaultName>
                       <Style>
                         <BorderColor>
-                          <Bottom>WhiteSmoke</Bottom>
+                          <Bottom>Gainsboro</Bottom>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Bottom>Solid</Bottom>
+                        </BorderStyle>
+                        <FontSize>8pt</FontSize>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                      <ZIndex>2</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!sipsqty.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="dipssales">
+                      <rd:DefaultName>dipssales</rd:DefaultName>
+                      <Style>
+                        <BorderColor>
+                          <Bottom>Gainsboro</Bottom>
                         </BorderColor>
                         <BorderStyle>
                           <Bottom>Solid</Bottom>
@@ -290,29 +283,28 @@
                       </Style>
                       <ZIndex>1</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!SiPSRetailValue.Value</Value>
+                      <Value>=Fields!dipssales.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="DiPSRetailValue">
-                      <rd:DefaultName>DiPSRetailValue</rd:DefaultName>
+                    <Textbox Name="dipsqty">
+                      <rd:DefaultName>dipsqty</rd:DefaultName>
                       <Style>
                         <BorderColor>
-                          <Bottom>WhiteSmoke</Bottom>
+                          <Bottom>Gainsboro</Bottom>
                         </BorderColor>
                         <BorderStyle>
                           <Bottom>Solid</Bottom>
                         </BorderStyle>
                         <FontSize>8pt</FontSize>
-                        <Format>n2</Format>
                         <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!DiPSRetailValue.Value</Value>
+                      <Value>=Fields!dipsqty.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -326,139 +318,22 @@
             <TableRow>
               <TableCells>
                 <TableCell>
-                  <ColSpan>2</ColSpan>
                   <ReportItems>
-                    <Textbox Name="textbox3">
-                      <rd:DefaultName>textbox3</rd:DefaultName>
+                    <Textbox Name="textbox1">
+                      <rd:DefaultName>textbox1</rd:DefaultName>
                       <Style>
+                        <BorderColor>
+                          <Bottom>Silver</Bottom>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Bottom>Solid</Bottom>
+                        </BorderStyle>
                         <FontSize>8pt</FontSize>
                         <FontWeight>700</FontWeight>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
-                      <ZIndex>30</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value>="LocationNo: " + Parameters!LocationNo.Value</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox5">
-                      <rd:DefaultName>textbox5</rd:DefaultName>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <ZIndex>29</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value />
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox7">
-                      <rd:DefaultName>textbox7</rd:DefaultName>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <TextAlign>Right</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <ZIndex>28</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value />
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox8">
-                      <rd:DefaultName>textbox8</rd:DefaultName>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <TextAlign>Right</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <ZIndex>27</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value />
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox12">
-                      <rd:DefaultName>textbox12</rd:DefaultName>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <TextAlign>Right</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <ZIndex>26</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value />
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox4">
-                      <rd:DefaultName>textbox4</rd:DefaultName>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <TextAlign>Right</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <ZIndex>25</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value />
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox16">
-                      <rd:DefaultName>textbox16</rd:DefaultName>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <TextAlign>Right</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <ZIndex>24</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value />
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-              </TableCells>
-              <Height>0.125in</Height>
-            </TableRow>
-            <TableRow>
-              <TableCells>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox21">
-                      <rd:DefaultName>textbox21</rd:DefaultName>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <ZIndex>23</ZIndex>
+                      <ZIndex>20</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>Subject</Value>
                     </Textbox>
@@ -466,60 +341,15 @@
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox22">
-                      <rd:DefaultName>textbox22</rd:DefaultName>
+                    <Textbox Name="textbox2">
+                      <rd:DefaultName>textbox2</rd:DefaultName>
                       <Style>
-                        <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <TextAlign>Right</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <ZIndex>22</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value>Shelf Count</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox36">
-                      <rd:DefaultName>textbox36</rd:DefaultName>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <TextAlign>Right</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <ZIndex>21</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value>Item Count</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox37">
-                      <rd:DefaultName>textbox37</rd:DefaultName>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <TextAlign>Right</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <ZIndex>20</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value># SIPS Items</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox38">
-                      <rd:DefaultName>textbox38</rd:DefaultName>
-                      <Style>
+                        <BorderColor>
+                          <Bottom>Silver</Bottom>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Bottom>Solid</Bottom>
+                        </BorderStyle>
                         <FontSize>8pt</FontSize>
                         <FontWeight>700</FontWeight>
                         <TextAlign>Right</TextAlign>
@@ -528,15 +358,21 @@
                       </Style>
                       <ZIndex>19</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value># DIPS Items</Value>
+                      <Value>TotalSales</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox13">
-                      <rd:DefaultName>textbox13</rd:DefaultName>
+                    <Textbox Name="textbox3">
+                      <rd:DefaultName>textbox3</rd:DefaultName>
                       <Style>
+                        <BorderColor>
+                          <Bottom>Silver</Bottom>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Bottom>Solid</Bottom>
+                        </BorderStyle>
                         <FontSize>8pt</FontSize>
                         <FontWeight>700</FontWeight>
                         <TextAlign>Right</TextAlign>
@@ -545,15 +381,21 @@
                       </Style>
                       <ZIndex>18</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>Retail Value</Value>
+                      <Value># Items</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox9">
-                      <rd:DefaultName>textbox9</rd:DefaultName>
+                    <Textbox Name="textbox19">
+                      <rd:DefaultName>textbox19</rd:DefaultName>
                       <Style>
+                        <BorderColor>
+                          <Bottom>Silver</Bottom>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Bottom>Solid</Bottom>
+                        </BorderStyle>
                         <FontSize>8pt</FontSize>
                         <FontWeight>700</FontWeight>
                         <TextAlign>Right</TextAlign>
@@ -562,15 +404,21 @@
                       </Style>
                       <ZIndex>17</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>SiPS Value</Value>
+                      <Value>SipsSales</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox17">
-                      <rd:DefaultName>textbox17</rd:DefaultName>
+                    <Textbox Name="textbox16">
+                      <rd:DefaultName>textbox16</rd:DefaultName>
                       <Style>
+                        <BorderColor>
+                          <Bottom>Silver</Bottom>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Bottom>Solid</Bottom>
+                        </BorderStyle>
                         <FontSize>8pt</FontSize>
                         <FontWeight>700</FontWeight>
                         <TextAlign>Right</TextAlign>
@@ -579,7 +427,53 @@
                       </Style>
                       <ZIndex>16</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>DiPS Value</Value>
+                      <Value># SipsItems</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox13">
+                      <rd:DefaultName>textbox13</rd:DefaultName>
+                      <Style>
+                        <BorderColor>
+                          <Bottom>Silver</Bottom>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Bottom>Solid</Bottom>
+                        </BorderStyle>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                      <ZIndex>15</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>DipsSales</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox10">
+                      <rd:DefaultName>textbox10</rd:DefaultName>
+                      <Style>
+                        <BorderColor>
+                          <Bottom>Silver</Bottom>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Bottom>Solid</Bottom>
+                        </BorderStyle>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                      <ZIndex>14</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value># DipsItems</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -590,46 +484,44 @@
         </Header>
         <TableColumns>
           <TableColumn>
-            <Width>2.625in</Width>
+            <Width>1.375in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>0.75in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>0.75in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>0.75in</Width>
           </TableColumn>
           <TableColumn>
             <Width>0.875in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>1in</Width>
+            <Width>0.75in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>1in</Width>
-          </TableColumn>
-          <TableColumn>
-            <Width>1in</Width>
-          </TableColumn>
-          <TableColumn>
-            <Width>1in</Width>
-          </TableColumn>
-          <TableColumn>
-            <Width>1in</Width>
-          </TableColumn>
-          <TableColumn>
-            <Width>1in</Width>
+            <Width>0.875in</Width>
           </TableColumn>
         </TableColumns>
-        <Height>0.5in</Height>
         <Footer>
           <TableRows>
             <TableRow>
               <TableCells>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox41">
-                      <rd:DefaultName>textbox41</rd:DefaultName>
+                    <Textbox Name="textbox7">
+                      <rd:DefaultName>textbox7</rd:DefaultName>
                       <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
                         <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
-                      <ZIndex>15</ZIndex>
+                      <ZIndex>13</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value />
                     </Textbox>
@@ -637,79 +529,52 @@
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="shelfQty_1">
-                      <rd:DefaultName>shelfQty_1</rd:DefaultName>
+                    <Textbox Name="totalsales_1">
+                      <rd:DefaultName>totalsales_1</rd:DefaultName>
                       <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
                         <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <TextAlign>Right</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <ZIndex>14</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value>=Sum(Fields!shelfQty.Value, "RPT_ShelfScanReport")</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="Qty">
-                      <rd:DefaultName>Qty</rd:DefaultName>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <TextAlign>Right</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <ZIndex>13</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value>=Sum(Fields!Qty.Value, "RPT_ShelfScanReport")</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="SiPS_1">
-                      <rd:DefaultName>SiPS_1</rd:DefaultName>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
+                        <Format>n2</Format>
                         <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                       <ZIndex>12</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Sum(Fields!SiPS.Value, "RPT_ShelfScanReport")</Value>
+                      <Value>=Sum(Fields!totalsales.Value)</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="DiPS_1">
-                      <rd:DefaultName>DiPS_1</rd:DefaultName>
+                    <Textbox Name="totalqty_1">
+                      <rd:DefaultName>totalqty_1</rd:DefaultName>
                       <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
                         <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
                         <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                       <ZIndex>11</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Sum(Fields!DiPS.Value, "RPT_ShelfScanReport")</Value>
+                      <Value>=Sum(Fields!totalqty.Value)</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="RetailValue_1">
-                      <rd:DefaultName>RetailValue_1</rd:DefaultName>
+                    <Textbox Name="sipssales_1">
+                      <rd:DefaultName>sipssales_1</rd:DefaultName>
                       <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
                         <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
                         <Format>n2</Format>
                         <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -717,35 +582,38 @@
                       </Style>
                       <ZIndex>10</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Sum(Fields!RetailValue.Value)</Value>
+                      <Value>=Sum(Fields!sipssales.Value)</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="SiPSRetailValue_1">
-                      <rd:DefaultName>SiPSRetailValue_1</rd:DefaultName>
+                    <Textbox Name="sipsqty_1">
+                      <rd:DefaultName>sipsqty_1</rd:DefaultName>
                       <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
                         <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <Format>n2</Format>
                         <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                       <ZIndex>9</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Sum(Fields!SiPSRetailValue.Value)</Value>
+                      <Value>=Sum(Fields!sipsqty.Value)</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="DiPSRetailValue_1">
-                      <rd:DefaultName>DiPSRetailValue_1</rd:DefaultName>
+                    <Textbox Name="dipssales_1">
+                      <rd:DefaultName>dipssales_1</rd:DefaultName>
                       <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
                         <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
                         <Format>n2</Format>
                         <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -753,7 +621,26 @@
                       </Style>
                       <ZIndex>8</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Sum(Fields!DiPSRetailValue.Value)</Value>
+                      <Value>=Sum(Fields!dipssales.Value)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="dipsqty_1">
+                      <rd:DefaultName>dipsqty_1</rd:DefaultName>
+                      <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <FontSize>8pt</FontSize>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                      <ZIndex>7</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Sum(Fields!dipsqty.Value)</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -764,14 +651,13 @@
         </Footer>
       </Table>
     </ReportItems>
-    <Height>0.625in</Height>
+    <Height>0.375in</Height>
   </Body>
   <Language>en-US</Language>
   <PageFooter>
     <PrintOnFirstPage>true</PrintOnFirstPage>
     <ReportItems>
       <Textbox Name="textbox23">
-        <Width>1.5in</Width>
         <Style>
           <FontSize>8pt</FontSize>
           <TextAlign>Right</TextAlign>
@@ -780,10 +666,10 @@
         </Style>
         <ZIndex>2</ZIndex>
         <CanGrow>true</CanGrow>
-        <Left>5in</Left>
+        <Left>4.625in</Left>
         <Value>="Page " + Cstr(Globals!PageNumber) + " of " + Cstr(Globals!TotalPages)</Value>
       </Textbox>
-      <Textbox Name="textbox2">
+      <Textbox Name="textbox5">
         <Width>1.5in</Width>
         <Style>
           <FontSize>8pt</FontSize>
@@ -793,7 +679,7 @@
         </Style>
         <ZIndex>1</ZIndex>
         <CanGrow>true</CanGrow>
-        <Left>2.75in</Left>
+        <Left>2.375in</Left>
         <Value>=Globals!ExecutionTime</Value>
       </Textbox>
       <Textbox Name="textbox20">
@@ -811,6 +697,5 @@
     <Height>0.125in</Height>
     <PrintOnLastPage>true</PrintOnLastPage>
   </PageFooter>
-  <TopMargin>0.25in</TopMargin>
-  <PageHeight>8.5in</PageHeight>
+  <TopMargin>1in</TopMargin>
 </Report>

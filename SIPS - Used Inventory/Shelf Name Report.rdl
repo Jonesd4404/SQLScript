@@ -2,43 +2,33 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <DataSources>
     <DataSource Name="Development">
-      <rd:DataSourceID>e0ca0dbe-a337-45bb-a39f-f893264bab6b</rd:DataSourceID>
+      <rd:DataSourceID>2d7d06ea-566f-4854-b241-a385d74c20b1</rd:DataSourceID>
       <DataSourceReference>Development</DataSourceReference>
     </DataSource>
   </DataSources>
   <InteractiveHeight>11in</InteractiveHeight>
   <ReportParameters>
-    <ReportParameter Name="LocationNo">
+    <ReportParameter Name="FilterType">
       <DataType>String</DataType>
-      <Prompt>LocationNo</Prompt>
+      <Prompt>LocationType</Prompt>
       <ValidValues>
         <DataSetReference>
-          <DataSetName>PARAMS_GetLocations_NoRDCs</DataSetName>
-          <ValueField>LocationNo</ValueField>
-          <LabelField>CombinedDisplay</LabelField>
+          <DataSetName>PARAMS_SelectParamTypeLocation</DataSetName>
+          <ValueField>ParamType</ValueField>
+          <LabelField>ParamType</LabelField>
         </DataSetReference>
       </ValidValues>
     </ReportParameter>
-    <ReportParameter Name="user">
+    <ReportParameter Name="DynFilter">
       <DataType>String</DataType>
-      <DefaultValue>
-        <Values>
-          <Value>="ALL"</Value>
-        </Values>
-      </DefaultValue>
-      <Prompt>User</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="startdate">
-      <DataType>DateTime</DataType>
-      <Prompt>Start Date</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="enddate">
-      <DataType>DateTime</DataType>
-      <Prompt>End Date</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="producttype">
-      <DataType>String</DataType>
-      <Prompt>ProductType</Prompt>
+      <Prompt>Location</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>PARAMS_DynFilter_Locations</DataSetName>
+          <ValueField>DynFilter</ValueField>
+          <LabelField>DynFilterLabel</LabelField>
+        </DataSetReference>
+      </ValidValues>
     </ReportParameter>
   </ReportParameters>
   <rd:DrawGrid>true</rd:DrawGrid>
@@ -49,156 +39,103 @@
   <PageHeader>
     <PrintOnFirstPage>true</PrintOnFirstPage>
     <ReportItems>
-      <Textbox Name="textbox37">
-        <rd:DefaultName>textbox37</rd:DefaultName>
-        <Width>4.875in</Width>
+      <Textbox Name="textbox24">
+        <rd:DefaultName>textbox24</rd:DefaultName>
+        <Width>3.875in</Width>
         <Style>
-          <FontSize>18pt</FontSize>
-          <TextAlign>Center</TextAlign>
+          <FontWeight>700</FontWeight>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
         <CanGrow>true</CanGrow>
-        <Value>Pricer Report: Priced by Subject</Value>
+        <Value>Shelf Name Report</Value>
       </Textbox>
     </ReportItems>
-    <Height>0.375in</Height>
+    <Height>0.25in</Height>
     <PrintOnLastPage>true</PrintOnLastPage>
   </PageHeader>
   <BottomMargin>1in</BottomMargin>
-  <rd:ReportID>a5ecaed9-01bf-42e2-abe4-24a2e65663c7</rd:ReportID>
+  <rd:ReportID>350ec94d-edd3-48f2-8130-87795be52c2c</rd:ReportID>
   <DataSets>
-    <DataSet Name="SiPS_PricedbySubject">
+    <DataSet Name="ShelfNameList">
       <Fields>
-        <Field Name="locationno">
-          <DataField>locationno</DataField>
+        <Field Name="ShelfProxyID">
+          <DataField>ShelfProxyID</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="producttype">
-          <DataField>producttype</DataField>
+        <Field Name="ShelfDescription">
+          <DataField>ShelfDescription</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="hpbsubject">
-          <DataField>hpbsubject</DataField>
+        <Field Name="LocationID">
+          <DataField>LocationID</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Username">
-          <DataField>Username</DataField>
+        <Field Name="Subject">
+          <DataField>Subject</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="PricedQty">
-          <DataField>PricedQty</DataField>
+      </Fields>
+      <Query>
+        <DataSourceName>Development</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>ShelfNameList</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@FilterType">
+            <Value>=Parameters!FilterType.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@DynFilter">
+            <Value>=Parameters!DynFilter.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+    </DataSet>
+    <DataSet Name="PARAMS_DynFilter_Locations">
+      <Fields>
+        <Field Name="DynFilter">
+          <DataField>DynFilter</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DynFilterLabel">
+          <DataField>DynFilterLabel</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>Development</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>PARAMS_DynFilter_Locations</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@FilterType">
+            <Value>=Parameters!FilterType.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+    </DataSet>
+    <DataSet Name="PARAMS_SelectParamTypeLocation">
+      <Fields>
+        <Field Name="ParamType">
+          <DataField>ParamType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SortOrder">
+          <DataField>SortOrder</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="PricedAmt">
-          <DataField>PricedAmt</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
       </Fields>
       <Query>
         <DataSourceName>Development</DataSourceName>
         <CommandType>StoredProcedure</CommandType>
-        <CommandText>SiPS_PricedbySubject</CommandText>
-        <QueryParameters>
-          <QueryParameter Name="@producttype">
-            <Value>=Parameters!producttype.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="@LocationNo">
-            <Value>=Parameters!LocationNo.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="@startdate">
-            <Value>=Parameters!startdate.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="@enddate">
-            <Value>=Parameters!enddate.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="@user">
-            <Value>=Parameters!user.Value</Value>
-          </QueryParameter>
-        </QueryParameters>
-      </Query>
-    </DataSet>
-    <DataSet Name="PARAMS_GetLocations_NoRDCs">
-      <Fields>
-        <Field Name="LocationNo">
-          <DataField>LocationNo</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="LocationName">
-          <DataField>LocationName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="CombinedDisplay">
-          <DataField>CombinedDisplay</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>Development</DataSourceName>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>PARAMS_GetLocations_NoRDCs</CommandText>
-      </Query>
-    </DataSet>
-    <DataSet Name="PARAMS_SipsProductTypes">
-      <Fields>
-        <Field Name="producttype">
-          <DataField>producttype</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>Development</DataSourceName>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>PARAMS_SipsProductTypes</CommandText>
-      </Query>
-    </DataSet>
-    <DataSet Name="PARAMS_UsersByLocation">
-      <Fields>
-        <Field Name="UserNo">
-          <DataField>UserNo</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Name">
-          <DataField>Name</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="LocationNo">
-          <DataField>LocationNo</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>Development</DataSourceName>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>PARAMS_UsersByLocation</CommandText>
-        <QueryParameters>
-          <QueryParameter Name="@LocationNo">
-            <Value>=Parameters!LocationNo.Value</Value>
-          </QueryParameter>
-        </QueryParameters>
+        <CommandText>PARAMS_SelectParamTypeLocation</CommandText>
       </Query>
     </DataSet>
   </DataSets>
-  <Width>5.125in</Width>
+  <Width>7in</Width>
   <Body>
     <ReportItems>
-      <Textbox Name="textbox46">
-        <Width>2.625in</Width>
-        <Style>
-          <FontSize>8pt</FontSize>
-          <FontWeight>700</FontWeight>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-        </Style>
-        <ZIndex>2</ZIndex>
-        <CanGrow>true</CanGrow>
-        <Height>0.125in</Height>
-        <Value>="Date Range: " + Parameters!startdate.Value + " - " + Parameters!enddate.Value</Value>
-      </Textbox>
-      <Textbox Name="textbox5">
-        <rd:DefaultName>textbox5</rd:DefaultName>
+      <Textbox Name="textbox26">
         <Top>0.125in</Top>
         <Width>2.625in</Width>
         <Style>
@@ -210,100 +147,71 @@
         <ZIndex>1</ZIndex>
         <CanGrow>true</CanGrow>
         <Height>0.125in</Height>
-        <Value>=First(Fields!Username.Value, "SiPS_PricedbySubject")</Value>
+        <Value>="Location: " + Parameters!DynFilter.Value</Value>
       </Textbox>
       <Table Name="table1">
-        <DataSetName>SiPS_PricedbySubject</DataSetName>
-        <Top>0.25in</Top>
+        <DataSetName>ShelfNameList</DataSetName>
+        <Top>0.5in</Top>
         <Details>
           <TableRows>
             <TableRow>
               <TableCells>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="hpbsubject">
-                      <rd:DefaultName>hpbsubject</rd:DefaultName>
+                    <Textbox Name="LocationNo">
+                      <rd:DefaultName>LocationNo</rd:DefaultName>
                       <Style>
-                        <BorderColor>
-                          <Bottom>WhiteSmoke</Bottom>
-                        </BorderColor>
-                        <BorderStyle>
-                          <Bottom>Solid</Bottom>
-                        </BorderStyle>
                         <FontSize>8pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                       <ZIndex>3</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!hpbsubject.Value</Value>
+                      <Value>=Fields!LocationID.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="PricedAmt">
-                      <rd:DefaultName>PricedAmt</rd:DefaultName>
+                    <Textbox Name="ShelfProxyID">
+                      <rd:DefaultName>ShelfProxyID</rd:DefaultName>
                       <Style>
-                        <BorderColor>
-                          <Bottom>WhiteSmoke</Bottom>
-                        </BorderColor>
-                        <BorderStyle>
-                          <Bottom>Solid</Bottom>
-                        </BorderStyle>
                         <FontSize>8pt</FontSize>
-                        <Format>n2</Format>
-                        <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                       <ZIndex>2</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!PricedAmt.Value</Value>
+                      <Value>=Fields!ShelfProxyID.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="PricedQty">
-                      <rd:DefaultName>PricedQty</rd:DefaultName>
+                    <Textbox Name="ShelfDescription">
+                      <rd:DefaultName>ShelfDescription</rd:DefaultName>
                       <Style>
-                        <BorderColor>
-                          <Bottom>WhiteSmoke</Bottom>
-                        </BorderColor>
-                        <BorderStyle>
-                          <Bottom>Solid</Bottom>
-                        </BorderStyle>
                         <FontSize>8pt</FontSize>
-                        <Format>n0</Format>
-                        <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                       <ZIndex>1</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!PricedQty.Value</Value>
+                      <Value>=Fields!ShelfDescription.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox14">
-                      <rd:DefaultName>textbox14</rd:DefaultName>
+                    <Textbox Name="Subject">
+                      <rd:DefaultName>Subject</rd:DefaultName>
                       <Style>
-                        <BorderColor>
-                          <Bottom>WhiteSmoke</Bottom>
-                        </BorderColor>
-                        <BorderStyle>
-                          <Bottom>Solid</Bottom>
-                        </BorderStyle>
                         <FontSize>8pt</FontSize>
-                        <Format>n2</Format>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>= Fields!PricedAmt.Value / Fields!PricedQty.Value</Value>
+                      <Value>=Fields!Subject.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -311,54 +219,12 @@
               <Height>0.125in</Height>
             </TableRow>
           </TableRows>
-          <Sorting>
-            <SortBy>
-              <SortExpression>=Fields!hpbsubject.Value</SortExpression>
-              <Direction>Ascending</Direction>
-            </SortBy>
-          </Sorting>
         </Details>
+        <Style>
+          <FontSize>8pt</FontSize>
+        </Style>
         <Header>
           <TableRows>
-            <TableRow>
-              <TableCells>
-                <TableCell>
-                  <ColSpan>2</ColSpan>
-                  <ReportItems>
-                    <Textbox Name="locationno">
-                      <rd:DefaultName>locationno</rd:DefaultName>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <ZIndex>13</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value>="LocationNo: " + First(Fields!locationno.Value)</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ColSpan>2</ColSpan>
-                  <ReportItems>
-                    <Textbox Name="producttype">
-                      <rd:DefaultName>producttype</rd:DefaultName>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <ZIndex>12</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value>="ProductType: " + First(Fields!producttype.Value)</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-              </TableCells>
-              <Height>0.125in</Height>
-            </TableRow>
             <TableRow>
               <TableCells>
                 <TableCell>
@@ -373,24 +239,7 @@
                       </Style>
                       <ZIndex>11</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>Subject</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox3">
-                      <rd:DefaultName>textbox3</rd:DefaultName>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <TextAlign>Right</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <ZIndex>10</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value>Amt Priced</Value>
+                      <Value>Location</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -401,13 +250,28 @@
                       <Style>
                         <FontSize>8pt</FontSize>
                         <FontWeight>700</FontWeight>
-                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                      <ZIndex>10</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>Shelf ID</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox3">
+                      <rd:DefaultName>textbox3</rd:DefaultName>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                       <ZIndex>9</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>Qty Priced</Value>
+                      <Value>Shelf Description</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -418,13 +282,12 @@
                       <Style>
                         <FontSize>8pt</FontSize>
                         <FontWeight>700</FontWeight>
-                        <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                       <ZIndex>8</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>Avg Price</Value>
+                      <Value>Subject</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -435,16 +298,16 @@
         </Header>
         <TableColumns>
           <TableColumn>
+            <Width>0.625in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>0.875in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>4.25in</Width>
+          </TableColumn>
+          <TableColumn>
             <Width>1.25in</Width>
-          </TableColumn>
-          <TableColumn>
-            <Width>1.375in</Width>
-          </TableColumn>
-          <TableColumn>
-            <Width>1.125in</Width>
-          </TableColumn>
-          <TableColumn>
-            <Width>1.375in</Width>
           </TableColumn>
         </TableColumns>
         <Footer>
@@ -457,30 +320,12 @@
                       <rd:DefaultName>textbox7</rd:DefaultName>
                       <Style>
                         <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                       <ZIndex>7</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>Totals</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox9">
-                      <rd:DefaultName>textbox9</rd:DefaultName>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <Format>n2</Format>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <ZIndex>6</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value>=sum(Fields!PricedAmt.Value)</Value>
+                      <Value />
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -490,31 +335,42 @@
                       <rd:DefaultName>textbox8</rd:DefaultName>
                       <Style>
                         <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <Format>n0</Format>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
-                      <ZIndex>5</ZIndex>
+                      <ZIndex>6</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=sum(Fields!PricedQty.Value)</Value>
+                      <Value />
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox15">
-                      <rd:DefaultName>textbox15</rd:DefaultName>
+                    <Textbox Name="textbox9">
+                      <rd:DefaultName>textbox9</rd:DefaultName>
                       <Style>
                         <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <Format>n2</Format>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                      <ZIndex>5</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox6">
+                      <rd:DefaultName>textbox6</rd:DefaultName>
+                      <Style>
+                        <FontSize>8pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                       <ZIndex>4</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=sum(Fields!PricedAmt.Value) / sum(Fields!PricedQty.Value)</Value>
+                      <Value />
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -525,50 +381,59 @@
         </Footer>
       </Table>
     </ReportItems>
-    <Height>0.75in</Height>
+    <Height>0.875in</Height>
   </Body>
   <Language>en-US</Language>
   <PageFooter>
     <PrintOnFirstPage>true</PrintOnFirstPage>
     <ReportItems>
-      <Textbox Name="textbox40">
+      <Textbox Name="textbox29">
+        <Top>0.0625in</Top>
+        <Width>1.5in</Width>
         <Style>
           <FontSize>8pt</FontSize>
           <TextAlign>Right</TextAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
         </Style>
         <ZIndex>2</ZIndex>
         <CanGrow>true</CanGrow>
-        <Left>3.625in</Left>
-        <Value>="Pages: " + cstr(globals!TotalPages)</Value>
+        <Left>4.125in</Left>
+        <Height>0.125in</Height>
+        <Value>="Pages: " + cstr(globals!PageNumber) + " of " + cstr(globals!TotalPages)</Value>
       </Textbox>
-      <Textbox Name="textbox39">
+      <Textbox Name="textbox28">
+        <Top>0.0625in</Top>
         <Width>1.625in</Width>
         <Style>
           <FontSize>8pt</FontSize>
           <TextAlign>Center</TextAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
         </Style>
         <ZIndex>1</ZIndex>
         <CanGrow>true</CanGrow>
-        <Left>2in</Left>
+        <Left>2.1875in</Left>
+        <Height>0.125in</Height>
         <Value>=globals!ExecutionTime</Value>
       </Textbox>
-      <Textbox Name="textbox38">
-        <rd:DefaultName>textbox38</rd:DefaultName>
-        <Width>2in</Width>
+      <Textbox Name="textbox27">
+        <Top>0.0625in</Top>
+        <Width>2.125in</Width>
         <Style>
           <FontSize>8pt</FontSize>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
         </Style>
         <CanGrow>true</CanGrow>
+        <Height>0.125in</Height>
         <Value>=globals!ReportName</Value>
       </Textbox>
     </ReportItems>
-    <Height>0.125in</Height>
+    <Height>0.25in</Height>
     <PrintOnLastPage>true</PrintOnLastPage>
   </PageFooter>
   <TopMargin>1in</TopMargin>

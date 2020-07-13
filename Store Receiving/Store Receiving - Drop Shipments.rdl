@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <DataSources>
-    <DataSource Name="Rec_Development">
-      <rd:DataSourceID>f038f4cc-1089-4ef9-9330-387437aecb5f</rd:DataSourceID>
-      <DataSourceReference>Rec_Development</DataSourceReference>
+    <DataSource Name="Rec_Production">
+      <rd:DataSourceID>ca1c2d25-4c52-406c-9996-5c5589c39fcd</rd:DataSourceID>
+      <DataSourceReference>Rec_Production</DataSourceReference>
     </DataSource>
   </DataSources>
   <InteractiveHeight>11in</InteractiveHeight>
@@ -46,14 +46,14 @@
   <rd:ReportID>15389e63-98a2-44ee-8333-749d61d85804</rd:ReportID>
   <PageWidth>11in</PageWidth>
   <DataSets>
-    <DataSet Name="RP_DropShipments">
+    <DataSet Name="SR2_RP_DropShipments">
       <Fields>
         <Field Name="transferid">
-          <DataField>TransferID</DataField>
+          <DataField>transferid</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="ponumber">
-          <DataField>PONumber</DataField>
+          <DataField>ponumber</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="locationno">
@@ -90,9 +90,9 @@
         </Field>
       </Fields>
       <Query>
-        <DataSourceName>Rec_Development</DataSourceName>
+        <DataSourceName>Rec_Production</DataSourceName>
         <CommandType>StoredProcedure</CommandType>
-        <CommandText>RP_DropShipments</CommandText>
+        <CommandText>SR2_RP_DropShipments</CommandText>
         <QueryParameters>
           <QueryParameter Name="@startdate">
             <Value>=Parameters!startdate.Value</Value>
@@ -109,7 +109,7 @@
   <Body>
     <ReportItems>
       <Table Name="table1">
-        <DataSetName>RP_DropShipments</DataSetName>
+        <DataSetName>SR2_RP_DropShipments</DataSetName>
         <Details>
           <TableRows>
             <TableRow>
@@ -120,16 +120,10 @@
                       <rd:DefaultName>ponumber</rd:DefaultName>
                       <Action>
                         <Drillthrough>
-                          <ReportName>Receiving Report</ReportName>
+                          <ReportName>Full Shipped - Received - Completed</ReportName>
                           <Parameters>
-                            <Parameter Name="LocationNo">
-                              <Value>=Fields!locationno.Value</Value>
-                            </Parameter>
-                            <Parameter Name="ShipmentPipe">
-                              <Value>=Fields!transferid.Value + "|R"</Value>
-                            </Parameter>
-                            <Parameter Name="ReportType">
-                              <Value>="All"</Value>
+                            <Parameter Name="TransferID">
+                              <Value>=Fields!transferid.Value</Value>
                             </Parameter>
                           </Parameters>
                         </Drillthrough>

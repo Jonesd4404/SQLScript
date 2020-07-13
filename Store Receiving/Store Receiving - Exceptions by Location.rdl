@@ -2,43 +2,33 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <DataSources>
     <DataSource Name="Development">
-      <rd:DataSourceID>e0ca0dbe-a337-45bb-a39f-f893264bab6b</rd:DataSourceID>
+      <rd:DataSourceID>9afb900f-cb98-492e-96bb-01a21cdc26c4</rd:DataSourceID>
       <DataSourceReference>Development</DataSourceReference>
     </DataSource>
   </DataSources>
   <InteractiveHeight>11in</InteractiveHeight>
   <ReportParameters>
-    <ReportParameter Name="LocationNo">
+    <ReportParameter Name="FilterType">
       <DataType>String</DataType>
-      <Prompt>LocationNo</Prompt>
+      <Prompt>Location Type</Prompt>
       <ValidValues>
         <DataSetReference>
-          <DataSetName>PARAMS_GetLocations_NoRDCs</DataSetName>
-          <ValueField>LocationNo</ValueField>
-          <LabelField>CombinedDisplay</LabelField>
+          <DataSetName>PARAMS_SelectParamTypeLocation</DataSetName>
+          <ValueField>ParamType</ValueField>
+          <LabelField>ParamType</LabelField>
         </DataSetReference>
       </ValidValues>
     </ReportParameter>
-    <ReportParameter Name="user">
+    <ReportParameter Name="DynFilter">
       <DataType>String</DataType>
-      <DefaultValue>
-        <Values>
-          <Value>="ALL"</Value>
-        </Values>
-      </DefaultValue>
-      <Prompt>User</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="startdate">
-      <DataType>DateTime</DataType>
-      <Prompt>Start Date</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="enddate">
-      <DataType>DateTime</DataType>
-      <Prompt>End Date</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="producttype">
-      <DataType>String</DataType>
-      <Prompt>ProductType</Prompt>
+      <Prompt>Location Filter</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>PARAMS_DynFilter_Locations</DataSetName>
+          <ValueField>DynFilter</ValueField>
+          <LabelField>DynFilterLabel</LabelField>
+        </DataSetReference>
+      </ValidValues>
     </ReportParameter>
   </ReportParameters>
   <rd:DrawGrid>true</rd:DrawGrid>
@@ -49,11 +39,23 @@
   <PageHeader>
     <PrintOnFirstPage>true</PrintOnFirstPage>
     <ReportItems>
-      <Textbox Name="textbox37">
-        <rd:DefaultName>textbox37</rd:DefaultName>
-        <Width>4.875in</Width>
+      <Textbox Name="textbox6">
+        <rd:DefaultName>textbox6</rd:DefaultName>
+        <Top>0.5in</Top>
         <Style>
-          <FontSize>18pt</FontSize>
+          <FontSize>8pt</FontSize>
+          <TextAlign>Center</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+        </Style>
+        <ZIndex>1</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Value>="The last 45 days of exceptions for " + iif(Parameters!FilterType.Value = "All Locations", Parameters!FilterType.Value, Parameters!FilterType.Value + " " + parameters!DynFilter.Value)</Value>
+      </Textbox>
+      <Textbox Name="textbox5">
+        <rd:DefaultName>textbox5</rd:DefaultName>
+        <Style>
+          <FontSize>22pt</FontSize>
           <TextAlign>Center</TextAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
@@ -61,219 +63,186 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
         <CanGrow>true</CanGrow>
-        <Value>Pricer Report: Priced by Subject</Value>
+        <Height>0.5in</Height>
+        <Value>Store Receiving - Exceptions by Location</Value>
       </Textbox>
     </ReportItems>
-    <Height>0.375in</Height>
+    <Height>0.875in</Height>
     <PrintOnLastPage>true</PrintOnLastPage>
   </PageHeader>
   <BottomMargin>1in</BottomMargin>
-  <rd:ReportID>a5ecaed9-01bf-42e2-abe4-24a2e65663c7</rd:ReportID>
+  <rd:ReportID>921945a1-dc03-43c1-94d1-926a4d7c914c</rd:ReportID>
   <DataSets>
-    <DataSet Name="SiPS_PricedbySubject">
+    <DataSet Name="SR2_TotalExceptions">
       <Fields>
         <Field Name="locationno">
           <DataField>locationno</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="producttype">
-          <DataField>producttype</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="hpbsubject">
-          <DataField>hpbsubject</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Username">
-          <DataField>Username</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="PricedQty">
-          <DataField>PricedQty</DataField>
+        <Field Name="TotalUnderages">
+          <DataField>TotalUnderages</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="PricedAmt">
-          <DataField>PricedAmt</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
+        <Field Name="TotalOverages">
+          <DataField>TotalOverages</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TotalUnderageQty">
+          <DataField>TotalUnderageQty</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TotalOverageQty">
+          <DataField>TotalOverageQty</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TotalShippedQty">
+          <DataField>TotalShippedQty</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TotalReceivedQty">
+          <DataField>TotalReceivedQty</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
       </Fields>
       <Query>
         <DataSourceName>Development</DataSourceName>
         <CommandType>StoredProcedure</CommandType>
-        <CommandText>SiPS_PricedbySubject</CommandText>
+        <CommandText>SR2_TotalExceptions</CommandText>
         <QueryParameters>
-          <QueryParameter Name="@producttype">
-            <Value>=Parameters!producttype.Value</Value>
+          <QueryParameter Name="@FilterType">
+            <Value>=Parameters!FilterType.Value</Value>
           </QueryParameter>
-          <QueryParameter Name="@LocationNo">
-            <Value>=Parameters!LocationNo.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="@startdate">
-            <Value>=Parameters!startdate.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="@enddate">
-            <Value>=Parameters!enddate.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="@user">
-            <Value>=Parameters!user.Value</Value>
+          <QueryParameter Name="@DynFilter">
+            <Value>=Parameters!DynFilter.Value</Value>
           </QueryParameter>
         </QueryParameters>
       </Query>
     </DataSet>
-    <DataSet Name="PARAMS_GetLocations_NoRDCs">
+    <DataSet Name="PARAMS_DynFilter_Locations">
       <Fields>
-        <Field Name="LocationNo">
-          <DataField>LocationNo</DataField>
+        <Field Name="DynFilter">
+          <DataField>DynFilter</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="LocationName">
-          <DataField>LocationName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="CombinedDisplay">
-          <DataField>CombinedDisplay</DataField>
+        <Field Name="DynFilterLabel">
+          <DataField>DynFilterLabel</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <Query>
         <DataSourceName>Development</DataSourceName>
         <CommandType>StoredProcedure</CommandType>
-        <CommandText>PARAMS_GetLocations_NoRDCs</CommandText>
-      </Query>
-    </DataSet>
-    <DataSet Name="PARAMS_SipsProductTypes">
-      <Fields>
-        <Field Name="producttype">
-          <DataField>producttype</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>Development</DataSourceName>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>PARAMS_SipsProductTypes</CommandText>
-      </Query>
-    </DataSet>
-    <DataSet Name="PARAMS_UsersByLocation">
-      <Fields>
-        <Field Name="UserNo">
-          <DataField>UserNo</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Name">
-          <DataField>Name</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="LocationNo">
-          <DataField>LocationNo</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>Development</DataSourceName>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>PARAMS_UsersByLocation</CommandText>
+        <CommandText>PARAMS_DynFilter_Locations</CommandText>
         <QueryParameters>
-          <QueryParameter Name="@LocationNo">
-            <Value>=Parameters!LocationNo.Value</Value>
+          <QueryParameter Name="@FilterType">
+            <Value>=Parameters!FilterType.Value</Value>
           </QueryParameter>
         </QueryParameters>
+      </Query>
+    </DataSet>
+    <DataSet Name="PARAMS_SelectParamTypeLocation">
+      <Fields>
+        <Field Name="ParamType">
+          <DataField>ParamType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SortOrder">
+          <DataField>SortOrder</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>Development</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>PARAMS_SelectParamTypeLocation</CommandText>
       </Query>
     </DataSet>
   </DataSets>
-  <Width>5.125in</Width>
+  <Width>6.12501in</Width>
   <Body>
     <ReportItems>
-      <Textbox Name="textbox46">
-        <Width>2.625in</Width>
-        <Style>
-          <FontSize>8pt</FontSize>
-          <FontWeight>700</FontWeight>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-        </Style>
-        <ZIndex>2</ZIndex>
-        <CanGrow>true</CanGrow>
-        <Height>0.125in</Height>
-        <Value>="Date Range: " + Parameters!startdate.Value + " - " + Parameters!enddate.Value</Value>
-      </Textbox>
-      <Textbox Name="textbox5">
-        <rd:DefaultName>textbox5</rd:DefaultName>
-        <Top>0.125in</Top>
-        <Width>2.625in</Width>
-        <Style>
-          <FontSize>8pt</FontSize>
-          <FontWeight>700</FontWeight>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-        </Style>
-        <ZIndex>1</ZIndex>
-        <CanGrow>true</CanGrow>
-        <Height>0.125in</Height>
-        <Value>=First(Fields!Username.Value, "SiPS_PricedbySubject")</Value>
-      </Textbox>
       <Table Name="table1">
-        <DataSetName>SiPS_PricedbySubject</DataSetName>
-        <Top>0.25in</Top>
+        <DataSetName>SR2_TotalExceptions</DataSetName>
         <Details>
           <TableRows>
             <TableRow>
               <TableCells>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="hpbsubject">
-                      <rd:DefaultName>hpbsubject</rd:DefaultName>
+                    <Textbox Name="locationno">
+                      <rd:DefaultName>locationno</rd:DefaultName>
                       <Style>
-                        <BorderColor>
-                          <Bottom>WhiteSmoke</Bottom>
-                        </BorderColor>
-                        <BorderStyle>
-                          <Bottom>Solid</Bottom>
-                        </BorderStyle>
+                        <BackgroundColor>=iif(RowNumber(Nothing) Mod 2, "Gainsboro", "White")</BackgroundColor>
                         <FontSize>8pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
-                      <ZIndex>3</ZIndex>
+                      <ZIndex>5</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!hpbsubject.Value</Value>
+                      <Value>=Fields!locationno.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="PricedAmt">
-                      <rd:DefaultName>PricedAmt</rd:DefaultName>
+                    <Textbox Name="TotalOverageQty_1">
+                      <rd:DefaultName>TotalOverageQty_1</rd:DefaultName>
                       <Style>
-                        <BorderColor>
-                          <Bottom>WhiteSmoke</Bottom>
-                        </BorderColor>
-                        <BorderStyle>
-                          <Bottom>Solid</Bottom>
-                        </BorderStyle>
+                        <BackgroundColor>=iif(RowNumber(Nothing) Mod 2, "Gainsboro", "White")</BackgroundColor>
                         <FontSize>8pt</FontSize>
-                        <Format>n2</Format>
+                        <Format>n0</Format>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                      <ZIndex>4</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!TotalOverageQty.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="TotalUnderageQty_1">
+                      <rd:DefaultName>TotalUnderageQty_1</rd:DefaultName>
+                      <Style>
+                        <BackgroundColor>=iif(RowNumber(Nothing) Mod 2, "Gainsboro", "White")</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <Format>n0</Format>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                      <ZIndex>3</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!TotalUnderageQty.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox11">
+                      <rd:DefaultName>textbox11</rd:DefaultName>
+                      <Style>
+                        <BackgroundColor>=iif(RowNumber(Nothing) Mod 2, "Gainsboro", "White")</BackgroundColor>
+                        <FontSize>8pt</FontSize>
+                        <Format>n0</Format>
                         <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                       <ZIndex>2</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!PricedAmt.Value</Value>
+                      <Value>=Fields!TotalUnderageQty.Value + Fields!TotalOverageQty.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="PricedQty">
-                      <rd:DefaultName>PricedQty</rd:DefaultName>
+                    <Textbox Name="TotalReceivedQty_2">
+                      <rd:DefaultName>TotalReceivedQty_2</rd:DefaultName>
                       <Style>
-                        <BorderColor>
-                          <Bottom>WhiteSmoke</Bottom>
-                        </BorderColor>
-                        <BorderStyle>
-                          <Bottom>Solid</Bottom>
-                        </BorderStyle>
+                        <BackgroundColor>=iif(RowNumber(Nothing) Mod 2, "Gainsboro", "White")</BackgroundColor>
                         <FontSize>8pt</FontSize>
                         <Format>n0</Format>
                         <TextAlign>Right</TextAlign>
@@ -282,7 +251,7 @@
                       </Style>
                       <ZIndex>1</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!PricedQty.Value</Value>
+                      <Value>=Fields!TotalReceivedQty.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -291,19 +260,15 @@
                     <Textbox Name="textbox14">
                       <rd:DefaultName>textbox14</rd:DefaultName>
                       <Style>
-                        <BorderColor>
-                          <Bottom>WhiteSmoke</Bottom>
-                        </BorderColor>
-                        <BorderStyle>
-                          <Bottom>Solid</Bottom>
-                        </BorderStyle>
+                        <BackgroundColor>=iif(RowNumber(Nothing) Mod 2, "Gainsboro", "White")</BackgroundColor>
                         <FontSize>8pt</FontSize>
-                        <Format>n2</Format>
+                        <Format>p</Format>
+                        <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>= Fields!PricedAmt.Value / Fields!PricedQty.Value</Value>
+                      <Value>=(Fields!TotalUnderageQty.Value + Fields!TotalOverageQty.Value) / Fields!TotalReceivedQty.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -311,54 +276,9 @@
               <Height>0.125in</Height>
             </TableRow>
           </TableRows>
-          <Sorting>
-            <SortBy>
-              <SortExpression>=Fields!hpbsubject.Value</SortExpression>
-              <Direction>Ascending</Direction>
-            </SortBy>
-          </Sorting>
         </Details>
         <Header>
           <TableRows>
-            <TableRow>
-              <TableCells>
-                <TableCell>
-                  <ColSpan>2</ColSpan>
-                  <ReportItems>
-                    <Textbox Name="locationno">
-                      <rd:DefaultName>locationno</rd:DefaultName>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <ZIndex>13</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value>="LocationNo: " + First(Fields!locationno.Value)</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ColSpan>2</ColSpan>
-                  <ReportItems>
-                    <Textbox Name="producttype">
-                      <rd:DefaultName>producttype</rd:DefaultName>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <ZIndex>12</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value>="ProductType: " + First(Fields!producttype.Value)</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-              </TableCells>
-              <Height>0.125in</Height>
-            </TableRow>
             <TableRow>
               <TableCells>
                 <TableCell>
@@ -371,26 +291,9 @@
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
-                      <ZIndex>11</ZIndex>
+                      <ZIndex>17</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>Subject</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox3">
-                      <rd:DefaultName>textbox3</rd:DefaultName>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <TextAlign>Right</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                      <ZIndex>10</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value>Amt Priced</Value>
+                      <Value>LocationNo</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -405,9 +308,43 @@
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
-                      <ZIndex>9</ZIndex>
+                      <ZIndex>16</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>Qty Priced</Value>
+                      <Value>Overage Qty</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox3">
+                      <rd:DefaultName>textbox3</rd:DefaultName>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                      <ZIndex>15</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>Underage Qty</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox10">
+                      <rd:DefaultName>textbox10</rd:DefaultName>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                      <ZIndex>14</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>Total Exceptions</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -422,9 +359,26 @@
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
-                      <ZIndex>8</ZIndex>
+                      <ZIndex>13</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>Avg Price</Value>
+                      <Value>Amt Received</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox13">
+                      <rd:DefaultName>textbox13</rd:DefaultName>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                      <ZIndex>12</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>% Exceptions to Received</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -438,10 +392,16 @@
             <Width>1.25in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>1.375in</Width>
+            <Width>0.75in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>1.125in</Width>
+            <Width>0.75in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>1in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>1in</Width>
           </TableColumn>
           <TableColumn>
             <Width>1.375in</Width>
@@ -456,12 +416,14 @@
                     <Textbox Name="textbox7">
                       <rd:DefaultName>textbox7</rd:DefaultName>
                       <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
                         <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
-                      <ZIndex>7</ZIndex>
+                      <ZIndex>11</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>Totals</Value>
                     </Textbox>
@@ -469,35 +431,80 @@
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox9">
-                      <rd:DefaultName>textbox9</rd:DefaultName>
+                    <Textbox Name="TotalOverageQty">
+                      <rd:DefaultName>TotalOverageQty</rd:DefaultName>
                       <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
                         <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <Format>n2</Format>
+                        <Format>n0</Format>
+                        <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
-                      <ZIndex>6</ZIndex>
+                      <ZIndex>10</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=sum(Fields!PricedAmt.Value)</Value>
+                      <Value>=Sum(Fields!TotalOverageQty.Value)</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox8">
-                      <rd:DefaultName>textbox8</rd:DefaultName>
+                    <Textbox Name="TotalUnderageQty">
+                      <rd:DefaultName>TotalUnderageQty</rd:DefaultName>
                       <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
                         <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
+                        <Format>n0</Format>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                      <ZIndex>9</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Sum(Fields!TotalUnderageQty.Value)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox12">
+                      <rd:DefaultName>textbox12</rd:DefaultName>
+                      <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <FontSize>8pt</FontSize>
                         <Format>n0</Format>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
-                      <ZIndex>5</ZIndex>
+                      <ZIndex>8</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=sum(Fields!PricedQty.Value)</Value>
+                      <Value>=sum(fields!TotalUnderageQty.Value) + sum(fields!TotalOverageQty.Value)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="TotalReceivedQty_1">
+                      <rd:DefaultName>TotalReceivedQty_1</rd:DefaultName>
+                      <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <FontSize>8pt</FontSize>
+                        <Format>n0</Format>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                      <ZIndex>7</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Sum(Fields!TotalReceivedQty.Value)</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -506,15 +513,17 @@
                     <Textbox Name="textbox15">
                       <rd:DefaultName>textbox15</rd:DefaultName>
                       <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
                         <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <Format>n2</Format>
+                        <Format>P</Format>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
-                      <ZIndex>4</ZIndex>
+                      <ZIndex>6</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=sum(Fields!PricedAmt.Value) / sum(Fields!PricedQty.Value)</Value>
+                      <Value>=(sum(fields!TotalUnderageQty.Value) + sum(fields!TotalOverageQty.Value)) / sum(fields!TotalReceivedQty.Value)</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -525,26 +534,27 @@
         </Footer>
       </Table>
     </ReportItems>
-    <Height>0.75in</Height>
+    <Height>0.375in</Height>
   </Body>
   <Language>en-US</Language>
   <PageFooter>
     <PrintOnFirstPage>true</PrintOnFirstPage>
     <ReportItems>
-      <Textbox Name="textbox40">
+      <Textbox Name="textbox18">
         <Style>
           <FontSize>8pt</FontSize>
+          <Format>p</Format>
           <TextAlign>Right</TextAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
         </Style>
         <ZIndex>2</ZIndex>
         <CanGrow>true</CanGrow>
-        <Left>3.625in</Left>
-        <Value>="Pages: " + cstr(globals!TotalPages)</Value>
+        <Left>4.625in</Left>
+        <Value>="Page " + Cstr(Globals!PageNumber) + " of " + Cstr(Globals!TotalPages)</Value>
       </Textbox>
-      <Textbox Name="textbox39">
-        <Width>1.625in</Width>
+      <Textbox Name="textbox22">
+        <Width>1.375in</Width>
         <Style>
           <FontSize>8pt</FontSize>
           <TextAlign>Center</TextAlign>
@@ -553,19 +563,19 @@
         </Style>
         <ZIndex>1</ZIndex>
         <CanGrow>true</CanGrow>
-        <Left>2in</Left>
-        <Value>=globals!ExecutionTime</Value>
+        <Left>2.25in</Left>
+        <Value>=Globals!ExecutionTime</Value>
       </Textbox>
-      <Textbox Name="textbox38">
-        <rd:DefaultName>textbox38</rd:DefaultName>
-        <Width>2in</Width>
+      <Textbox Name="textbox29">
+        <Width>1.5in</Width>
         <Style>
           <FontSize>8pt</FontSize>
+          <TextAlign>Left</TextAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
         </Style>
         <CanGrow>true</CanGrow>
-        <Value>=globals!ReportName</Value>
+        <Value>=Globals!ReportName</Value>
       </Textbox>
     </ReportItems>
     <Height>0.125in</Height>

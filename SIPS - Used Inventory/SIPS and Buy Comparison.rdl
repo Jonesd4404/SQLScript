@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="Development">
+      <rd:DataSourceID>68aa1154-fb4c-4f05-9675-6448921d8bce</rd:DataSourceID>
+      <DataSourceReference>Development</DataSourceReference>
+    </DataSource>
+  </DataSources>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <ReportParameters>
+    <ReportParameter Name="StartDate">
+      <DataType>DateTime</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>=cdate("8/1/2010")</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>StartDate</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>PARAMS_Month_Year</DataSetName>
+          <ValueField>PARAMDATE</ValueField>
+          <LabelField>MonthYearPARAM</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="EndDate">
+      <DataType>DateTime</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>=cdate("9/1/2010")</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>EndDate</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>PARAMS_Month_Year</DataSetName>
+          <ValueField>PARAMDATE</ValueField>
+          <LabelField>MonthYearPARAM</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="FilterType">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>="District"</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>FilterType</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>PARAMS_SelectParamTypeLocation</DataSetName>
+          <ValueField>ParamType</ValueField>
+          <LabelField>ParamType</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="DynFilter">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>="Chicago"</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>DynFilter</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>PARAMS_DynFilter_Locations</DataSetName>
+          <ValueField>DynFilter</ValueField>
+          <LabelField>DynFilterLabel</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <RightMargin>1in</RightMargin>
+  <LeftMargin>1in</LeftMargin>
+  <PageHeader>
+    <PrintOnFirstPage>true</PrintOnFirstPage>
+    <ReportItems>
+      <Textbox Name="textbox6">
+        <rd:DefaultName>textbox6</rd:DefaultName>
+        <Top>0.5in</Top>
+        <Style>
+          <FontSize>8pt</FontSize>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>1</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Value>="For the date range: " + Parameters!StartDate.Value + " - " + dateadd(dateinterval.day, -1, dateadd(dateinterval.month, 1, Parameters!EndDate.Value))</Value>
+      </Textbox>
+      <Textbox Name="textbox5">
+        <rd:DefaultName>textbox5</rd:DefaultName>
+        <Style>
+          <FontSize>24pt</FontSize>
+          <TextAlign>Left</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.5in</Height>
+        <Value>SIPS - Buys Comparison</Value>
+      </Textbox>
+    </ReportItems>
+    <Height>0.75in</Height>
+    <PrintOnLastPage>true</PrintOnLastPage>
+  </PageHeader>
+  <BottomMargin>1in</BottomMargin>
+  <rd:ReportID>5af42ec0-8a8b-4206-9466-8df315a9993f</rd:ReportID>
+  <DataSets>
+    <DataSet Name="PARAMS_Month_Year">
+      <Fields>
+        <Field Name="PARAMDATE">
+          <DataField>PARAMDATE</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="MonthYearPARAM">
+          <DataField>MonthYearPARAM</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>Development</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>Reports..PARAMS_Month_Year</CommandText>
+      </Query>
+    </DataSet>
+    <DataSet Name="SIPS_BuyComparison">
+      <Fields>
+        <Field Name="locationno">
+          <DataField>locationno</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="producttype">
+          <DataField>producttype</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="type">
+          <DataField>type</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="buyqty">
+          <DataField>buyqty</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="sipsqty">
+          <DataField>sipsqty</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SIPSpercent">
+          <DataField>SIPSpercent</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>Development</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>SIPS_BuyComparison</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@StartDate">
+            <Value>=Parameters!StartDate.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@EndDate">
+            <Value>=Parameters!EndDate.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@FilterType">
+            <Value>=Parameters!FilterType.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@DynFilter">
+            <Value>=Parameters!DynFilter.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+    </DataSet>
+    <DataSet Name="PARAMS_SelectParamTypeLocation">
+      <Fields>
+        <Field Name="ParamType">
+          <DataField>ParamType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SortOrder">
+          <DataField>SortOrder</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>Development</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>Reports..PARAMS_SelectParamTypeLocation</CommandText>
+      </Query>
+    </DataSet>
+    <DataSet Name="PARAMS_DynFilter_Locations">
+      <Fields>
+        <Field Name="DynFilter">
+          <DataField>DynFilter</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DynFilterLabel">
+          <DataField>DynFilterLabel</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>Development</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>Reports..PARAMS_DynFilter_Locations</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@FilterType">
+            <Value>=Parameters!FilterType.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <Width>6.125in</Width>
+  <Body>
+    <ReportItems>
+      <Matrix Name="matrix1">
+        <MatrixColumns>
+          <MatrixColumn>
+            <Width>0.875in</Width>
+          </MatrixColumn>
+          <MatrixColumn>
+            <Width>0.875in</Width>
+          </MatrixColumn>
+          <MatrixColumn>
+            <Width>0.75in</Width>
+          </MatrixColumn>
+        </MatrixColumns>
+        <DataSetName>SIPS_BuyComparison</DataSetName>
+        <RowGroupings>
+          <RowGrouping>
+            <Width>1in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_RowGroup1">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!locationno.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox7">
+                    <rd:DefaultName>textbox7</rd:DefaultName>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value>Total</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="locationno_1">
+                  <rd:DefaultName>locationno_1</rd:DefaultName>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                  </Style>
+                  <ZIndex>4</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!locationno.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+        </RowGroupings>
+        <ColumnGroupings>
+          <ColumnGrouping>
+            <Height>0.125in</Height>
+            <DynamicColumns>
+              <Grouping Name="matrix1_ColumnGroup1">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!type.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox8">
+                    <rd:DefaultName>textbox8</rd:DefaultName>
+                    <Style>
+                      <BorderColor>
+                        <Left>LightGrey</Left>
+                        <Right>LightGrey</Right>
+                        <Bottom>LightGrey</Bottom>
+                      </BorderColor>
+                      <BorderStyle>
+                        <Left>Solid</Left>
+                        <Right>Solid</Right>
+                        <Bottom>Solid</Bottom>
+                      </BorderStyle>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Center</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                    </Style>
+                    <ZIndex>9</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>TOTAL</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="type">
+                  <rd:DefaultName>type</rd:DefaultName>
+                  <Style>
+                    <BorderColor>
+                      <Left>LightGrey</Left>
+                      <Right>LightGrey</Right>
+                      <Bottom>LightGrey</Bottom>
+                    </BorderColor>
+                    <BorderStyle>
+                      <Left>Solid</Left>
+                      <Right>Solid</Right>
+                      <Bottom>Solid</Bottom>
+                    </BorderStyle>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                  </Style>
+                  <ZIndex>10</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!type.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicColumns>
+          </ColumnGrouping>
+          <ColumnGrouping>
+            <Height>0.125in</Height>
+            <DynamicColumns>
+              <Grouping Name="matrix1_ColumnGroup2">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!producttype.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox1">
+                  <rd:DefaultName>textbox1</rd:DefaultName>
+                  <Style>
+                    <BorderColor>
+                      <Default>Gainsboro</Default>
+                    </BorderColor>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                  </Style>
+                  <ZIndex>8</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!producttype.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicColumns>
+          </ColumnGrouping>
+          <ColumnGrouping>
+            <Height>0.125in</Height>
+            <StaticColumns>
+              <StaticColumn>
+                <ReportItems>
+                  <Textbox Name="textbox2">
+                    <rd:DefaultName>textbox2</rd:DefaultName>
+                    <Style>
+                      <BorderColor>
+                        <Left>Gainsboro</Left>
+                      </BorderColor>
+                      <BorderStyle>
+                        <Left>Solid</Left>
+                      </BorderStyle>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Right</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                    </Style>
+                    <ZIndex>7</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>Buy Qty</Value>
+                  </Textbox>
+                </ReportItems>
+              </StaticColumn>
+              <StaticColumn>
+                <ReportItems>
+                  <Textbox Name="textbox3">
+                    <rd:DefaultName>textbox3</rd:DefaultName>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Right</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                    </Style>
+                    <ZIndex>6</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>SIPS Qty</Value>
+                  </Textbox>
+                </ReportItems>
+              </StaticColumn>
+              <StaticColumn>
+                <ReportItems>
+                  <Textbox Name="textbox4">
+                    <rd:DefaultName>textbox4</rd:DefaultName>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Right</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                    </Style>
+                    <ZIndex>5</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>% SIPS</Value>
+                  </Textbox>
+                </ReportItems>
+              </StaticColumn>
+            </StaticColumns>
+          </ColumnGrouping>
+        </ColumnGroupings>
+        <Width>6in</Width>
+        <Corner>
+          <ReportItems>
+            <Textbox Name="locationno">
+              <rd:DefaultName>locationno</rd:DefaultName>
+              <Style>
+                <FontSize>8pt</FontSize>
+                <FontWeight>700</FontWeight>
+                <VerticalAlign>Bottom</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+              </Style>
+              <ZIndex>11</ZIndex>
+              <CanGrow>true</CanGrow>
+              <Value>LocationNo</Value>
+            </Textbox>
+          </ReportItems>
+        </Corner>
+        <MatrixRows>
+          <MatrixRow>
+            <Height>0.125in</Height>
+            <MatrixCells>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="buyqty">
+                    <rd:DefaultName>buyqty</rd:DefaultName>
+                    <Style>
+                      <BorderColor>
+                        <Left>Gainsboro</Left>
+                      </BorderColor>
+                      <BorderStyle>
+                        <Left>Solid</Left>
+                      </BorderStyle>
+                      <FontSize>8pt</FontSize>
+                      <Format>n0</Format>
+                      <TextAlign>Right</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                    </Style>
+                    <ZIndex>3</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>=Sum(Fields!buyqty.Value)</Value>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="sipsqty">
+                    <rd:DefaultName>sipsqty</rd:DefaultName>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <Format>n0</Format>
+                      <TextAlign>Right</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                    </Style>
+                    <ZIndex>2</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>=Sum(Fields!sipsqty.Value)</Value>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="SIPSpercent">
+                    <rd:DefaultName>SIPSpercent</rd:DefaultName>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <Format>p</Format>
+                      <TextAlign>Right</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                    </Style>
+                    <ZIndex>1</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>=iif(sum(Fields!sipsqty.Value) = 0, "", sum(Fields!sipsqty.Value) / sum(Fields!buyqty.Value))
+'=IIF(Inscope("matrix1_RowGroup1"),sum(Fields!sipsqty.Value) / sum(Fields!buyqty.Value),"")'Fields!SIPSpercent.Value</Value>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+            </MatrixCells>
+          </MatrixRow>
+        </MatrixRows>
+      </Matrix>
+    </ReportItems>
+    <Height>0.625in</Height>
+  </Body>
+  <Language>en-US</Language>
+  <TopMargin>1in</TopMargin>
+</Report>
