@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="Production">
+      <rd:DataSourceID>360912d3-84f4-4b07-874f-dcbb9c76c8fc</rd:DataSourceID>
+      <DataSourceReference>Production</DataSourceReference>
+    </DataSource>
+  </DataSources>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <ReportParameters>
+    <ReportParameter Name="ItemCode">
+      <DataType>String</DataType>
+      <Prompt>ItemCode</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:GridSpacing>0.05in</rd:GridSpacing>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <RightMargin>0.25in</RightMargin>
+  <LeftMargin>0.25in</LeftMargin>
+  <PageHeader>
+    <PrintOnFirstPage>true</PrintOnFirstPage>
+    <ReportItems>
+      <Textbox Name="Parameters">
+        <CanShrink>true</CanShrink>
+        <Top>0.375in</Top>
+        <Style>
+          <FontSize>8pt</FontSize>
+          <TextAlign>Center</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>1</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Height>0.225in</Height>
+        <Value>= "For Item Code: " + Parameters!ItemCode.Value</Value>
+      </Textbox>
+      <Textbox Name="ReportTitle">
+        <CanShrink>true</CanShrink>
+        <Style>
+          <FontSize>16pt</FontSize>
+          <TextAlign>Center</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.375in</Height>
+        <Value>Rate of Sale - Chainwide</Value>
+      </Textbox>
+    </ReportItems>
+    <Height>0.65in</Height>
+    <PrintOnLastPage>true</PrintOnLastPage>
+  </PageHeader>
+  <BottomMargin>0.25in</BottomMargin>
+  <rd:ReportID>165ef085-72ea-44fc-8aef-6751a67dc634</rd:ReportID>
+  <CodeModules>
+    <CodeModule>System.Web, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</CodeModule>
+  </CodeModules>
+  <DataSets>
+    <DataSet Name="CDC_RateOfSale_CDC">
+      <Fields>
+        <Field Name="RateMonth">
+          <DataField>RateMonth</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="SalesCnt">
+          <DataField>SalesCnt</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Location">
+          <DataField>Location</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="picklist">
+          <DataField>picklist</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>Production</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>CDC_RateOfSale_CDC</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@ItemCode">
+            <Value>=Parameters!ItemCode.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <Code />
+  <Width>7in</Width>
+  <Body>
+    <ReportItems>
+      <Matrix Name="matrix1">
+        <MatrixColumns>
+          <MatrixColumn>
+            <Width>0.7in</Width>
+          </MatrixColumn>
+        </MatrixColumns>
+        <DataSetName>CDC_RateOfSale_CDC</DataSetName>
+        <RowGroupings>
+          <RowGrouping>
+            <Width>0.55in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_picklist">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!picklist.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox5">
+                    <Style>
+                      <Color>White</Color>
+                      <BackgroundColor>Black</BackgroundColor>
+                      <BorderColor>
+                        <Left>Black</Left>
+                        <Right>Black</Right>
+                        <Top>Black</Top>
+                      </BorderColor>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <PaddingLeft>2pt</PaddingLeft>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value>Total</Value>
+                  </Textbox>
+                </ReportItems>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontWeight>700</FontWeight>
+                </Style>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="picklist">
+                  <rd:DefaultName>picklist</rd:DefaultName>
+                  <Style>
+                    <Color>White</Color>
+                    <BackgroundColor>Black</BackgroundColor>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                      <Right>None</Right>
+                    </BorderStyle>
+                    <FontSize>9pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <PaddingLeft>2pt</PaddingLeft>
+                  </Style>
+                  <ZIndex>3</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>="  "+ Fields!Location.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>0.03125in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_Location">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!Location.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="Location">
+                  <rd:DefaultName>Location</rd:DefaultName>
+                  <Style>
+                    <BackgroundColor>Black</BackgroundColor>
+                    <BorderColor>
+                      <Right>Black</Right>
+                      <Top>Black</Top>
+                      <Bottom>Black</Bottom>
+                    </BorderColor>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                      <Left>Solid</Left>
+                      <Right>Solid</Right>
+                      <Top>Solid</Top>
+                    </BorderStyle>
+                    <BorderWidth>
+                      <Left>1pt</Left>
+                      <Right>1pt</Right>
+                      <Top>1pt</Top>
+                    </BorderWidth>
+                    <FontSize>9pt</FontSize>
+                    <PaddingLeft>2pt</PaddingLeft>
+                  </Style>
+                  <ZIndex>2</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value />
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+        </RowGroupings>
+        <KeepTogether>true</KeepTogether>
+        <ColumnGroupings>
+          <ColumnGrouping>
+            <Height>0.2in</Height>
+            <DynamicColumns>
+              <Grouping Name="matrix1_RateMonth">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!RateMonth.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields!RateMonth.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox3">
+                    <rd:DefaultName>textbox3</rd:DefaultName>
+                    <Style>
+                      <Color>White</Color>
+                      <BackgroundColor>Black</BackgroundColor>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <PaddingLeft>2pt</PaddingLeft>
+                    </Style>
+                    <ZIndex>4</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>Total</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="RateMonth">
+                  <rd:DefaultName>RateMonth</rd:DefaultName>
+                  <Style>
+                    <Color>White</Color>
+                    <BackgroundColor>Black</BackgroundColor>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                    <FontSize>9pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                  </Style>
+                  <ZIndex>5</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Format(Fields!RateMonth.Value,"MMMM") + vbCRLF + Format(Fields!RateMonth.Value,"yyyy")</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicColumns>
+          </ColumnGrouping>
+        </ColumnGroupings>
+        <Width>1.98125in</Width>
+        <Corner>
+          <ReportItems>
+            <Textbox Name="textbox1">
+              <rd:DefaultName>textbox1</rd:DefaultName>
+              <Style>
+                <Color>White</Color>
+                <BackgroundColor>Black</BackgroundColor>
+                <BorderColor>
+                  <Right>Black</Right>
+                </BorderColor>
+                <BorderStyle>
+                  <Right>Solid</Right>
+                </BorderStyle>
+                <BorderWidth>
+                  <Right>1pt</Right>
+                </BorderWidth>
+                <FontSize>9pt</FontSize>
+                <FontWeight>700</FontWeight>
+                <PaddingLeft>2pt</PaddingLeft>
+              </Style>
+              <ZIndex>6</ZIndex>
+              <CanGrow>true</CanGrow>
+              <Value />
+            </Textbox>
+          </ReportItems>
+        </Corner>
+        <MatrixRows>
+          <MatrixRow>
+            <Height>0.2in</Height>
+            <MatrixCells>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="SalesCnt">
+                    <rd:DefaultName>SalesCnt</rd:DefaultName>
+                    <ToolTip>Sum of qty for this item in each store by month...</ToolTip>
+                    <Style>
+                      <BorderStyle>
+                        <Default>Solid</Default>
+                      </BorderStyle>
+                      <TextAlign>Center</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                    </Style>
+                    <ZIndex>1</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>=iif(Sum(Fields!SalesCnt.Value) = 0,0,Sum(Fields!SalesCnt.Value))</Value>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+            </MatrixCells>
+          </MatrixRow>
+        </MatrixRows>
+      </Matrix>
+    </ReportItems>
+    <Height>0.6in</Height>
+  </Body>
+  <Language>en-US</Language>
+  <PageFooter>
+    <PrintOnFirstPage>true</PrintOnFirstPage>
+    <ReportItems>
+      <Textbox Name="textbox51">
+        <Width>2.25in</Width>
+        <Style>
+          <FontWeight>700</FontWeight>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>1</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>4.55in</Left>
+        <Value>="Page " + cstr(Globals!PageNumber) + " of " + cstr(Globals!TotalPages) + " Pages"</Value>
+      </Textbox>
+      <Textbox Name="textbox52">
+        <Width>2.875in</Width>
+        <Style>
+          <FontWeight>700</FontWeight>
+          <TextAlign>Left</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Value>="Print Date:" + Globals!ExecutionTime</Value>
+      </Textbox>
+    </ReportItems>
+    <Height>0.25in</Height>
+    <PrintOnLastPage>true</PrintOnLastPage>
+  </PageFooter>
+  <TopMargin>0.25in</TopMargin>
+</Report>
