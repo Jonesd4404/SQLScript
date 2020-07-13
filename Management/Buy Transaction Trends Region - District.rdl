@@ -1,0 +1,2444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="Development">
+      <rd:DataSourceID>9e9e0f7a-6091-417e-9ae3-6d8b8b3e5365</rd:DataSourceID>
+      <DataSourceReference>Development</DataSourceReference>
+    </DataSource>
+  </DataSources>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <ReportParameters>
+    <ReportParameter Name="REPORTDATE">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Report Date</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>PARAMS_SelectTrendsDates</DataSetName>
+          <ValueField>REPORTDATE</ValueField>
+          <LabelField>REPORTDATE</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <RightMargin>1in</RightMargin>
+  <LeftMargin>1in</LeftMargin>
+  <PageHeader>
+    <PrintOnFirstPage>true</PrintOnFirstPage>
+    <ReportItems>
+      <Textbox Name="textbox29">
+        <rd:DefaultName>textbox29</rd:DefaultName>
+        <Top>0.125in</Top>
+        <Width>3.125in</Width>
+        <Style>
+          <FontWeight>700</FontWeight>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Left>1.125in</Left>
+        <Height>0.125in</Height>
+        <Value>Buy Transaction Trends Region District</Value>
+      </Textbox>
+    </ReportItems>
+    <Height>0.375in</Height>
+    <PrintOnLastPage>true</PrintOnLastPage>
+  </PageHeader>
+  <BottomMargin>1in</BottomMargin>
+  <rd:ReportID>2dbd8216-6e98-4ad4-a48e-fccd4f29a9fd</rd:ReportID>
+  <DataSets>
+    <DataSet Name="SB_BuyTrendsByDistrict">
+      <Fields>
+        <Field Name="LocationNo">
+          <DataField>LocationNo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LocationID">
+          <DataField>LocationID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LocationName">
+          <DataField>LocationName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DistrictCode">
+          <DataField>DistrictCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Region">
+          <DataField>Region</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MonthYear">
+          <DataField>MonthYear</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FirstofMonth">
+          <DataField>FirstofMonth</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="LastofMonth">
+          <DataField>LastofMonth</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="NumDays">
+          <DataField>NumDays</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SalesCount">
+          <DataField>SalesCount</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Buycount">
+          <DataField>Buycount</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="BuyAmount">
+          <DataField>BuyAmount</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Visible">
+          <DataField>Visible</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BuyCountComp">
+          <DataField>BuyCountComp</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="BuyAmountComp">
+          <DataField>BuyAmountComp</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="BuyCountPercentChange">
+          <DataField>BuyCountPercentChange</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="BuyAmountPercentChange">
+          <DataField>BuyAmountPercentChange</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="BuyCountCompPercentChange">
+          <DataField>BuyCountCompPercentChange</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="BuyAmountCompPercentChange">
+          <DataField>BuyAmountCompPercentChange</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="BuyCountLastYear">
+          <DataField>BuyCountLastYear</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="BuyAmountLastYear">
+          <DataField>BuyAmountLastYear</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="AvgBuysDay">
+          <DataField>AvgBuysDay</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="AvgBuysDollarsDay">
+          <DataField>AvgBuysDollarsDay</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="CompNumDays">
+          <DataField>CompNumDays</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>Development</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>SB_BuyTrendsByDistrict</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@Date">
+            <Value>=Parameters!REPORTDATE.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+    </DataSet>
+    <DataSet Name="PARAMS_SelectTrendsDates">
+      <Fields>
+        <Field Name="REPORTDATE">
+          <DataField>REPORTDATE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>Development</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>PARAMS_SelectTrendsDates</CommandText>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <Width>16.375in</Width>
+  <Body>
+    <ReportItems>
+      <Matrix Name="matrix6">
+        <MatrixColumns>
+          <MatrixColumn>
+            <Width>0.75in</Width>
+          </MatrixColumn>
+        </MatrixColumns>
+        <ZIndex>5</ZIndex>
+        <DataSetName>SB_BuyTrendsByDistrict</DataSetName>
+        <RowGroupings>
+          <RowGrouping>
+            <Width>0.03125in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix6_Region">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!Region.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox74">
+                    <Visibility>
+                      <Hidden>true</Hidden>
+                    </Visibility>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                    </Style>
+                    <ZIndex>4</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>HPB Total</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox75">
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <PaddingBottom>1pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>10</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value />
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>0.03125in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix6_CompRegionRow">
+                <GroupExpressions>
+                  <GroupExpression>1=1</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!Region.Value</Parent>
+              </Grouping>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox76">
+                    <Visibility>
+                      <Hidden>true</Hidden>
+                    </Visibility>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                    </Style>
+                    <ZIndex>3</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>Comp Total</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox77">
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <PaddingBottom>1pt</PaddingBottom>
+                  </Style>
+                  <DataElementStyle>AttributeNormal</DataElementStyle>
+                  <ZIndex>9</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>1=1</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>0.03125in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix6_District">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!DistrictCode.Value</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!Region.Value</Parent>
+              </Grouping>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox78">
+                    <Visibility>
+                      <Hidden>true</Hidden>
+                    </Visibility>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                    </Style>
+                    <DataElementStyle>AttributeNormal</DataElementStyle>
+                    <ZIndex>2</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>Total</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox79">
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <PaddingBottom>1pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>8</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!DistrictCode.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>0.03125in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix6_CompDistrictRow">
+                <GroupExpressions>
+                  <GroupExpression>1=1</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!DistrictCode.Value</Parent>
+              </Grouping>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox80">
+                    <Visibility>
+                      <Hidden>true</Hidden>
+                    </Visibility>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                    </Style>
+                    <ZIndex>1</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>Comp Total</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox81">
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <PaddingBottom>1pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>7</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>1=1</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>0.03125in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix6_Location">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!LocationNo.Value</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!DistrictCode.Value</Parent>
+              </Grouping>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox82">
+                    <Visibility>
+                      <Hidden>true</Hidden>
+                    </Visibility>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value>Total</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox83">
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <PaddingBottom>1pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>6</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!LocationNo.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+        </RowGroupings>
+        <Top>1.125in</Top>
+        <ColumnGroupings>
+          <ColumnGrouping>
+            <Height>0.125in</Height>
+            <DynamicColumns>
+              <Grouping Name="matrix6_MonthYear">
+                <GroupExpressions>
+                  <GroupExpression>1=1</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!Region.Value</Parent>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox84">
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                  <ZIndex>11</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>Buys A Day</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicColumns>
+          </ColumnGrouping>
+        </ColumnGroupings>
+        <Width>0.90625in</Width>
+        <Corner>
+          <ReportItems>
+            <Textbox Name="textbox85">
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
+              <Style>
+                <FontSize>8pt</FontSize>
+              </Style>
+              <ZIndex>12</ZIndex>
+              <CanGrow>true</CanGrow>
+              <Value />
+            </Textbox>
+          </ReportItems>
+        </Corner>
+        <Style>
+          <FontSize>8pt</FontSize>
+        </Style>
+        <MatrixRows>
+          <MatrixRow>
+            <Height>0.125in</Height>
+            <MatrixCells>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="textbox86">
+                    <Visibility>
+                      <Hidden>=iif(InScope("matrix6_MonthYear") and InScope("matrix6_Location"), True,
+
+iif(InScope("matrix6_Location"), True,
+iif(InScope("matrix6_District") and InScope("matrix6_CompDistrictRow"),True,
+iif(InScope("matrix6_District"),True,
+
+iif(InScope("matrix6_Region") and InScope("matrix6_CompRegionRow"), True,
+iif(InScope("matrix6_Region"), True,
+
+iif(InScope("matrix6_MonthYear"),False,
+iif(InScope("matrix6_Location"), True,
+False))
+))))))</Hidden>
+                    </Visibility>
+                    <Style>
+                      <Color>=iif(InScope("matrix6_Location"), "Black",
+iif(InScope("matrix6_District") and InScope("matrix6_CompDistrictRow"), "Black",
+iif(InScope("matrix6_District"), "DarkBlue",
+iif(InScope("matrix6_Region") and InScope("matrix6_CompRegionRow"), "Black",
+iif(InScope("matrix6_Region"), "DarkBlue",
+iif(InScope("matrix6_AvgBuysDay"),"Black","DarkBlue"))))))</Color>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>=iif(InScope("matrix3_Location"), "Normal",
+iif(InScope("matrix3_District"), "Bold",
+iif(InScope("matrix3_Region"), "Bold",
+iif(InScope("matrix3_MonthYear"),"Bold","Bold"))))</FontWeight>
+                      <Format>#,##0</Format>
+                    </Style>
+                    <DataElementStyle>AttributeNormal</DataElementStyle>
+                    <ZIndex>5</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>=iif(InScope("matrix3_MonthYear") and InScope("matrix3_Location"), Sum(Fields!AvgBuysDay.Value)/Count(Fields!AvgBuysDay.Value),
+
+iif(InScope("matrix3_Location"),	
+Sum(Fields!AvgBuysDay.Value)/Count(Fields!AvgBuysDay.Value),
+	
+iif(InScope("matrix3_District") and InScope("matrix3_CompDistrictRow"),Sum(Fields!AvgBuysDay.Value)/Count(Fields!AvgBuysDay.Value),
+	iif(InScope("matrix3_District"),
+		Sum(Fields!BuyCountComp.Value)/(countdistinct(iif(Fields!BuyCountComp.Value &gt; 0,Fields!LocationNo.Value, nothing)))/Last(Fields!CompNumDays.Value),	
+	
+	iif(InScope("matrix3_Region") and InScope("matrix3_CompRegionRow"), Sum(Fields!AvgBuysDay.Value)/Count(Fields!AvgBuysDay.Value),
+	iif(InScope("matrix3_Region"), 
+		Sum(Fields!BuyCountComp.Value)/(countdistinct(iif(Fields!BuyCountComp.Value &gt; 0,Fields!LocationNo.Value, nothing)))/Last(Fields!CompNumDays.Value),		
+
+iif(InScope("matrix3_MonthYear"),Sum(Fields!AvgBuysDay.Value)/Count(Fields!AvgBuysDay.Value),
+iif(InScope("matrix3_location"), 999,
+Sum(Fields!BuyCountComp.Value)/  iif(Last(Fields!CompNumDays.Value) &gt; 365, Last(Fields!CompNumDays.Value) -365, Last(Fields!CompNumDays.Value))))
+  ))))))</Value>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+            </MatrixCells>
+          </MatrixRow>
+        </MatrixRows>
+        <Height>0.375in</Height>
+        <Left>6.125in</Left>
+      </Matrix>
+      <Matrix Name="matrix5">
+        <MatrixColumns>
+          <MatrixColumn>
+            <Width>0.5in</Width>
+          </MatrixColumn>
+        </MatrixColumns>
+        <ZIndex>4</ZIndex>
+        <DataSetName>SB_BuyTrendsByDistrict</DataSetName>
+        <RowGroupings>
+          <RowGrouping>
+            <Width>0.03125in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix5_Region">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!Region.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox60">
+                    <Visibility>
+                      <Hidden>true</Hidden>
+                    </Visibility>
+                    <Style>
+                      <BorderStyle>
+                        <Left>Solid</Left>
+                        <Right>Solid</Right>
+                        <Bottom>Solid</Bottom>
+                      </BorderStyle>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                    </Style>
+                    <ZIndex>4</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>HPB Total</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox61">
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                  <Style>
+                    <BackgroundColor>White</BackgroundColor>
+                    <BorderStyle>
+                      <Left>Solid</Left>
+                      <Right>None</Right>
+                      <Top>Solid</Top>
+                      <Bottom>Solid</Bottom>
+                    </BorderStyle>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                  </Style>
+                  <ZIndex>10</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!Region.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>0.03125in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix5_CompRegionRow">
+                <GroupExpressions>
+                  <GroupExpression>1=1</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!Region.Value</Parent>
+              </Grouping>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox62">
+                    <Visibility>
+                      <Hidden>true</Hidden>
+                    </Visibility>
+                    <Style>
+                      <BackgroundColor>White</BackgroundColor>
+                      <BorderStyle>
+                        <Left>None</Left>
+                        <Right>Solid</Right>
+                        <Top>None</Top>
+                        <Bottom>Solid</Bottom>
+                      </BorderStyle>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                    <ZIndex>3</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>Comp Totals</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox63">
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                  <Style>
+                    <BackgroundColor>LightGrey</BackgroundColor>
+                    <BorderStyle>
+                      <Left>Solid</Left>
+                      <Right>None</Right>
+                      <Top>Solid</Top>
+                      <Bottom>Solid</Bottom>
+                    </BorderStyle>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                  </Style>
+                  <ZIndex>9</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>1=1</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>0.03125in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix5_District">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!DistrictCode.Value</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!Region.Value</Parent>
+              </Grouping>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox64">
+                    <Visibility>
+                      <Hidden>true</Hidden>
+                    </Visibility>
+                    <Style>
+                      <BackgroundColor>White</BackgroundColor>
+                      <BorderStyle>
+                        <Right>Solid</Right>
+                        <Top>Solid</Top>
+                        <Bottom>None</Bottom>
+                      </BorderStyle>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                    <ZIndex>2</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>=Trim(Fields!Region.Value) + " Totals"</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox65">
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                  <Style>
+                    <BorderStyle>
+                      <Left>Solid</Left>
+                      <Top>Solid</Top>
+                      <Bottom>Solid</Bottom>
+                    </BorderStyle>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                  <ZIndex>8</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!DistrictCode.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>0.03125in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix5_CompDistrictRow">
+                <GroupExpressions>
+                  <GroupExpression>1=1</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!DistrictCode.Value</Parent>
+              </Grouping>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox66">
+                    <Visibility>
+                      <Hidden>true</Hidden>
+                    </Visibility>
+                    <Style>
+                      <BorderStyle>
+                        <Left>None</Left>
+                        <Right>Solid</Right>
+                        <Top>None</Top>
+                        <Bottom>Solid</Bottom>
+                      </BorderStyle>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                    <ZIndex>1</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>Comp Totals</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox67">
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                  <Style>
+                    <BorderStyle>
+                      <Left>Solid</Left>
+                      <Top>Solid</Top>
+                      <Bottom>Solid</Bottom>
+                    </BorderStyle>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                  <ZIndex>7</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>1=1</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>0.03125in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix5_Location">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!LocationNo.Value</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!DistrictCode.Value</Parent>
+              </Grouping>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox68">
+                    <Visibility>
+                      <Hidden>true</Hidden>
+                    </Visibility>
+                    <Style>
+                      <BorderStyle>
+                        <Right>Solid</Right>
+                        <Bottom>None</Bottom>
+                      </BorderStyle>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value>=Trim(Fields!DistrictCode.Value) + " Totals"</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox69">
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                  <Style>
+                    <BorderStyle>
+                      <Right>Solid</Right>
+                      <Top>None</Top>
+                      <Bottom>None</Bottom>
+                    </BorderStyle>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                  <ZIndex>6</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!LocationNo.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+        </RowGroupings>
+        <Top>1.125in</Top>
+        <ColumnGroupings>
+          <ColumnGrouping>
+            <Height>0.125in</Height>
+            <DynamicColumns>
+              <Grouping Name="matrix5_MonthYear">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!MonthYear.Value</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!DistrictCode.Value</Parent>
+              </Grouping>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox70">
+                    <Visibility>
+                      <Hidden>true</Hidden>
+                    </Visibility>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                    <ZIndex>11</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>Total</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox71">
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                  <ZIndex>12</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!MonthYear.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicColumns>
+          </ColumnGrouping>
+        </ColumnGroupings>
+        <Width>1.15625in</Width>
+        <Corner>
+          <ReportItems>
+            <Textbox Name="textbox72">
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
+              <Style>
+                <BorderStyle>
+                  <Bottom>Solid</Bottom>
+                </BorderStyle>
+                <FontSize>8pt</FontSize>
+              </Style>
+              <ZIndex>13</ZIndex>
+              <CanGrow>true</CanGrow>
+              <Value />
+            </Textbox>
+          </ReportItems>
+        </Corner>
+        <MatrixRows>
+          <MatrixRow>
+            <Height>0.125in</Height>
+            <MatrixCells>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="textbox73">
+                    <Visibility>
+                      <Hidden>=iif(InScope("matrix5_MonthYear") and InScope("matrix5_Location"), True,
+
+iif(InScope("matrix5_Location"), True,
+iif(InScope("matrix5_District") and InScope("matrix5_CompDistrictRow"),True,
+iif(InScope("matrix5_District"),True,
+
+iif(InScope("matrix5_Region") and InScope("matrix5_CompRegionRow"), True,
+iif(InScope("matrix5_Region"), True,
+
+iif(InScope("matrix5_MonthYear"),False,
+iif(InScope("matrix5_Location"), True,
+False))
+))))))</Hidden>
+                    </Visibility>
+                    <Style>
+                      <Color>=iif(InScope("matrix5_MonthYear") and InScope("matrix5_Location"), iif(Sum(Fields!BuyCountPercentChange.Value) &lt; 0, "Red","Black"),
+
+iif(InScope("matrix5_Location"), iif(((Sum(Fields!Buycount.Value)-Sum(Fields!BuyCountLastYear.Value))/(Sum(Fields!BuyCountLastYear.Value)))*100 &lt; 0, "Red", "Black"),
+iif(InScope("matrix5_District") and InScope("matrix5_CompDistrictRow"), iif(((Sum(Fields!Buycount.Value)-Sum(Fields!BuyCountLastYear.Value))/(Sum(Fields!BuyCountLastYear.Value)))*100 &lt; 0, "Red","Black"),
+iif(InScope("matrix5_District"), iif(((Sum(Fields!BuyCountComp.Value)-Sum(Fields!BuyCountLastYear.Value))/(Sum(Fields!BuyCountLastYear.Value)))*100 &lt; 0, "Red", "DarkBlue"),
+iif(InScope("matrix5_Region") and InScope("matrix5_CompRegionRow"), iif(((Sum(Fields!Buycount.Value)-Sum(Fields!BuyCountLastYear.Value))/(Sum(Fields!BuyCountLastYear.Value)))*100 &lt; 0, "Red", "Black"),
+iif(InScope("matrix5_Region"), iif(((Sum(Fields!BuyCountComp.Value)-Sum(Fields!BuyCountLastYear.Value))/(Sum(Fields!BuyCountLastYear.Value)))*100 &lt; 0, "Red","DarkBlue"),
+iif(InScope("matrix5_MonthYear"),iif(((Sum(Fields!Buycount.Value)-Sum(Fields!BuyCountLastYear.Value))/(Sum(Fields!BuyCountLastYear.Value)))*100 &lt; 0, "Red","DarkBlue"),
+iif(InScope("matrix5_Location"), "Black", iif(((Sum(Fields!Buycount.Value)-Sum(Fields!BuyCountLastYear.Value))/(Sum(Fields!BuyCountLastYear.Value)))*100 &lt; 0, "Red", "DarkBlue")
+))))))))</Color>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>=iif(InScope("matrix2_Location"), "Normal",
+iif(InScope("matrix2_District"), "Bold",
+iif(InScope("matrix2_Region"), "Bold",
+iif(InScope("matrix2_MonthYear"),"Bold","Bold"))))</FontWeight>
+                      <Format>#,###.0</Format>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                    <ZIndex>5</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>=iif(InScope("matrix2_MonthYear") and InScope("matrix2_Location"), Sum(Fields!BuyCountPercentChange.Value),
+
+iif(InScope("matrix2_Location"), ((Sum(Fields!Buycount.Value)-Sum(Fields!BuyCountLastYear.Value))/(Sum(Fields!BuyCountLastYear.Value)))*100 ,
+iif(InScope("matrix2_District") and InScope("matrix2_CompDistrictRow"),((Sum(Fields!Buycount.Value)-Sum(Fields!BuyCountLastYear.Value))/(Sum(Fields!BuyCountLastYear.Value)))*100 ,
+iif(InScope("matrix2_District"),((Sum(Fields!BuyCountComp.Value)-Sum(Fields!BuyCountLastYear.Value))/(Sum(Fields!BuyCountLastYear.Value)))*100,
+
+iif(InScope("matrix2_Region") and InScope("matrix2_CompRegionRow"), ((Sum(Fields!Buycount.Value)-Sum(Fields!BuyCountLastYear.Value))/(Sum(Fields!BuyCountLastYear.Value)))*100 ,
+iif(InScope("matrix2_Region"), ((Sum(Fields!BuyCountComp.Value)-Sum(Fields!BuyCountLastYear.Value))/(Sum(Fields!BuyCountLastYear.Value)))*100,
+
+iif(InScope("matrix2_MonthYear"),((Sum(Fields!Buycount.Value)-Sum(Fields!BuyCountLastYear.Value))/(Sum(Fields!BuyCountLastYear.Value)))*100 ,
+iif(InScope("matrix2_Location"), 999,
+((Sum(Fields!BuyCountComp.Value)-Sum(Fields!BuyCountLastYear.Value))/(Sum(Fields!BuyCountLastYear.Value)))*100 ))
+))))))</Value>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+            </MatrixCells>
+          </MatrixRow>
+        </MatrixRows>
+        <Height>0.375in</Height>
+        <Left>7.125in</Left>
+      </Matrix>
+      <Matrix Name="matrix4">
+        <MatrixColumns>
+          <MatrixColumn>
+            <Width>0.75in</Width>
+          </MatrixColumn>
+        </MatrixColumns>
+        <ZIndex>3</ZIndex>
+        <DataSetName>SB_BuyTrendsByDistrict</DataSetName>
+        <RowGroupings>
+          <RowGrouping>
+            <Width>1in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix4_Region">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!Region.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox46">
+                    <Style>
+                      <BorderStyle>
+                        <Left>Solid</Left>
+                        <Right>Solid</Right>
+                        <Top>Solid</Top>
+                        <Bottom>Solid</Bottom>
+                      </BorderStyle>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                    </Style>
+                    <ZIndex>4</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>Chainwide Comp</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox47">
+                  <Style>
+                    <BackgroundColor>White</BackgroundColor>
+                    <BorderStyle>
+                      <Left>Solid</Left>
+                      <Right>None</Right>
+                      <Top>Solid</Top>
+                      <Bottom>Solid</Bottom>
+                    </BorderStyle>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                  </Style>
+                  <ZIndex>10</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!Region.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>0.25in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix4_CompRegionRow">
+                <GroupExpressions>
+                  <GroupExpression>1=1</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!Region.Value</Parent>
+              </Grouping>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox48">
+                    <Style>
+                      <BackgroundColor>White</BackgroundColor>
+                      <BorderStyle>
+                        <Left>None</Left>
+                        <Right>Solid</Right>
+                        <Top>None</Top>
+                        <Bottom>Solid</Bottom>
+                      </BorderStyle>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                    <ZIndex>3</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>Comp Totals</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox49">
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                  <Style>
+                    <BackgroundColor>LightGrey</BackgroundColor>
+                    <BorderStyle>
+                      <Left>Solid</Left>
+                      <Right>None</Right>
+                      <Top>Solid</Top>
+                      <Bottom>Solid</Bottom>
+                    </BorderStyle>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                  </Style>
+                  <ZIndex>9</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>1=1</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>1in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix4_District">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!DistrictCode.Value</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!Region.Value</Parent>
+              </Grouping>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox50">
+                    <Style>
+                      <BackgroundColor>White</BackgroundColor>
+                      <BorderStyle>
+                        <Right>Solid</Right>
+                        <Top>Solid</Top>
+                        <Bottom>None</Bottom>
+                      </BorderStyle>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                    <ZIndex>2</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>=Trim(Fields!Region.Value) + " Totals"</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox51">
+                  <Style>
+                    <BorderStyle>
+                      <Left>Solid</Left>
+                      <Top>Solid</Top>
+                      <Bottom>Solid</Bottom>
+                    </BorderStyle>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                  <ZIndex>8</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!DistrictCode.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>0.625in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix4_CompDistrictRow">
+                <GroupExpressions>
+                  <GroupExpression>1=1</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!DistrictCode.Value</Parent>
+              </Grouping>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox52">
+                    <Style>
+                      <BorderStyle>
+                        <Left>None</Left>
+                        <Right>Solid</Right>
+                        <Top>None</Top>
+                        <Bottom>Solid</Bottom>
+                      </BorderStyle>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                    <ZIndex>1</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>Comp Totals</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox53">
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                  <Style>
+                    <BorderStyle>
+                      <Left>Solid</Left>
+                      <Top>Solid</Top>
+                      <Bottom>Solid</Bottom>
+                    </BorderStyle>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                  <ZIndex>7</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>1=1</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>1.25in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix4_Location">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!LocationNo.Value</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!DistrictCode.Value</Parent>
+              </Grouping>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox54">
+                    <Style>
+                      <BorderStyle>
+                        <Right>Solid</Right>
+                        <Bottom>None</Bottom>
+                      </BorderStyle>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value>=Trim(Fields!DistrictCode.Value) + " Totals"</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox55">
+                  <Style>
+                    <BorderStyle>
+                      <Right>Solid</Right>
+                      <Top>None</Top>
+                      <Bottom>None</Bottom>
+                    </BorderStyle>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                  <ZIndex>6</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!LocationNo.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+        </RowGroupings>
+        <Top>1.125in</Top>
+        <ColumnGroupings>
+          <ColumnGrouping>
+            <Height>0.125in</Height>
+            <DynamicColumns>
+              <Grouping Name="matrix4_MonthYear">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!MonthYear.Value</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!DistrictCode.Value</Parent>
+              </Grouping>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox56">
+                    <Visibility>
+                      <Hidden>true</Hidden>
+                    </Visibility>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                    <ZIndex>11</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>Total</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox57">
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                  <ZIndex>12</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!MonthYear.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicColumns>
+          </ColumnGrouping>
+        </ColumnGroupings>
+        <Width>5.625in</Width>
+        <Corner>
+          <ReportItems>
+            <Textbox Name="textbox58">
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
+              <Style>
+                <BorderStyle>
+                  <Bottom>Solid</Bottom>
+                </BorderStyle>
+                <FontSize>8pt</FontSize>
+              </Style>
+              <ZIndex>13</ZIndex>
+              <CanGrow>true</CanGrow>
+              <Value />
+            </Textbox>
+          </ReportItems>
+        </Corner>
+        <MatrixRows>
+          <MatrixRow>
+            <Height>0.125in</Height>
+            <MatrixCells>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="textbox59">
+                    <Style>
+                      <Color>=iif(InScope("matrix4_Location"), "Black",
+iif(InScope("matrix4_District") and InScope("matrix4_CompDistrictRow"), "Black",
+iif(InScope("matrix4_District"), "DarkBlue",
+iif(InScope("matrix4_Region") and InScope("matrix4_CompRegionRow"), "Black",
+iif(InScope("matrix4_Region"), "DarkBlue",
+iif(InScope("matrix4_MonthYear"),"DarkBlue","DarkBlue"))))))</Color>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>=iif(InScope("matrix1_Location"), "Normal",
+iif(InScope("matrix1_District"), "Bold",
+iif(InScope("matrix1_Region"), "Bold",
+iif(InScope("matrix1_MonthYear"),"Bold","Bold"))))</FontWeight>
+                      <Format>#,###,##0</Format>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                    <ZIndex>5</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>=iif(InScope("matrix1_MonthYear") and InScope("matrix1_Location"), Sum(Fields!Buycount.Value),
+
+iif(InScope("matrix1_Location"),
+Sum(Fields!Buycount.Value),
+
+iif(InScope("matrix1_District") and InScope("matrix1_CompDistrictRow"),Sum(Fields!Buycount.Value),
+iif(InScope("matrix1_District"),
+Sum(Fields!BuyCountComp.Value),
+
+iif(InScope("matrix1_Region") and InScope("matrix1_CompRegionRow"), Sum(Fields!Buycount.Value),
+iif(InScope("matrix1_Region"),
+Sum(Fields!BuyCountComp.Value),
+
+iif(InScope("matrix1_MonthYear"),Sum(Fields!Buycount.Value),
+iif(InScope("matrix1_location"), 999,
+Sum(Fields!BuyCountComp.Value)))
+))))))</Value>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+            </MatrixCells>
+          </MatrixRow>
+        </MatrixRows>
+        <Height>0.375in</Height>
+        <Left>1.125in</Left>
+      </Matrix>
+      <Matrix Name="matrix3">
+        <MatrixColumns>
+          <MatrixColumn>
+            <Width>0.75in</Width>
+          </MatrixColumn>
+        </MatrixColumns>
+        <ZIndex>2</ZIndex>
+        <DataSetName>SB_BuyTrendsByDistrict</DataSetName>
+        <RowGroupings>
+          <RowGrouping>
+            <Width>0.03125in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix3_Region">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!Region.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox41">
+                    <rd:DefaultName>textbox41</rd:DefaultName>
+                    <Visibility>
+                      <Hidden>true</Hidden>
+                    </Visibility>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                    </Style>
+                    <ZIndex>4</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>HPB Total</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox35">
+                  <rd:DefaultName>textbox35</rd:DefaultName>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                  <ZIndex>10</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value />
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>0.03125in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix3_CompRegionRow">
+                <GroupExpressions>
+                  <GroupExpression>1=1</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!Region.Value</Parent>
+              </Grouping>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox42">
+                    <rd:DefaultName>textbox42</rd:DefaultName>
+                    <Visibility>
+                      <Hidden>true</Hidden>
+                    </Visibility>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                    </Style>
+                    <ZIndex>3</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>Comp Total</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox37">
+                  <rd:DefaultName>textbox37</rd:DefaultName>
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                  <ZIndex>9</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>1=1</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>0.03125in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix3_District">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!DistrictCode.Value</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!Region.Value</Parent>
+              </Grouping>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox43">
+                    <rd:DefaultName>textbox43</rd:DefaultName>
+                    <Visibility>
+                      <Hidden>true</Hidden>
+                    </Visibility>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                    </Style>
+                    <DataElementStyle>AttributeNormal</DataElementStyle>
+                    <ZIndex>2</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>Total</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox38">
+                  <rd:DefaultName>textbox38</rd:DefaultName>
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                  <ZIndex>8</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!DistrictCode.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>0.03125in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix3_CompDistrictRow">
+                <GroupExpressions>
+                  <GroupExpression>1=1</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!DistrictCode.Value</Parent>
+              </Grouping>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox44">
+                    <rd:DefaultName>textbox44</rd:DefaultName>
+                    <Visibility>
+                      <Hidden>true</Hidden>
+                    </Visibility>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                    </Style>
+                    <ZIndex>1</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>Comp Total</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox39">
+                  <rd:DefaultName>textbox39</rd:DefaultName>
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                  </Style>
+                  <ZIndex>7</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>1=1</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>0.03125in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix3_Location">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!LocationNo.Value</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!DistrictCode.Value</Parent>
+              </Grouping>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox45">
+                    <rd:DefaultName>textbox45</rd:DefaultName>
+                    <Visibility>
+                      <Hidden>true</Hidden>
+                    </Visibility>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value>Total</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox40">
+                  <rd:DefaultName>textbox40</rd:DefaultName>
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                  <ZIndex>6</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!LocationNo.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+        </RowGroupings>
+        <LayoutDirection>RTL</LayoutDirection>
+        <Top>0.75in</Top>
+        <ColumnGroupings>
+          <ColumnGrouping>
+            <Height>0.25in</Height>
+            <DynamicColumns>
+              <Grouping Name="matrix3_AvgBuysDay">
+                <GroupExpressions>
+                  <GroupExpression>1=1</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!Region.Value</Parent>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox34">
+                  <rd:DefaultName>textbox34</rd:DefaultName>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                  <ZIndex>11</ZIndex>
+                  <Value>Buys A Day</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicColumns>
+          </ColumnGrouping>
+        </ColumnGroupings>
+        <Width>0.90625in</Width>
+        <Corner>
+          <ReportItems>
+            <Textbox Name="textbox33">
+              <rd:DefaultName>textbox33</rd:DefaultName>
+              <Style>
+                <FontSize>8pt</FontSize>
+              </Style>
+              <ZIndex>12</ZIndex>
+              <CanGrow>true</CanGrow>
+              <Value />
+            </Textbox>
+          </ReportItems>
+        </Corner>
+        <Style>
+          <FontSize>8pt</FontSize>
+        </Style>
+        <MatrixRows>
+          <MatrixRow>
+            <Height>0.125in</Height>
+            <MatrixCells>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="textbox36">
+                    <rd:DefaultName>textbox36</rd:DefaultName>
+                    <Style>
+                      <Color>=iif(InScope("matrix3_Location"), "Black",
+iif(InScope("matrix3_District") and InScope("matrix3_CompDistrictRow"), "Black",
+iif(InScope("matrix3_District"), "DarkBlue",
+iif(InScope("matrix3_Region") and InScope("matrix3_CompRegionRow"), "Black",
+iif(InScope("matrix3_Region"), "DarkBlue",
+iif(InScope("matrix3_AvgBuysDay"),"Black","Black"))))))</Color>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>=iif(InScope("matrix3_Location"), "Normal",
+iif(InScope("matrix3_District"), "Bold",
+iif(InScope("matrix3_Region"), "Bold",
+iif(InScope("matrix3_MonthYear"),"Bold","Bold"))))</FontWeight>
+                      <Format>#,##0</Format>
+                      <PaddingBottom>=iif(InScope("matrix3_Location"), "0pt",
+iif(InScope("matrix3_District") and InScope("matrix3_CompDistrictRow"), "0pt",
+iif(InScope("matrix3_District"), "1pt",
+iif(InScope("matrix3_Region") and InScope("matrix3_CompRegionRow"), "0pt",
+iif(InScope("matrix3_Region"), "1pt",
+iif(InScope("matrix3_AvgBuysDay"),"0pt","0pt"))))))</PaddingBottom>
+                    </Style>
+                    <DataElementStyle>AttributeNormal</DataElementStyle>
+                    <ZIndex>5</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>=iif(InScope("matrix3_MonthYear") and InScope("matrix3_Location"),Sum(Fields!AvgBuysDay.Value)/Count(Fields!AvgBuysDay.Value),
+
+iif(InScope("matrix3_Location"),	
+	Sum(Fields!Buycount.Value)/sum(Fields!NumDays.Value),
+	
+iif(InScope("matrix3_District") and InScope("matrix3_CompDistrictRow"),Sum(Fields!Buycount.Value)/iif(Last(Fields!CompNumDays.Value) &gt; 365, Last(Fields!CompNumDays.Value) -365, Last(Fields!CompNumDays.Value)),
+	iif(InScope("matrix3_District"),
+		Sum(Fields!BuyCountComp.Value)/iif(Last(Fields!CompNumDays.Value) &gt; 365, Last(Fields!CompNumDays.Value) -365, Last(Fields!CompNumDays.Value)),	
+	
+	iif(InScope("matrix3_Region") and InScope("matrix3_CompRegionRow"),Sum(Fields!Buycount.Value)/iif(Last(Fields!CompNumDays.Value) &gt; 365, Last(Fields!CompNumDays.Value) -365, Last(Fields!CompNumDays.Value)),
+	iif(InScope("matrix3_Region"), 
+		Sum(Fields!BuyCountComp.Value)/ iif(Last(Fields!CompNumDays.Value) &gt; 365, Last(Fields!CompNumDays.Value) -365, Last(Fields!CompNumDays.Value)),		
+
+iif(InScope("matrix3_MonthYear"),Sum(Fields!AvgBuysDay.Value)/Count(Fields!AvgBuysDay.Value),
+iif(InScope("matrix3_location"), 999,
+Sum(Fields!Buycount.Value)/  iif(Last(Fields!CompNumDays.Value) &gt; 365, Last(Fields!CompNumDays.Value) -365, Last(Fields!CompNumDays.Value))))
+  ))))))</Value>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+            </MatrixCells>
+          </MatrixRow>
+        </MatrixRows>
+        <Height>0.5in</Height>
+        <Left>6.125in</Left>
+      </Matrix>
+      <Matrix Name="matrix2">
+        <MatrixColumns>
+          <MatrixColumn>
+            <Width>0.5in</Width>
+          </MatrixColumn>
+        </MatrixColumns>
+        <ZIndex>1</ZIndex>
+        <DataSetName>SB_BuyTrendsByDistrict</DataSetName>
+        <RowGroupings>
+          <RowGrouping>
+            <Width>0.03125in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix2_Region">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!Region.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox15">
+                    <Visibility>
+                      <Hidden>true</Hidden>
+                    </Visibility>
+                    <Style>
+                      <BorderStyle>
+                        <Left>Solid</Left>
+                        <Right>Solid</Right>
+                        <Bottom>Solid</Bottom>
+                      </BorderStyle>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                    </Style>
+                    <ZIndex>4</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>HPB Total</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox16">
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                  <Style>
+                    <BackgroundColor>White</BackgroundColor>
+                    <BorderStyle>
+                      <Left>Solid</Left>
+                      <Right>None</Right>
+                      <Top>Solid</Top>
+                      <Bottom>Solid</Bottom>
+                    </BorderStyle>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                  </Style>
+                  <ZIndex>10</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!Region.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>0.03125in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix2_CompRegionRow">
+                <GroupExpressions>
+                  <GroupExpression>1=1</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!Region.Value</Parent>
+              </Grouping>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox17">
+                    <Visibility>
+                      <Hidden>true</Hidden>
+                    </Visibility>
+                    <Style>
+                      <BackgroundColor>White</BackgroundColor>
+                      <BorderStyle>
+                        <Left>None</Left>
+                        <Right>Solid</Right>
+                        <Top>None</Top>
+                        <Bottom>Solid</Bottom>
+                      </BorderStyle>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                    <ZIndex>3</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>Comp Totals</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox18">
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                  <Style>
+                    <BackgroundColor>LightGrey</BackgroundColor>
+                    <BorderStyle>
+                      <Left>Solid</Left>
+                      <Right>None</Right>
+                      <Top>Solid</Top>
+                      <Bottom>Solid</Bottom>
+                    </BorderStyle>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                  </Style>
+                  <ZIndex>9</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>1=1</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>0.03125in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix2_District">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!DistrictCode.Value</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!Region.Value</Parent>
+              </Grouping>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox19">
+                    <Visibility>
+                      <Hidden>true</Hidden>
+                    </Visibility>
+                    <Style>
+                      <BackgroundColor>White</BackgroundColor>
+                      <BorderStyle>
+                        <Right>Solid</Right>
+                        <Top>Solid</Top>
+                        <Bottom>None</Bottom>
+                      </BorderStyle>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                    <ZIndex>2</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>=Trim(Fields!Region.Value) + " Totals"</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox20">
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                  <Style>
+                    <BorderStyle>
+                      <Left>Solid</Left>
+                      <Top>Solid</Top>
+                      <Bottom>Solid</Bottom>
+                    </BorderStyle>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                  <ZIndex>8</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!DistrictCode.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>0.03125in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix2_CompDistrictRow">
+                <GroupExpressions>
+                  <GroupExpression>1=1</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!DistrictCode.Value</Parent>
+              </Grouping>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox21">
+                    <Visibility>
+                      <Hidden>true</Hidden>
+                    </Visibility>
+                    <Style>
+                      <BorderStyle>
+                        <Left>None</Left>
+                        <Right>Solid</Right>
+                        <Top>None</Top>
+                        <Bottom>Solid</Bottom>
+                      </BorderStyle>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                    <ZIndex>1</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>Comp Totals</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox22">
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                  <Style>
+                    <BorderStyle>
+                      <Left>Solid</Left>
+                      <Top>Solid</Top>
+                      <Bottom>Solid</Bottom>
+                    </BorderStyle>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                  <ZIndex>7</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>1=1</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>0.03125in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix2_Location">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!LocationNo.Value</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!DistrictCode.Value</Parent>
+              </Grouping>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox23">
+                    <Visibility>
+                      <Hidden>true</Hidden>
+                    </Visibility>
+                    <Style>
+                      <BorderStyle>
+                        <Right>Solid</Right>
+                        <Bottom>None</Bottom>
+                      </BorderStyle>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value>=Trim(Fields!DistrictCode.Value) + " Totals"</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox24">
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                  <Style>
+                    <BorderStyle>
+                      <Right>Solid</Right>
+                      <Top>None</Top>
+                      <Bottom>None</Bottom>
+                    </BorderStyle>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                  <ZIndex>6</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!LocationNo.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+        </RowGroupings>
+        <Top>0.75in</Top>
+        <ColumnGroupings>
+          <ColumnGrouping>
+            <Height>0.25in</Height>
+            <DynamicColumns>
+              <Grouping Name="matrix2_MonthYear">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!MonthYear.Value</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!DistrictCode.Value</Parent>
+              </Grouping>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox25">
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                    <ZIndex>11</ZIndex>
+                    <Value>Total</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox26">
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                  <ZIndex>12</ZIndex>
+                  <Value>=Fields!MonthYear.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicColumns>
+          </ColumnGrouping>
+        </ColumnGroupings>
+        <Width>1.15625in</Width>
+        <Corner>
+          <ReportItems>
+            <Textbox Name="textbox27">
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
+              <Style>
+                <FontSize>8pt</FontSize>
+              </Style>
+              <ZIndex>13</ZIndex>
+              <CanGrow>true</CanGrow>
+              <Value />
+            </Textbox>
+          </ReportItems>
+        </Corner>
+        <MatrixRows>
+          <MatrixRow>
+            <Height>0.125in</Height>
+            <MatrixCells>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="textbox28">
+                    <Style>
+                      <Color>=iif(InScope("matrix2_MonthYear") and InScope("matrix2_Location"), iif(Sum(Fields!BuyCountPercentChange.Value)&lt; 0, "Red","Black"),
+
+iif(InScope("matrix2_Location"), iif(((Sum(Fields!Buycount.Value)-Sum(Fields!BuyCountLastYear.Value))/(Sum(Fields!BuyCountLastYear.Value)))*100 &lt; 0, "Red", "Black"), 
+
+iif(InScope("matrix2_District") and InScope("matrix2_CompDistrictRow"), iif(((Sum(Fields!Buycount.Value)-Sum(Fields!BuyCountLastYear.Value))/(Sum(Fields!BuyCountLastYear.Value)))*100 &lt; 0, "Red","Black"),
+iif(InScope("matrix2_District"), iif(((Sum(Fields!BuyCountComp.Value) - Sum(iif(Fields!BuyCountComp.Value &gt; 0, Fields!BuyCountLastYear.Value, nothing ))) / 
+		Sum(iif(Fields!BuyCountComp.Value &gt; 0, Fields!BuyCountLastYear.Value, nothing ))) * 100 &lt; 0, "Red", "DarkBlue"),
+
+iif(InScope("matrix2_Region") and InScope("matrix2_CompRegionRow"), iif(((Sum(Fields!Buycount.Value)-Sum(Fields!BuyCountLastYear.Value))/(Sum(Fields!BuyCountLastYear.Value)))*100 &lt; 0, "Red", "Black"), 
+iif(InScope("matrix2_Region"), iif(((Sum(Fields!BuyCountComp.Value) - Sum(iif(Fields!BuyCountComp.Value &gt; 0, Fields!BuyCountLastYear.Value, nothing ))) / 
+		Sum(iif(Fields!BuyCountComp.Value &gt; 0, Fields!BuyCountLastYear.Value, nothing ))) * 100 &lt; 0, "Red","DarkBlue"),
+iif(InScope("matrix2_Location"), "Black", iif(((Sum(Fields!Buycount.Value)-Sum(Fields!BuyCountLastYear.Value))/(Sum(Fields!BuyCountLastYear.Value)))*100 &lt; 0, "Red", "Black")
+)))))))</Color>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>=iif(InScope("matrix2_Location"), "Normal", 
+iif(InScope("matrix2_District"), "Bold",
+iif(InScope("matrix2_Region"), "Bold", 
+iif(InScope("matrix2_MonthYear"),"Bold","Bold"))))</FontWeight>
+                      <Format>#,###.0</Format>
+                      <TextAlign>Right</TextAlign>
+                      <PaddingBottom>=iif(InScope("matrix2_Location"), "0pt",
+iif(InScope("matrix2_District") and InScope("matrix2_CompDistrictRow"), "0pt",
+iif(InScope("matrix2_District"), "1pt",
+iif(InScope("matrix2_Region") and InScope("matrix2_CompRegionRow"), "0pt",
+iif(InScope("matrix2_Region"), "1pt",
+iif(InScope("matrix2_AvgBuysDay"),"0pt","0pt"))))))</PaddingBottom>
+                    </Style>
+                    <ZIndex>5</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>=iif(InScope("matrix2_MonthYear") and InScope("matrix2_Location"), Sum(Fields!BuyCountPercentChange.Value),
+
+iif(InScope("matrix2_Location"), iif((Sum(Fields!BuyCountLastYear.Value))&lt; 1, nothing, 
+((Sum(Fields!Buycount.Value)-Sum(Fields!BuyCountLastYear.Value))/iif((Sum(Fields!BuyCountLastYear.Value))&lt; 1, 1,(Sum(Fields!BuyCountLastYear.Value)))))*100 ,
+
+iif(InScope("matrix2_District") and InScope("matrix2_CompDistrictRow"), iif((Sum(Fields!BuyCountLastYear.Value))&lt; 1, nothing, 
+((Sum(Fields!Buycount.Value)-Sum(Fields!BuyCountLastYear.Value))/iif((Sum(Fields!BuyCountLastYear.Value))&lt; 1, 1,(Sum(Fields!BuyCountLastYear.Value)))))*100 ,
+
+	iif(InScope("matrix2_District"), ((Sum(Fields!BuyCountComp.Value) - Sum(iif(Fields!BuyCountComp.Value &gt; 0, Fields!BuyCountLastYear.Value, nothing ))) / 
+		Sum(iif(Fields!BuyCountComp.Value &gt; 0, Fields!BuyCountLastYear.Value, 1 ))) * 100,
+	
+	iif(InScope("matrix2_Region") and InScope("matrix2_CompRegionRow"),  iif((Sum(Fields!BuyCountLastYear.Value))&lt; 1, nothing, 
+((Sum(Fields!Buycount.Value)-Sum(Fields!BuyCountLastYear.Value))/iif((Sum(Fields!BuyCountLastYear.Value))&lt; 1, 1,(Sum(Fields!BuyCountLastYear.Value)))))*100 ,
+
+	iif(InScope("matrix2_Region"), ((Sum(Fields!BuyCountComp.Value) - Sum(iif(Fields!BuyCountComp.Value &gt; 0, Fields!BuyCountLastYear.Value, nothing ))) / 
+		Sum(iif(Fields!BuyCountComp.Value &gt; 0, Fields!BuyCountLastYear.Value, 1 ))) * 100,
+
+iif(InScope("matrix2_MonthYear"), iif((Sum(Fields!BuyCountLastYear.Value))&lt; 1,nothing, 
+((Sum(Fields!Buycount.Value)-Sum(Fields!BuyCountLastYear.Value))/iif((Sum(Fields!BuyCountLastYear.Value))&lt; 1, 1,(Sum(Fields!BuyCountLastYear.Value)))))*100 ,
+
+iif(InScope("matrix2_location"), 999,
+ iif((Sum(Fields!BuyCountLastYear.Value))&lt; 1, nothing, 
+((Sum(Fields!Buycount.Value)-Sum(Fields!BuyCountLastYear.Value))/iif((Sum(Fields!BuyCountLastYear.Value))&lt; 1, 1,(Sum(Fields!BuyCountLastYear.Value)))))*100 ))
+  ))))))</Value>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+            </MatrixCells>
+          </MatrixRow>
+        </MatrixRows>
+        <Height>0.5in</Height>
+        <Left>7.125in</Left>
+      </Matrix>
+      <Matrix Name="matrix1">
+        <MatrixColumns>
+          <MatrixColumn>
+            <Width>0.75in</Width>
+          </MatrixColumn>
+        </MatrixColumns>
+        <DataSetName>SB_BuyTrendsByDistrict</DataSetName>
+        <RowGroupings>
+          <RowGrouping>
+            <Width>1in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_Region">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!Region.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox4">
+                    <rd:DefaultName>textbox4</rd:DefaultName>
+                    <Style>
+                      <BorderStyle>
+                        <Left>Solid</Left>
+                        <Right>Solid</Right>
+                        <Bottom>Solid</Bottom>
+                      </BorderStyle>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                    </Style>
+                    <ZIndex>4</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>HPB Total</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox3">
+                  <rd:DefaultName>textbox3</rd:DefaultName>
+                  <Style>
+                    <BackgroundColor>White</BackgroundColor>
+                    <BorderStyle>
+                      <Left>Solid</Left>
+                      <Right>None</Right>
+                      <Top>Solid</Top>
+                      <Bottom>Solid</Bottom>
+                    </BorderStyle>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                  </Style>
+                  <ZIndex>10</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!Region.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>0.25in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_CompRegionRow">
+                <GroupExpressions>
+                  <GroupExpression>1=1</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!Region.Value</Parent>
+              </Grouping>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox14">
+                    <rd:DefaultName>textbox14</rd:DefaultName>
+                    <Style>
+                      <BackgroundColor>White</BackgroundColor>
+                      <BorderStyle>
+                        <Left>None</Left>
+                        <Right>Solid</Right>
+                        <Top>None</Top>
+                        <Bottom>Solid</Bottom>
+                      </BorderStyle>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                    <ZIndex>3</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>Comp Totals</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox12">
+                  <rd:DefaultName>textbox12</rd:DefaultName>
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                  <Style>
+                    <BackgroundColor>LightGrey</BackgroundColor>
+                    <BorderStyle>
+                      <Left>Solid</Left>
+                      <Right>None</Right>
+                      <Top>Solid</Top>
+                      <Bottom>Solid</Bottom>
+                    </BorderStyle>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                  </Style>
+                  <ZIndex>9</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>1=1</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>1in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_District">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!DistrictCode.Value</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!Region.Value</Parent>
+              </Grouping>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox7">
+                    <rd:DefaultName>textbox7</rd:DefaultName>
+                    <Style>
+                      <BackgroundColor>White</BackgroundColor>
+                      <BorderStyle>
+                        <Right>Solid</Right>
+                        <Top>Solid</Top>
+                        <Bottom>None</Bottom>
+                      </BorderStyle>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                    <ZIndex>2</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>=Trim(Fields!Region.Value) + " Totals"</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox5">
+                  <rd:DefaultName>textbox5</rd:DefaultName>
+                  <Style>
+                    <BorderStyle>
+                      <Left>Solid</Left>
+                      <Top>Solid</Top>
+                      <Bottom>Solid</Bottom>
+                    </BorderStyle>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                  <ZIndex>8</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!DistrictCode.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>0.625in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_CompDistrictRow">
+                <GroupExpressions>
+                  <GroupExpression>1=1</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!DistrictCode.Value</Parent>
+              </Grouping>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox11">
+                    <rd:DefaultName>textbox11</rd:DefaultName>
+                    <Style>
+                      <BorderStyle>
+                        <Left>None</Left>
+                        <Right>Solid</Right>
+                        <Top>None</Top>
+                        <Bottom>Solid</Bottom>
+                      </BorderStyle>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                    <ZIndex>1</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>Comp Totals</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox1">
+                  <rd:DefaultName>textbox1</rd:DefaultName>
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                  <Style>
+                    <BorderStyle>
+                      <Left>Solid</Left>
+                      <Top>Solid</Top>
+                      <Bottom>Solid</Bottom>
+                    </BorderStyle>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                  <ZIndex>7</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>1=1</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>1.25in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_Location">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!LocationNo.Value</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!DistrictCode.Value</Parent>
+              </Grouping>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox8">
+                    <rd:DefaultName>textbox8</rd:DefaultName>
+                    <Style>
+                      <BorderStyle>
+                        <Right>Solid</Right>
+                        <Bottom>None</Bottom>
+                      </BorderStyle>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value>=Trim(Fields!DistrictCode.Value) + " Totals"</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox6">
+                  <rd:DefaultName>textbox6</rd:DefaultName>
+                  <Style>
+                    <BorderStyle>
+                      <Right>Solid</Right>
+                      <Top>None</Top>
+                      <Bottom>None</Bottom>
+                    </BorderStyle>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                  <ZIndex>6</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!LocationNo.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+        </RowGroupings>
+        <Top>0.75in</Top>
+        <ColumnGroupings>
+          <ColumnGrouping>
+            <Height>0.25in</Height>
+            <DynamicColumns>
+              <Grouping Name="matrix1_MonthYear">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!MonthYear.Value</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!DistrictCode.Value</Parent>
+              </Grouping>
+              <Subtotal>
+                <ReportItems>
+                  <Textbox Name="textbox10">
+                    <rd:DefaultName>textbox10</rd:DefaultName>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>700</FontWeight>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                    <ZIndex>11</ZIndex>
+                    <Value>Total</Value>
+                  </Textbox>
+                </ReportItems>
+              </Subtotal>
+              <ReportItems>
+                <Textbox Name="textbox2">
+                  <rd:DefaultName>textbox2</rd:DefaultName>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                  <ZIndex>12</ZIndex>
+                  <Value>=Fields!MonthYear.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicColumns>
+          </ColumnGrouping>
+        </ColumnGroupings>
+        <Width>5.625in</Width>
+        <Corner>
+          <ReportItems>
+            <Textbox Name="textbox13">
+              <rd:DefaultName>textbox13</rd:DefaultName>
+              <Style>
+                <BorderStyle>
+                  <Bottom>Solid</Bottom>
+                </BorderStyle>
+                <FontSize>8pt</FontSize>
+              </Style>
+              <ZIndex>13</ZIndex>
+              <Value />
+            </Textbox>
+          </ReportItems>
+        </Corner>
+        <MatrixRows>
+          <MatrixRow>
+            <Height>0.125in</Height>
+            <MatrixCells>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="textbox9">
+                    <rd:DefaultName>textbox9</rd:DefaultName>
+                    <Style>
+                      <Color>=iif(InScope("matrix1_Location"), "Black",
+iif(InScope("matrix1_District") and InScope("matrix1_CompDistrictRow"), "Black",
+iif(InScope("matrix1_District"), "DarkBlue",
+iif(InScope("matrix1_Region") and InScope("matrix1_CompRegionRow"), "Black",
+iif(InScope("matrix1_Region"), "DarkBlue",
+iif(InScope("matrix1_MonthYear"),"Black","Black"))))))</Color>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>=iif(InScope("matrix1_Location"), "Normal", 
+iif(InScope("matrix1_District"), "Bold",
+iif(InScope("matrix1_Region"), "Bold", 
+iif(InScope("matrix1_MonthYear"),"Bold","Bold"))))</FontWeight>
+                      <Format>#,###,##0</Format>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                    <ZIndex>5</ZIndex>
+                    <CanGrow>true</CanGrow>
+                    <Value>=iif(InScope("matrix1_MonthYear") and InScope("matrix1_Location"), Sum(Fields!Buycount.Value),
+
+iif(InScope("matrix1_Location"),	
+	Sum(Fields!Buycount.Value),
+	
+iif(InScope("matrix1_District") and InScope("matrix1_CompDistrictRow"),Sum(Fields!Buycount.Value),
+	iif(InScope("matrix1_District"),
+		Sum(Fields!BuyCountComp.Value),	
+	
+	iif(InScope("matrix1_Region") and InScope("matrix1_CompRegionRow"), Sum(Fields!Buycount.Value),
+	iif(InScope("matrix1_Region"), 
+		Sum(Fields!BuyCountComp.Value),		
+
+iif(InScope("matrix1_MonthYear"),Sum(Fields!Buycount.Value),
+iif(InScope("matrix1_location"), 999,
+Sum(Fields!Buycount.Value)))
+  ))))))</Value>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+            </MatrixCells>
+          </MatrixRow>
+        </MatrixRows>
+        <Height>0.5in</Height>
+        <Left>1.125in</Left>
+      </Matrix>
+    </ReportItems>
+    <Height>9.375in</Height>
+  </Body>
+  <Language>en-US</Language>
+  <PageFooter>
+    <PrintOnFirstPage>true</PrintOnFirstPage>
+    <ReportItems>
+      <Textbox Name="textbox32">
+        <Top>0.125in</Top>
+        <Width>1.5in</Width>
+        <Style>
+          <FontSize>8pt</FontSize>
+          <TextAlign>Right</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <ZIndex>2</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>8.875in</Left>
+        <Height>0.125in</Height>
+        <Value>="Pages: " + cstr(globals!PageNumber) + " of " + cstr(globals!TotalPages)</Value>
+      </Textbox>
+      <Textbox Name="textbox30">
+        <Top>0.125in</Top>
+        <Width>1.625in</Width>
+        <Style>
+          <FontSize>8pt</FontSize>
+          <TextAlign>Center</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <ZIndex>1</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>4.5in</Left>
+        <Height>0.125in</Height>
+        <Value>=globals!ExecutionTime</Value>
+      </Textbox>
+      <Textbox Name="textbox31">
+        <Top>0.125in</Top>
+        <Width>2.5in</Width>
+        <Style>
+          <FontSize>8pt</FontSize>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Left>0.125in</Left>
+        <Height>0.125in</Height>
+        <Value>=globals!ReportName</Value>
+      </Textbox>
+    </ReportItems>
+    <Height>0.75in</Height>
+    <PrintOnLastPage>true</PrintOnLastPage>
+  </PageFooter>
+  <TopMargin>1in</TopMargin>
+</Report>
